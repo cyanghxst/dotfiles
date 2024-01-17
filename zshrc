@@ -95,9 +95,6 @@ alias nf='fzf --print0 | xargs -0 -o nvim'
 # open with fzf
 alias of='fzf --print0 | xargs -0 -o open'
 
-# git bare dotfiles command
-alias git-df='/opt/homebrew/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
-
 # ---------------------------------------- 
 # Tab Completion Settings 
 # ---------------------------------------- 
