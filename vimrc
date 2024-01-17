@@ -1,0 +1,184 @@
+" ---------------------------------------- 
+" Vim VI improved 9.0 Config
+" ---------------------------------------- 
+
+" ---------------------------------------- 
+" Plugins
+" ---------------------------------------- 
+
+" Specify a directory for plugins
+" call plug#begin('~/.vim/plugged')
+
+" Plug 'ghifarit53/tokyonight-vim'
+" Plug 'sheerun/vim-polyglot'
+" Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-surround'
+" Plug 'tribela/vim-transparent'
+
+" call plug#end()
+
+" ---------------------------------------- 
+" Color Settings
+" ---------------------------------------- 
+
+" Enable true colors support
+set termguicolors
+
+" Enable syntax highlighting
+syntax on
+
+" Enable italics in theme
+" let g:tokyonight_italic=1
+
+" Set the color scheme
+set background=dark
+" colorscheme tokyonight
+
+" Display italic characters
+hi Comment cterm=italic
+
+" Disable background to match terminal's scheme
+hi normal ctermbg=NONE guibg=NONE
+
+" Disable background
+" hi NonText ctermbg=NONE guibg=NONE
+
+" ---------------------------------------- 
+" Status Line
+" ---------------------------------------- 
+
+" Enable status line
+set laststatus=2
+
+" Left side
+set statusline+=
+set statusline+=%1*
+
+" Right side
+set statusline+=%=
+set statusline+=%f
+set statusline+=\ %m
+set statusline+=\ %P
+
+" Set colors
+hi user1 ctermbg=NONE guifg=#414868
+
+" ---------------------------------------- 
+" Status Line 2
+" ---------------------------------------- 
+
+" Enable status line
+" set laststatus=2
+
+" Left side
+" set statusline+=%1*
+" set statusline+=\ %{toupper(g:currentmode[mode()])}
+" set statusline+=%2*
+" set statusline+=\ %f\ 
+" set statusline+=%{&modified?'[+]':''}
+
+" Right side
+" set statusline+=%=
+" set statusline+=%{&ff}
+" set statusline+=\ \ %{strlen(&fenc)?&fenc:'none'}
+" set statusline+=\ \ %P
+" set statusline+=\ \ ☰\ 
+" set statusline+=\ %l:%L\ 
+
+" Set colors
+" hi user1 ctermbg=red ctermfg=black
+" hi user2 ctermbg=black ctermfg=white
+
+" Show modes in status line
+" let g:currentmode={
+"       \ 'n'  : 'NORMAL ',
+"       \ 'v'  : 'VISUAL ',
+"       \ 'V'  : 'VISUAL LINE ',
+"       \ '\<C-V>' : 'VISUAL BLOCK ',
+"       \ 'i'  : 'INSERT ',
+"       \ 'R'  : 'REPLACE ',
+"       \ 'Rv' : 'VISUAL REPLACE ',
+"       \ 'c'  : 'COMMAND ',
+"       \}
+
+" ---------------------------------------- 
+" Basic Settings
+" ---------------------------------------- 
+
+" Use a line cursor within insert mode and a block cursor everywhere else
+
+" Reference chart of values:
+" Ps = 0  -> blinking block
+" Ps = 1  -> blinking block (default)
+" Ps = 2  -> steady block
+" Ps = 3  -> blinking underline
+" Ps = 4  -> steady underline
+" Ps = 5  -> blinking bar (xterm)
+" Ps = 6  -> steady bar (xterm)
+
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[2 q"
+
+" Set italic for comments
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
+set encoding=utf-8
+set hlsearch
+set clipboard=unnamed
+set incsearch
+set ignorecase
+set mouse=a
+set noshowmode
+set guifont=JetbrainsMono\ Nerd\ Font:h14
+set guicursor=a:blinkon0
+set scrolloff=17
+set shortmess+=F
+set sidescrolloff=17
+set smartcase
+set ttimeout
+set ttimeoutlen=0
+set ttyfast
+set wildmenu
+set wildmode=longest:full,full
+
+" Line number
+set number
+" set relativenumber
+" hi LineNr guifg=#31354d
+
+" Cursorline
+" set cursorline
+" set cursorlineopt=number
+hi cursorline cterm=bold
+" hi cursorlinenr guibg=NONE guifg=#a8b2d6
+
+" Indentation
+set autoindent
+set smartindent
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+
+" ---------------------------------------- 
+" Basic Mappings
+" ---------------------------------------- 
+
+" Better up/down
+nnoremap j gj
+nnoremap k gk
+
+" Disable q key
+nnoremap Q <NOP>
+
+" Clear search highlight after hit enter
+nnoremap <CR> :nohl<CR>
+
+" ---------------------------------------- 
+" Basic Autocommands
+" ---------------------------------------- 
+
+" Disable auto-commenting
+autocmd FileType * set formatoptions-=cro
