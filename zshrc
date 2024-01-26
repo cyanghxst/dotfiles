@@ -95,6 +95,9 @@ alias nf='fzf --print0 | xargs -0 -o nvim'
 # open with fzf
 alias of='fzf --print0 | xargs -0 -o open'
 
+# keka cli
+alias keka='/Applications/Keka.app/Contents/MacOS/Keka --cli'
+
 # ---------------------------------------- 
 # Tab Completion Settings 
 # ---------------------------------------- 
