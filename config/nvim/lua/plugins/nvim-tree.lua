@@ -56,7 +56,7 @@ return {
                     file = true,
                     folder = false,
                     folder_arrow = true,
-                    git = true,
+                    git = false,
                     modified = true,
                 },
                 glyphs = {
@@ -68,15 +68,15 @@ return {
                         arrow_closed = "",
                         arrow_open = "",
                     },
-                    git = {
-                        unstaged = "",
-                        staged = "",
-                        unmerged = "",
-                        renamed = "󰛿",
-                        untracked = "󰋗",
-                        deleted = "󰍶",
-                        ignored = "◌",
-                    }
+                    -- git = {
+                    --     unstaged = "",
+                    --     staged = "",
+                    --     unmerged = "",
+                    --     renamed = "󰛿",
+                    --     untracked = "󰋗",
+                    --     deleted = "󰍶",
+                    --     ignored = "◌",
+                    -- }
                 }
             }
         }
