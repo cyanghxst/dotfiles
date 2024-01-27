@@ -23,7 +23,6 @@ opt.sidescrolloff = 30
 opt.signcolumn = "yes"
 opt.startofline = true
 opt.wrap = false
--- opt.fillchars = "eob: "
 -- vim.wo.cursorline = true
 
 -- Searching
