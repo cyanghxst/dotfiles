@@ -1,6 +1,6 @@
 return {
     "folke/tokyonight.nvim",
-    lazy = false,
+    enabled = true,
     priority = 1000,
     init = function()
         vim.cmd.colorscheme [[tokyonight]]
@@ -18,7 +18,7 @@ return {
             floats = "transparent",
         },
         sidebars = { "qf", "help", "terminal", "packer", "nvimtree" },
-        hide_inactive_statusline = false,
+        hide_inactive_statusline = true,
         dim_inactive = false,
         lualine_bold = false,
         on_colors = function(colors) end,
