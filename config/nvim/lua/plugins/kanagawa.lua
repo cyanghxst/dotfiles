@@ -6,6 +6,7 @@ Plugin: https://github.com/rebelot/kanagawa.nvim
 
 return {
     "rebelot/kanagawa.nvim",
+    dependencies = "nvim-web-devicons",
     enabled = false,
     priority = 1000, -- load asap
     config = function()
