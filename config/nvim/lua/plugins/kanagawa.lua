@@ -1,9 +1,3 @@
---[[ 
-Colorscheme!
-
-Plugin: https://github.com/rebelot/kanagawa.nvim
-]]
-
 return {
     "rebelot/kanagawa.nvim",
     dependencies = "nvim-web-devicons",
