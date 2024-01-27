@@ -1,0 +1,19 @@
+[user]
+	name = razor6ack
+	email = 155308268+razor6ack@users.noreply.github.com
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+[advice]
+	detachedHead = false
+[color]
+	branch = auto
+	ui = auto
+	diff = auto
+	status = auto
+	interactive = auto
+[alias]
+	lola = log --graph --decorate --oneline --all
+	lol = log --graph --decorate --oneline
+	tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
