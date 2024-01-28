@@ -1,4 +1,4 @@
 return {
     "tpope/vim-eunuch",
-    enabled = true
+    enabled = false
 }
