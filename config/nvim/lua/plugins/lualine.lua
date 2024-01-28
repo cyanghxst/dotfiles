@@ -1,6 +1,7 @@
 -- Minimal line
 return {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     enabled = true,
     opts = function()
         local colors = { 
