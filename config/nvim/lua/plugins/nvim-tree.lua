@@ -60,7 +60,7 @@ return {
                 modified_placement = "before",
                 show = {
                     file = true,
-                    folder = true,
+                    folder = false,
                     folder_arrow = true,
                     git = false,
                     modified = true,
@@ -71,21 +71,18 @@ return {
                     bookmark = "",
                     modified = "[+]",
                     folder = {
-                        default = "",
-                        open = "",
-                        symlink = "",
                         arrow_open = "",
                         arrow_closed = "",
                     },
-                    -- git = {
-                    --     unstaged = "",
-                    --     staged = "",
-                    --     unmerged = "",
-                    --     renamed = "󰛿",
-                    --     untracked = "󰋗",
-                    --     deleted = "󰍶",
-                    --     ignored = "◌",
-                    -- }
+                    git = {
+                        unstaged = "[u]",
+                        staged = "",
+                        unmerged = "",
+                        renamed = "󰛿",
+                        untracked = "󰋗",
+                        deleted = "󰍶",
+                        ignored = "◌",
+                    }
                 }
             },
             special_files = { "README.md" },
