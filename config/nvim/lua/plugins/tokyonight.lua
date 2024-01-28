@@ -5,119 +5,80 @@ return {
     init = function()
         vim.cmd.colorscheme [[tokyonight]]
     end,
-    opts = { 
-        style = "night",
-        transparent = true,
-        terminal_colors = true,
-        styles = {
-            comments = { italic = true },
-            keywords = { italic = true },
-            functions = {},
-            variables = {},
-            sidebars = "transparent",
-            floats = "transparent",
-        },
-        sidebars = { "qf", "help", "terminal", "packer", "nvimtree" },
-        hide_inactive_statusline = true,
-        dim_inactive = false,
-        lualine_bold = false,
-        on_colors = function(colors) end,
-        on_highlights = function(highlights) end,
-    },
-    --config = function()
-    --    local kanagawa = require("kanagawa")
-    --    local icons = require("nvim-web-devicons")
-    --    local BG = "#17191c"
-    --    local ALMOST_BG = "#1c1e20"
-    --    local WHITE = "#9da2af"
-    --    local GRAY = "#80838f"
-    --    local FADED_GRAY = "#33373a"
-    --    local STRONG_FADED_GRAY = "#2a2d30"
+    opts = function()
+        return { 
+            style = "night",
+            transparent = true,
+            terminal_colors = true,
+            styles = {
+                comments = { italic = true },
+                keywords = { italic = true },
+                functions = {},
+                variables = {},
+                sidebars = "transparent",
+                floats = "transparent",
+            },
+            sidebars = { "qf", "help", "terminal", "packer", "nvimtree" },
+            hide_inactive_statusline = true,
+            dim_inactive = false,
+            lualine_bold = false,
+            on_colors = function(colors) end,
+            on_highlights = function(hl, c)
 
-    --    kanagawa.setup({
-    --        colors = {
-    --            theme = {
-    --                all = {
-    --                    ui = {
-    --                        bg_gutter = "none",
-    --                    },
-    --                },
-    --            },
-    --            palette = {
-    --                oldWhite = WHITE, -- white text
-    --                fujiWhite = WHITE, -- white text
-    --                fujiGray = FADED_GRAY, -- comments
-    --                sumiInk3 = BG, -- bg
-    --            },
-    --        },
-    --        overrides = function(colors)
-    --            local c = colors.palette
-    --            local overrides = {
-    --                --general
-    --                Visual = { bg = ALMOST_BG }, -- bg on select
-    --                ModeMsg = { fg = c.oniViolet },
-    --                CursorLineNr = { fg = c.oniViolet },
-    --                CursorLine = { bg = ALMOST_BG },
-    --                WinSeparator = { fg = ALMOST_BG },
+                local white = "#c0caf5"
+                local light_gray = "#a9b1d6"
+                local dark_gray = "#3b4261"
+                local black = "#1e2231"
+                local blue = "#3b4261"
+                local blue = "#7aa2f7"
+                -- local blue0 = "#3d59a1"
+                -- local blue1 = "#2ac3de"
+                -- local blue2 = "#0db9d7"
+                -- local blue5 = "#89ddff"
+                -- local blue6 = "#b4f9f8"
+                -- local blue7 = "#394b70"
+                local purple = "#9d7cd8"
 
-    --                -- bufferline
-    --                BufferLineFill = { bg = BG },
-    --                BufferLineBackground = { bg = BG, fg = FADED_GRAY }, -- unactive tabs to faded gray
-    --                BufferLineSeparator = { fg = BG },
-    --                BufferLineModified = { fg = BG },
-    --                BufferlineBufferSelected = { fg = GRAY }, -- active tabs to gray
-    --                BufferlineBufferVisible = { fg = GRAY }, -- active tabs to gray
-    --                BufferLineIndicatorVisible = { fg = BG },
+                -- CursorLine
+                hl.CursorLineNr = { fg = blue, bold = true }
+                hl.CursorLine= { bg = black, bold = true }
 
-    --                -- indentline
-    --                IndentBlanklineChar = { fg = ALMOST_BG },
+                -- MiniIndentScope
+                hl.MiniIndentscopeSymbol = { fg = dark_gray }
 
-    --                -- GitSigns
-    --                GitSignsAdd = { fg = c.oniViolet },
-    --                GitSignsAddNr = { fg = c.oniViolet },
-    --                GitSignsAddLn = { fg = c.oniViolet },
-    --                GitSignsChange = { fg = c.oniViolet },
-    --                GitSignsChangeNr = { fg = c.oniViolet },
-    --                GitSignsChangeLn = { fg = c.oniViolet },
-    --                GitSignsCurrentLineBlame = { fg = FADED_GRAY },
+                -- Gitsigns
+                hl.GitSignsAdd = { fg = blue }
+                hl.GitSignsAddNr = { fg = blue }
+                hl.GitSignsAddLn = { fg = blue }
+                hl.GitSignsChange = { fg = blue }
+                hl.GitSignsChangeNr = { fg = blue }
+                hl.GitSignsChangeLn = { fg = blue }
+                hl.GitSignsCurrentLineBlame = { fg = blue }
 
-    --                -- NvimTree
-    --                NvimTreeGitDirty = { fg = c.oniViolet },
-    --                NvimTreeGitStaged = { fg = c.oniViolet },
-    --                NvimTreeGitMerge = { fg = c.oniViolet },
-    --                NvimTreeGitRenamed = { fg = c.oniViolet },
-    --                NvimTreeGitNew = { fg = c.oniViolet },
-    --                NvimTreeGitDeleted = { fg = c.oniViolet },
-    --                NvimTreeFolderName = { fg = WHITE },
-    --                NvimTreeOpenedFolderName = { fg = WHITE },
-    --                NvimTreeEmptyFolderName = { fg = WHITE },
-    --                NvimTreeRootFolder = { fg = GRAY },
-    --                NvimTreeSpecialFile = { fg = WHITE, bold = true },
-    --                NvimTreeNormalFloat = { bg = BG },
-    --                NvimTreeCursorLine = { bg = ALMOST_BG },
-    --                NvimTreeIndentMarker = { fg = STRONG_FADED_GRAY },
-    --                NvimTreeImageFile = { fg = WHITE },
-    --                NvimTreeFolderIcon = { fg = GRAY },
-    --                NvimTreeFolderIconOpen = { fg = GRAY },
-    --                NvimTreeFolderSymlink = { fg = GRAY },
-    --                NvimTreeDefault = { fg = GRAY },
-    --                NvimTreeSymlink = { fg = GRAY },
-    --                NvimTreeBookmark = { fg = GRAY },
-    --            }
+                -- NvimTree
+                hl.NvimTreeGitDirty = { fg = blue }
+                hl.NvimTreeGitStaged = { fg = blue }
+                hl.NvimTreeGitMerge = { fg = blue }
+                hl.NvimTreeGitRenamed = { fg = blue }
+                hl.NvimTreeGitNew = { fg = blue }
+                hl.NvimTreeGitDeleted = { fg = blue }
+                hl.NvimTreeFolderName = { fg = light_gray }
+                hl.NvimTreeOpenedFolderName = { fg = light_gray }
+                hl.NvimTreeEmptyFolderName = { fg = light_gray }
+                hl.NvimTreeRootFolder = { fg = light_gray, bold = true }
+                hl.NvimTreeSpecialFile = { fg = light_gray, bold = true }
+                -- hl.NvimTreeNormalFloat = { bg = BG }
+                -- hl.NvimTreeCursorLine = { bg = ALMOST_BG }
+                -- hl.NvimTreeIndentMarker = { fg = STRONG_FADED_GRAY }
+                -- hl.NvimTreeImageFile = { fg = WHITE }
+                -- hl.NvimTreeFolderIcon = { fg = GRAY }
+                -- hl.NvimTreeFolderIconOpen = { fg = GRAY }
+                -- hl.NvimTreeFolderSymlink = { fg = GRAY }
+                -- hl.NvimTreeDefault = { fg = GRAY }
+                -- hl.NvimTreeSymlink = { fg = GRAY }
+                -- hl.NvimTreeBookmark = { fg = GRAY }
 
-    --            -- change color of icons
-    --            local new_icons = {}
-    --            for key, icon in pairs(icons.get_icons()) do
-    --                icon.color = GRAY
-    --                new_icons[key] = icon
-    --                overrides["BufferLineDevIcon" .. icon.name] = { bg = BG, fg = FADED_GRAY } -- unactive tabs to faded gray
-    --                overrides["BufferLineDevIcon" .. icon.name .. "Selected"] = { bg = BG, fg = GRAY } -- active tabs to gray
-    --            end
-    --            icons.set_icon(new_icons)
-
-    --            return overrides
-    --        end,
-    --    })
-    --    vim.cmd([[colorscheme tokyonight]])
-    --end,
+            end,
+        }
+    end,
 }
