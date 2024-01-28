@@ -15,8 +15,7 @@ opt.tabstop = 4
 
 -- Look and feel
 opt.number = true
--- opt.relativenumber = true
-opt.scrolloff = 20
+opt.scrolloff = 8
 opt.showcmd = false
 opt.showmode = false
 opt.sidescrolloff = 30
