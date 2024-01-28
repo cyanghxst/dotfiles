@@ -74,15 +74,15 @@ return {
                         arrow_open = "",
                         arrow_closed = "",
                     },
-                    git = {
-                        unstaged = "[u]",
-                        staged = "",
-                        unmerged = "",
-                        renamed = "󰛿",
-                        untracked = "󰋗",
-                        deleted = "󰍶",
-                        ignored = "◌",
-                    }
+                    -- git = {
+                    --     unstaged = "[u]",
+                    --     staged = "",
+                    --     unmerged = "",
+                    --     renamed = "󰛿",
+                    --     untracked = "󰋗",
+                    --     deleted = "󰍶",
+                    --     ignored = "◌",
+                    -- }
                 }
             },
             special_files = { "README.md" },
