@@ -41,7 +41,7 @@ return {
 
                 -- CursorLine
                 hl.CursorLineNr = { fg = blue, bold = true }
-                hl.CursorLine= { bg = black, bold = true }
+                hl.CursorLine= { bg = black }
 
                 -- MiniIndentScope
                 hl.MiniIndentscopeSymbol = { fg = dark_gray }
@@ -71,7 +71,7 @@ return {
                 -- hl.NvimTreeCursorLine = { bg = ALMOST_BG }
                 -- hl.NvimTreeIndentMarker = { fg = STRONG_FADED_GRAY }
                 -- hl.NvimTreeImageFile = { fg = WHITE }
-                -- hl.NvimTreeFolderIcon = { fg = GRAY }
+                hl.NvimTreeFolderIcon = { fg = light_gray }
                 -- hl.NvimTreeFolderIconOpen = { fg = GRAY }
                 -- hl.NvimTreeFolderSymlink = { fg = GRAY }
                 -- hl.NvimTreeDefault = { fg = GRAY }
