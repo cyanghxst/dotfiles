@@ -1,6 +1,6 @@
 return {
     "karb94/neoscroll.nvim",
-    enabled = false,
+    enabled = true,
     config = {
         hide_cursor = false,
     }
