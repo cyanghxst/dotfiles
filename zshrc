@@ -45,7 +45,7 @@ export FZF_DEFAULT_OPTS='
 --color=gutter:#414868
 --color=scrollbar:#16161e
 --color=info:#9ece6a,pointer:#16161e
---color=border:#414868,spinner:#E6DB74,header:#7E8E91,marker:#F92672,prompt:#9ece6a'
+--color=border:#414868,spinner:#7aa2f7,header:#7E8E91,marker:#F92672,prompt:#9ece6a'
 # --color=hl:#fa2d90,hl+:#1434F5
 
 # Default grep color
