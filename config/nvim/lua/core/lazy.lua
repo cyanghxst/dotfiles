@@ -17,8 +17,8 @@ require("lazy").setup("plugins", {
 	change_detection = {
 		notify = false,
 	},
-	-- ui = { |nvim_open_win()| },
 	ui = {
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		border = "single",
 		size = {
 			width = 0.8,
