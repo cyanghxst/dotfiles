@@ -29,13 +29,13 @@ return {
             side = "left",
         },
         git = {
-            enable = true,
+            enable = false,
             ignore = false,
             show_on_dirs = true,
             timeout = 400,
         },
         diagnostics = {
-            enable = true,
+            enable = false,
             show_on_dirs = true,
             icons = {
                 hint = "",
@@ -44,11 +44,11 @@ return {
                 error = "",
             },
         },
-        modified = {
-            enable = false,
-            show_on_dirs = false,
-            show_on_open_dirs = true,
-        },
+        -- modified = {
+        --     enable = false,
+        --     show_on_dirs = false,
+        --     show_on_open_dirs = true,
+        -- },
         renderer = {
             highlight_git = false,
             -- root folder in uppercase hack
@@ -59,7 +59,7 @@ return {
             icons = {
                 modified_placement = "before",
                 show = {
-                    file = true,
+                    file = false,
                     folder = false,
                     folder_arrow = true,
                     git = false,
