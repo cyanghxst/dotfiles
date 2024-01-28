@@ -23,7 +23,7 @@ opt.sidescrolloff = 30
 opt.signcolumn = "yes"
 opt.startofline = true
 opt.wrap = false
--- vim.wo.cursorline = true
+vim.wo.cursorline = true
 
 -- Searching
 opt.hlsearch = true
@@ -42,5 +42,5 @@ opt.clipboard = "unnamedplus"
 cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
 
 -- Highlight groups
-vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#3b4261" })
+-- vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#3b4261" })
 -- vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#3b4261" })
