@@ -60,7 +60,7 @@ return {
                 modified_placement = "before",
                 show = {
                     file = true,
-                    folder = false,
+                    folder = true,
                     folder_arrow = true,
                     git = false,
                     modified = true,
@@ -71,8 +71,11 @@ return {
                     bookmark = "",
                     modified = "[+]",
                     folder = {
-                        arrow_closed = "",
-                        arrow_open = "",
+                        default = "",
+                        open = "",
+                        symlink = "",
+                        arrow_open = "",
+                        arrow_closed = "",
                     },
                     -- git = {
                     --     unstaged = "",
