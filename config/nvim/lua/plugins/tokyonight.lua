@@ -30,21 +30,22 @@ return {
                 local dark_gray = "#3b4261"
                 local black = "#1e2231"
                 local blue = "#3b4261"
+                local comment = "#565f89"
                 local blue = "#7aa2f7"
-                -- local blue0 = "#3d59a1"
-                -- local blue1 = "#2ac3de"
-                -- local blue2 = "#0db9d7"
-                -- local blue5 = "#89ddff"
-                -- local blue6 = "#b4f9f8"
-                -- local blue7 = "#394b70"
+                local green = "#9ece6a"
                 local purple = "#9d7cd8"
 
                 -- CursorLine
                 hl.CursorLineNr = { fg = blue, bold = true }
                 hl.CursorLine= { bg = black }
-
+  
                 -- MiniIndentScope
                 hl.MiniIndentscopeSymbol = { fg = dark_gray }
+
+                -- Leap
+                -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
+                hl.LeapLabelPrimary = { fg = green, bold = true }
+                -- hl.LeapLabelSecondary = { bg = purple, fg = comment }
 
                 -- Gitsigns
                 hl.GitSignsAdd = { fg = blue }
@@ -62,21 +63,13 @@ return {
                 hl.NvimTreeGitRenamed = { fg = blue }
                 hl.NvimTreeGitNew = { fg = blue }
                 hl.NvimTreeGitDeleted = { fg = blue }
-                hl.NvimTreeFolderName = { fg = light_gray }
-                hl.NvimTreeOpenedFolderName = { fg = light_gray }
-                hl.NvimTreeEmptyFolderName = { fg = light_gray }
+                hl.NvimTreeFolderName = { fg = blue }
+                hl.NvimTreeFolderArrowOpen = { fg = blue }
+                hl.NvimTreeFolderArrowClosed = { fg = blue }
+                hl.NvimTreeOpenedFolderName = { fg = blue }
+                hl.NvimTreeEmptyFolderName = { fg = blue }
                 hl.NvimTreeRootFolder = { fg = light_gray, bold = true }
                 hl.NvimTreeSpecialFile = { fg = light_gray, bold = true }
-                -- hl.NvimTreeNormalFloat = { bg = BG }
-                -- hl.NvimTreeCursorLine = { bg = ALMOST_BG }
-                -- hl.NvimTreeIndentMarker = { fg = STRONG_FADED_GRAY }
-                -- hl.NvimTreeImageFile = { fg = WHITE }
-                hl.NvimTreeFolderIcon = { fg = light_gray }
-                -- hl.NvimTreeFolderIconOpen = { fg = GRAY }
-                -- hl.NvimTreeFolderSymlink = { fg = GRAY }
-                -- hl.NvimTreeDefault = { fg = GRAY }
-                -- hl.NvimTreeSymlink = { fg = GRAY }
-                -- hl.NvimTreeBookmark = { fg = GRAY }
 
             end,
         }
