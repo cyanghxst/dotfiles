@@ -64,8 +64,8 @@ return {
                 hl.NvimTreeGitNew = { fg = blue }
                 hl.NvimTreeGitDeleted = { fg = blue }
                 hl.NvimTreeFolderName = { fg = blue }
-                hl.NvimTreeFolderArrowOpen = { fg = blue }
-                hl.NvimTreeFolderArrowClosed = { fg = blue }
+                hl.NvimTreeFolderArrowOpen = { fg = light_gray }
+                hl.NvimTreeFolderArrowClosed = { fg = light_gray }
                 hl.NvimTreeOpenedFolderName = { fg = blue }
                 hl.NvimTreeEmptyFolderName = { fg = blue }
                 hl.NvimTreeRootFolder = { fg = light_gray, bold = true }
