@@ -36,7 +36,7 @@ return {
                 local purple = "#9d7cd8"
 
                 -- CursorLine
-                hl.CursorLineNr = { fg = blue, bold = true }
+                hl.CursorLineNr = { fg = blue }
                 hl.CursorLine= { bg = black }
   
                 -- MiniIndentScope
