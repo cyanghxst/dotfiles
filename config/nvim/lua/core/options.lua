@@ -22,7 +22,7 @@ opt.sidescrolloff = 30
 opt.signcolumn = "yes"
 opt.startofline = true
 opt.wrap = false
-vim.wo.cursorline = true
+-- vim.wo.cursorline = true
 
 -- Searching
 opt.hlsearch = true
