@@ -44,7 +44,9 @@ cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
 vim.api.nvim_set_option('number', false)
 vim.api.nvim_set_option('relativenumber', true)
 
+-- Backspace
+opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+
 -- Highlight groups
 -- vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#3b4261" })
 -- vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#3b4261" })
-
