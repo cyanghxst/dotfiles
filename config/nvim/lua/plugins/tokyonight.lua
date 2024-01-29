@@ -35,10 +35,13 @@ return {
                 local green = "#9ece6a"
                 local purple = "#9d7cd8"
 
+                -- EOB
+                -- hl.EndOfBuffer = { fg = "#1616e" }
+
                 -- CursorLine
                 hl.CursorLineNr = { fg = blue }
                 hl.CursorLine= { bg = black }
-  
+
                 -- MiniIndentScope
                 hl.MiniIndentscopeSymbol = { fg = dark_gray }
 
