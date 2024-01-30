@@ -2,6 +2,7 @@ return {
     "goolord/alpha-nvim",
     enabled = true,
     config = function()
+
         local present, alpha = pcall(require, "alpha")
         if not present then
             return "Alpha has an error"
