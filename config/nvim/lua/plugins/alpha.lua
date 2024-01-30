@@ -1,6 +1,6 @@
 return {
     "goolord/alpha-nvim",
-    enabled = true,
+    enabled = false,
     config = function()
 
         local present, alpha = pcall(require, "alpha")
