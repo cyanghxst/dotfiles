@@ -27,6 +27,7 @@ return {
                     "alpha",
                     "lazy",
                     "NvimTree",
+                    "dashboard",
                 },
             },
             sections = {
