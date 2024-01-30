@@ -41,8 +41,8 @@ opt.clipboard = "unnamedplus"
 cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
 
 -- Relative line numbers
-vim.api.nvim_set_option('number', false)
-vim.api.nvim_set_option('relativenumber', true)
+-- vim.api.nvim_set_option('number', false)
+-- vim.api.nvim_set_option('relativenumber', true)
 
 -- Backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
