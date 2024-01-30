@@ -29,9 +29,9 @@ return {
                 -- stylua: ignore
                 center = {
                     { action = "Telescope find_files",                                               desc = " Find file", icon = "  ", key = "f" },
-                    { action = "Telescope live_grep",                                                desc = " Find text", icon = "  ", key = "n" },
-                    { action = "ene | startinsert",                                                  desc = " New file",  icon = "  ", key = "r" },
-                    { action = "Telescope oldfiles",                                                 desc = " Recent",    icon = "  ", key = "t" },
+                    { action = "Telescope live_grep",                                                desc = " Find text", icon = "  ", key = "t" },
+                    { action = "ene | startinsert",                                                  desc = " New file",  icon = "  ", key = "n" },
+                    { action = "Telescope oldfiles",                                                 desc = " Recent",    icon = "  ", key = "r" },
                     { action = "cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>", desc = " Settings",  icon = "  ", key = "s" },
                     { action = "Lazy update",                                                        desc = " Update",    icon = "  ", key = "u" },
                     { action = "qa!",                                                                desc = " Quit",      icon = "  ", key = "q" },
