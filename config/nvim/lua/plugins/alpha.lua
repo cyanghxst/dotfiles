@@ -56,19 +56,25 @@ return {
         local buttons = {
             type = "group",
             val = {
-                button("ff", "   Find Files                          ", ":Telescope find_files<CR>"),
-                button("ft", "   Find Text                           ", ":Telescope live_grep<CR>"),
-                button("nf", "   New Files                           ", ":ene <BAR> startinsert<CR>"),
-                button("rc", "   Recents                             ", ":Telescope oldfiles<CR>"),
-                button("ud", "   Update                              ", ":Lazy update<CR>"),
-                button("cf", "   Config                              " ,":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>"),
-                button("qq", "   Quit                                ", ":qa!<CR>"),
+                button("f", "   Find Files                          ", ":Telescope find_files<CR>"),
+                button("t", "   Find Text                           ", ":Telescope live_grep<CR>"),
+                button("n", "   New Files                           ", ":ene <BAR> startinsert<CR>"),
+                button("r", "   Recents                             ", ":Telescope oldfiles<CR>"),
+                button("u", "   Update                              ", ":Lazy update<CR>"),
+                button("s", "   Settings                            " ,":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>"),
+                button("q", "   Quit                                ", ":qa!<CR>"),
             },
             opts = {
                 position = "center",
                 spacing = 1,
             },
         }
+
+        -- local function footer()
+        --     local stats = require("lazy").stats()
+        --     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+        --     return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+        -- end
 
         local function footer()
             local plugins = #vim.tbl_keys(require("lazy").plugins())
