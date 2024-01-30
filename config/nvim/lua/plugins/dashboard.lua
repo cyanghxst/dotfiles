@@ -28,13 +28,13 @@ return {
                 header = vim.split(logo, "\n"),
                 -- stylua: ignore
                 center = {
-                    { action = "Telescope find_files",                                               desc = " Find file", icon = "  ", key = "f" },
-                    { action = "Telescope live_grep",                                                desc = " Find text", icon = "  ", key = "t" },
-                    { action = "ene | startinsert",                                                  desc = " New file",  icon = "  ", key = "n" },
-                    { action = "Telescope oldfiles",                                                 desc = " Recent",    icon = "  ", key = "r" },
-                    { action = "cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>", desc = " Settings",  icon = "  ", key = "s" },
-                    { action = "Lazy update",                                                        desc = " Update",    icon = "  ", key = "u" },
-                    { action = "qa!",                                                                desc = " Quit",      icon = "  ", key = "q" },
+                    { action = "Telescope find_files",                                               desc = " Find Files", icon = "  ", key = "f" },
+                    { action = "Telescope live_grep",                                                desc = " Find Test",  icon = "  ", key = "t" },
+                    { action = "ene | startinsert",                                                  desc = " New Files",  icon = "  ", key = "n" },
+                    { action = "Telescope oldfiles",                                                 desc = " Recents",    icon = "  ", key = "r" },
+                    { action = "Lazy update",                                                        desc = " Update",     icon = "  ", key = "u" },
+                    { action = "cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>", desc = " Settings",   icon = "  ", key = "s" },
+                    { action = "qa!",                                                                desc = " Quit",       icon = "  ", key = "q" },
                 },
 
                 -- footer = function()
@@ -53,7 +53,7 @@ return {
         }
 
         for _, button in ipairs(opts.config.center) do
-            button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+            button.desc = button.desc .. string.rep(" ", 33 - #button.desc)
             button.key_format = "  %s"
         end
 
