@@ -25,23 +25,6 @@ return {
             dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
         }
 
-        -- local buttons = {
-        --     type = "group",
-        --     val = {
-        --         button("f", "   Find Files                          ", ":Telescope find_files<CR>"),
-        --         button("t", "   Find Text                           ", ":Telescope live_grep<CR>"),
-        --         button("n", "   New Files                           ", ":ene <BAR> startinsert<CR>"),
-        --         button("r", "   Recents                             ", ":Telescope oldfiles<CR>"),
-        --         button("u", "   Update                              ", ":Lazy update<CR>"),
-        --         button("s", "   Settings                            " ,":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>"),
-        --         button("q", "   Quit                                ", ":qa!<CR>"),
-        --     },
-        --     opts = {
-        --         position = "center",
-        --         spacing = 1,
-        --     },
-        -- }
-
         -- set highlight
         for _, button in ipairs(dashboard.section.buttons.val) do
             button.opts.hl = "AlphaButtons"
