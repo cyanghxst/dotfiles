@@ -52,13 +52,21 @@ return {
 
         require("alpha").setup(dashboard.opts)
 
+        -- local function footer()
+        --     local plugins = #vim.tbl_keys(require("lazy").plugins())
+        --     local version = vim.version()
+        --     local nvim_version_info = version.major .. "." .. version.minor .. "." .. version.patch
+        --     return "󰋼  " .. nvim_version_info .. "    " .. "  " .. plugins .. " Plugins"
+        -- end
+
+
         vim.api.nvim_create_autocmd("User", {
             pattern = "LazyVimStarted",
             callback = function()
                 local stats = require("lazy").stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                local version = "  󰥱 v" .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
-                local plugins = "⚡Loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+                local version = "󰋼  " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
+                local plugins = "  Loaded " .. stats.count .. " plugins in " .. ms .. " ms"
                 local footer = version .. "\t" .. plugins .. "\n"
                 dashboard.section.footer.val = footer
                 pcall(vim.cmd.AlphaRedraw)
