@@ -4,27 +4,43 @@ return {
     event = "VimEnter",
     opts = function()
         local dashboard = require("alpha.themes.dashboard")
-        local logo = [[
-                                                                   
-      ████ ██████           █████      ██                    
-     ███████████             █████                            
-     █████████ ███████████████████ ███   ███████████  
-    █████████  ███    █████████████ █████ ██████████████  
-   █████████ ██████████ █████████ █████ █████ ████ █████  
- ███████████ ███    ███ █████████ █████ █████ ████ █████ 
-██████  █████████████████████ ████ █████ █████ ████ ██████
-        ]]
-
-        dashboard.section.header.val = vim.split(logo, "\n")
+        local header = {
+            '                                                                   ',
+            '      ████ ██████           █████      ██                    ',
+            '     ███████████             █████                            ',
+            '     █████████ ███████████████████ ███   ███████████  ',
+            '    █████████  ███    █████████████ █████ ██████████████  ',
+            '   █████████ ██████████ █████████ █████ █████ ████ █████  ',
+            ' ███████████ ███    ███ █████████ █████ █████ ████ █████ ',
+            '██████  █████████████████████ ████ █████ █████ ████ ██████',
+        }
+        dashboard.section.header.val = header
         dashboard.section.buttons.val = {
             dashboard.button("f", " " .. " Find File", ":Telescope find_files<CR>"),
             dashboard.button("t", " " .. " Find Text", ":Telescope live_grep<CR>"),
             dashboard.button("n", " " .. " New File", ":ene | startinsert<CR>"),
             dashboard.button("r", " " .. " Recent", ":Telescope oldfiles<CR>"),
             dashboard.button("u", " " .. " Update", ":Lazy update<CR>"),
-            dashboard.button("s", " " .. " Quit", ":qa!<CR>"),
-            dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
+            dashboard.button("s", " " .. " Settings", ":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>"),
+            dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
         }
+
+        -- local buttons = {
+        --     type = "group",
+        --     val = {
+        --         button("f", "   Find Files                          ", ":Telescope find_files<CR>"),
+        --         button("t", "   Find Text                           ", ":Telescope live_grep<CR>"),
+        --         button("n", "   New Files                           ", ":ene <BAR> startinsert<CR>"),
+        --         button("r", "   Recents                             ", ":Telescope oldfiles<CR>"),
+        --         button("u", "   Update                              ", ":Lazy update<CR>"),
+        --         button("s", "   Settings                            " ,":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>"),
+        --         button("q", "   Quit                                ", ":qa!<CR>"),
+        --     },
+        --     opts = {
+        --         position = "center",
+        --         spacing = 1,
+        --     },
+        -- }
 
         -- set highlight
         for _, button in ipairs(dashboard.section.buttons.val) do
