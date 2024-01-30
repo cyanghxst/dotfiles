@@ -38,6 +38,7 @@ return {
         dashboard.opts.layout[1].val = 5
         return dashboard
     end,
+
     config = function(_, dashboard)
         -- close Lazy and re-open when the dashboard is ready
         if vim.o.filetype == "lazy" then
