@@ -38,6 +38,12 @@ return {
                 -- EOB
                 -- hl.EndOfBuffer = { fg = "#1616e" }
 
+                -- Dashboard
+                hl.AlphaHeader = { fg = blue }
+                hl.AlphaButtons = { fg = blue }
+                hl.AlphaShortcut = { fg = blue }
+                hl.AlphaFooter = { fg = dark_gray }
+
                 -- CursorLine
                 hl.CursorLineNr = { fg = blue }
                 hl.CursorLine= { bg = black }

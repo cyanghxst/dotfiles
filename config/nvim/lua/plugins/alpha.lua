@@ -35,6 +35,11 @@ return {
         dashboard.section.buttons.opts.hl = "AlphaButtons"
         dashboard.section.footer.opts.hl = "AlphaFooter"
         dashboard.opts.layout[1].val = 5
+        dashboard.opts.layout[3].val = 3
+        table.insert(dashboard.config.layout, 5, {
+            type = 'padding',
+            val = 2,
+        })
         return dashboard
     end,
 
