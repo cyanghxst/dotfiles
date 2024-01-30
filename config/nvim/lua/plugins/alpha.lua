@@ -39,6 +39,7 @@ return {
     end,
 
     config = function(_, dashboard)
+
         -- close Lazy and re-open when the dashboard is ready
         if vim.o.filetype == "lazy" then
             vim.cmd.close()
