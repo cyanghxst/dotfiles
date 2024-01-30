@@ -23,6 +23,7 @@ return {
             dashboard.button("r", " " .. " Recent", ":Telescope oldfiles<CR>"),
             dashboard.button("u", " " .. " Update", ":Lazy update<CR>"),
             dashboard.button("s", " " .. " Quit", ":qa!<CR>"),
+            dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
         }
 
         -- set highlight
