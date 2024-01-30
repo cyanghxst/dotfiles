@@ -22,8 +22,7 @@ return {
             dashboard.button("n", " " .. " New File", ":ene | startinsert<CR>"),
             dashboard.button("r", " " .. " Recent", ":Telescope oldfiles<CR>"),
             dashboard.button("u", " " .. " Update", ":Lazy update<CR>"),
-            dashboard.button("s", " " .. " Settings", ":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR>"),
-            dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
+            dashboard.button("s", " " .. " Quit", ":qa!<CR>"),
         }
 
         -- set highlight
@@ -52,14 +51,6 @@ return {
         end
 
         require("alpha").setup(dashboard.opts)
-
-        -- local function footer()
-        --     local plugins = #vim.tbl_keys(require("lazy").plugins())
-        --     local version = vim.version()
-        --     local nvim_version_info = version.major .. "." .. version.minor .. "." .. version.patch
-        --     return "󰋼  " .. nvim_version_info .. "    " .. "  " .. plugins .. " Plugins"
-        -- end
-
 
         vim.api.nvim_create_autocmd("User", {
             pattern = "LazyVimStarted",
