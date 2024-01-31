@@ -34,6 +34,9 @@ opt.wildmenu = true
 -- Statusline
 opt.laststatus = 3
 
+-- Disable command bar
+opt.cmdheight=0
+
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
