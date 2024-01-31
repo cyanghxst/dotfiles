@@ -23,7 +23,7 @@ opt.signcolumn = "yes"
 opt.startofline = true
 opt.wrap = false
 opt.foldcolumn = "1"
--- vim.wo.cursorline = true
+vim.wo.cursorline = true
 
 -- Searching
 opt.hlsearch = true
