@@ -4,6 +4,7 @@ return {
     event = "VimEnter",
     opts = function()
         local dashboard = require("alpha.themes.dashboard")
+
         local header = {
             '                                                                   ',
             '      ████ ██████           █████      ██                    ',
@@ -14,6 +15,7 @@ return {
             ' ███████████ ███    ███ █████████ █████ █████ ████ █████ ',
             '██████  █████████████████████ ████ █████ █████ ████ ██████',
         }
+
         dashboard.section.header.val = header
         dashboard.section.buttons.val = {
             dashboard.button("f", " " .. " Find File", ":Telescope find_files<CR>"),
