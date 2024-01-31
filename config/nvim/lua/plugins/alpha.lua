@@ -27,7 +27,7 @@ return {
 
         for _, el in pairs(dashboard.section.buttons.val) do
             el.opts.position = "center"
-            el.opts.width = 37 -- or some other value
+            el.opts.width = 40 -- or some other value
         end
 
         -- set highlight
