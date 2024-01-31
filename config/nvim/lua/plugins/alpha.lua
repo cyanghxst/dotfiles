@@ -25,6 +25,11 @@ return {
             dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
         }
 
+        for _, el in pairs(dashboard.section.buttons.val) do
+            el.opts.position = "center"
+            el.opts.width = 37 -- or some other value
+        end
+
         -- set highlight
         for _, button in ipairs(dashboard.section.buttons.val) do
             button.opts.hl = "AlphaButtons"
