@@ -25,15 +25,12 @@ return {
             on_colors = function(colors) end,
             on_highlights = function(hl, c)
 
-                local white = "#c0caf5"
-                local light_gray = "#a9b1d6"
-                local dark_gray = "#3b4261"
-                local black = "#1e2231"
-                local blue = "#3b4261"
-                local comment = "#565f89"
                 local blue = "#7aa2f7"
+                local black = "#1e2231"
                 local green = "#9ece6a"
-                local purple = "#9d7cd8"
+                local dark_gray = "#3b4261"
+                local light_gray = "#a9b1d6"
+                -- local white = "#c0caf5"
 
                 -- EOB
                 -- hl.EndOfBuffer = { fg = "#1616e" }
@@ -45,7 +42,7 @@ return {
                 hl.AlphaFooter = { fg = dark_gray }
 
                 -- CursorLine
-                hl.CursorLineNr = { fg = blue }
+                -- hl.CursorLineNr = { fg = blue }
                 -- hl.CursorLine= { bg = "#16161e" }
 
                 -- MiniIndentScope
@@ -66,12 +63,12 @@ return {
                 hl.GitSignsCurrentLineBlame = { fg = blue }
 
                 -- NvimTree
-                hl.NvimTreeGitDirty = { fg = blue }
-                hl.NvimTreeGitStaged = { fg = blue }
-                hl.NvimTreeGitMerge = { fg = blue }
-                hl.NvimTreeGitRenamed = { fg = blue }
-                hl.NvimTreeGitNew = { fg = blue }
-                hl.NvimTreeGitDeleted = { fg = blue }
+                -- hl.NvimTreeGitDirty = { fg = blue }
+                -- hl.NvimTreeGitStaged = { fg = blue }
+                -- hl.NvimTreeGitMerge = { fg = blue }
+                -- hl.NvimTreeGitRenamed = { fg = blue }
+                -- hl.NvimTreeGitNew = { fg = blue }
+                -- hl.NvimTreeGitDeleted = { fg = blue }
                 -- hl.NvimTreeCursorLine = { bg = black }
                 hl.NvimTreeFolderName = { fg = blue }
                 hl.NvimTreeFolderArrowOpen = { fg = light_gray }
