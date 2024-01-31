@@ -1,7 +1,6 @@
 -- Minimal line
 return {
     "nvim-lualine/lualine.nvim",
-    -- event = { "BufReadPre", "BufNewFile" },
     enabled = true,
     opts = function()
         local colors = { 
