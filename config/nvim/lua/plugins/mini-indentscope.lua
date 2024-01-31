@@ -1,5 +1,6 @@
 return {
     "echasnovski/mini.indentscope",
+    event = { "BufReadPre", "BufNewFile" },
     enabled = true,
     version = false,
     init = function()

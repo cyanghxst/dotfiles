@@ -1,5 +1,6 @@
 return {
     "ggandor/leap.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     enabled = true,
     config = function()
         -- local leap = require('leap')
