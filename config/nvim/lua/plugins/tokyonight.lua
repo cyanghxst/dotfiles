@@ -46,7 +46,7 @@ return {
 
                 -- CursorLine
                 hl.CursorLineNr = { fg = blue }
-                hl.CursorLine= { bg = "#16161e" }
+                -- hl.CursorLine= { bg = "#16161e" }
 
                 -- MiniIndentScope
                 hl.MiniIndentscopeSymbol = { fg = dark_gray }
@@ -72,7 +72,7 @@ return {
                 hl.NvimTreeGitRenamed = { fg = blue }
                 hl.NvimTreeGitNew = { fg = blue }
                 hl.NvimTreeGitDeleted = { fg = blue }
-                hl.NvimTreeCursorLine = { bg = black }
+                -- hl.NvimTreeCursorLine = { bg = black }
                 hl.NvimTreeFolderName = { fg = blue }
                 hl.NvimTreeFolderArrowOpen = { fg = light_gray }
                 hl.NvimTreeFolderArrowClosed = { fg = light_gray }
