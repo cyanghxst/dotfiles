@@ -23,7 +23,6 @@ opt.signcolumn = "yes"
 opt.startofline = true
 opt.wrap = false
 opt.foldcolumn = "1"
--- vim.wo.cursorline = true
 
 -- Searching
 opt.hlsearch = true
@@ -41,13 +40,10 @@ opt.clipboard = "unnamedplus"
 -- Cursor
 cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
 
--- Relative line numbers
--- vim.api.nvim_set_option('number', false)
--- vim.api.nvim_set_option('relativenumber', true)
+-- Cursorline
+-- vim.wo.cursorline = true
+-- vim.api.nvim_set_option('number', false) -- Toggle hybrid relative number
+-- vim.api.nvim_set_option('relativenumber', true) -- Toggle relative number
 
 -- Backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
-
--- Highlight groups
--- vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#3b4261" })
--- vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#3b4261" })
+-- opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
