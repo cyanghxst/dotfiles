@@ -1,23 +1,21 @@
--- Minimal line
 return {
     "nvim-lualine/lualine.nvim",
     enabled = true,
     opts = function()
         local colors = { 
-            grey = "#414868",
-            black = "#000000",
+            gray = "#414868",
         }
         local minimal_theme = {
             normal = {
-                a = { fg = colors.grey, bg = none },
-                b = { fg = colors.grey, bg = none },
-                c = { fg = colors.grey, bg = none },
+                a = { fg = colors.gray, bg = none },
+                b = { fg = colors.gray, bg = none },
+                c = { fg = colors.gray, bg = none },
             },
-            inactive = {
-                a = { fg = colors.grey, bg = none },
-                b = { fg = colors.grey, bg = none },
-                c = { fg = colors.grey, bg = none },
-            },
+            -- inactive = {
+            --     a = { fg = colors.gray, bg = none },
+            --     b = { fg = colors.gray, bg = none },
+            --     c = { fg = colors.gray, bg = none },
+            -- },
         }
         return {
             options = {
