@@ -28,6 +28,7 @@ return {
                 local blue = "#7aa2f7"
                 local black = "#1e2231"
                 local green = "#9ece6a"
+                local gray = "#414868"
                 local dark_gray = "#3b4261"
                 local light_gray = "#a9b1d6"
                 -- local white = "#c0caf5"
@@ -71,8 +72,8 @@ return {
                 -- hl.NvimTreeGitDeleted = { fg = blue }
                 -- hl.NvimTreeCursorLine = { bg = black }
                 hl.NvimTreeFolderName = { fg = blue }
-                hl.NvimTreeFolderArrowOpen = { fg = light_gray }
-                hl.NvimTreeFolderArrowClosed = { fg = light_gray }
+                hl.NvimTreeFolderArrowOpen = { fg = gray }
+                hl.NvimTreeFolderArrowClosed = { fg = gray }
                 hl.NvimTreeOpenedFolderName = { fg = blue }
                 hl.NvimTreeEmptyFolderName = { fg = blue }
                 hl.NvimTreeRootFolder = { fg = light_gray, bold = true }
