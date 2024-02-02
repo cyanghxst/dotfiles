@@ -27,12 +27,13 @@ return {
             dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
         }
 
+        -- Set width
         for _, el in pairs(dashboard.section.buttons.val) do
             el.opts.position = "center"
             el.opts.width = 40 -- or some other value
         end
 
-        -- set highlight
+        -- Set highlight
         for _, button in ipairs(dashboard.section.buttons.val) do
             button.opts.hl = "AlphaButtons"
             button.opts.hl_shortcut = "AlphaShortcut"
@@ -41,6 +42,8 @@ return {
         dashboard.section.header.opts.hl = "AlphaHeader"
         dashboard.section.buttons.opts.hl = "AlphaButtons"
         dashboard.section.footer.opts.hl = "AlphaFooter"
+
+        -- Set padding
         dashboard.opts.layout[1].val = 6
         dashboard.opts.layout[3].val = 3
         table.insert(dashboard.config.layout, 5, {
@@ -52,7 +55,7 @@ return {
 
     config = function(_, dashboard)
 
-        -- close Lazy and re-open when the dashboard is ready
+        -- Close Lazy and re-open when the dashboard is ready
         if vim.o.filetype == "lazy" then
             vim.cmd.close()
             vim.api.nvim_create_autocmd("User", {
