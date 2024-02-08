@@ -56,8 +56,11 @@ export GREP_COLOR='0;94' # dull blue
 # Aliases
 # ---------------------------------------- 
 
+# List by long-list, color, alhabetical, and human-readable file size
+alias ls='ls -Glh'
+
 # List by long-list, color, modified time and human-readable file size
-alias ls='ls -Glth'
+alias lst='ls -Glth'
 
 # List only dotfiles by long-list, color, modified time and human-readable file size
 alias lsd='ls -Gldth .*'
