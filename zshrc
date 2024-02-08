@@ -62,8 +62,11 @@ alias ls='ls -Glh'
 # List by long-list, color, modified time and human-readable file size
 alias lst='ls -Glth'
 
+# List only dotfiles by long-list, color, alphabetically and human-readable file size
+alias lsd='ls -Gldh .*'
+
 # List only dotfiles by long-list, color, modified time and human-readable file size
-alias lsd='ls -Gldth .*'
+alias lsdt='ls -Gldth .*'
 
 # Fortune with cowsay
 alias fortune='fortune | cowsay'
