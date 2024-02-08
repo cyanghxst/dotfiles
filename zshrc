@@ -101,6 +101,9 @@ alias keka='/Applications/Keka.app/Contents/MacOS/Keka --cli'
 # git-graph
 alias gg='git-graph --style round'
 
+# transmission-cli
+alias tm='transmission-cli'
+
 # ---------------------------------------- 
 # Tab Completion Settings 
 # ---------------------------------------- 
