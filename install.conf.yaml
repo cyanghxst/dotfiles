@@ -12,7 +12,6 @@
     ~/.gitconfig: gitconfig
     ~/.lftprc: lftprc 
     ~/.tmux.conf: tmux.conf
-    ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.zprofile: zprofile 
     ~/.zshrc: zshrc
