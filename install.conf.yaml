@@ -18,10 +18,9 @@
     ~/Obsidian/.obsidian.vimrc: obsidian.vimrc 
     ~/Obsidian/.obsidian: obsidian
 
-
 - create:
     - ~/downloads
     - ~/.vim/undo-history
 
 - shell:
-  - ['git submodule update --init --recursive', Install submodules]
+    - ['git submodule update --init --recursive', Install submodules]
