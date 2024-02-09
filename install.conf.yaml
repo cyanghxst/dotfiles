@@ -5,13 +5,22 @@
 - clean: ['~']
 
 - link:
+    ~/.config/:
+      glob: true
+      path: config/*
+      exclude: [ "config/Autodesk", "config/lftp" ]
+    ~/.gitconfig: gitconfig
+    ~/.lftprc: lftprc 
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
     ~/.vimrc: vimrc
+    ~/.zprofile: zprofile 
+    ~/.zshrc: zshrc
+
 
 - create:
     - ~/downloads
     - ~/.vim/undo-history
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - ['git submodule update --init --recursive', Install submodules]
