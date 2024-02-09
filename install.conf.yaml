@@ -16,6 +16,8 @@
     ~/.vimrc: vimrc
     ~/.zprofile: zprofile 
     ~/.zshrc: zshrc
+    ~/Obsidian/.obsidian.vimrc: obsidian.vimrc 
+    ~/Obsidian/.obsidian: obsidian
 
 
 - create:
