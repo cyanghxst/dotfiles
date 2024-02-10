@@ -14,7 +14,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.zprofile: zprofile 
-    ~/.zshrc: zshrc
+    ~/.zshrc: zsh/zshrc
     ~/Obsidian/.obsidian.vimrc: obsidian.vimrc 
     ~/Obsidian/.obsidian: obsidian
 
