@@ -9,14 +9,14 @@
       glob: true
       path: config/*
       exclude: [ "config/Autodesk", "config/lftp" ]
-    ~/.gitconfig: gitconfig
-    ~/.lftprc: lftprc 
-    ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
-    ~/.zprofile: zprofile 
+    ~/.gitconfig: git/gitconfig
+    ~/.lftprc: lftp/lftprc 
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vimrc: vim/vimrc
+    ~/.zprofile: zsh/zprofile 
     ~/.zshrc: zsh/zshrc
-    ~/Obsidian/.obsidian.vimrc: obsidian.vimrc 
-    ~/Obsidian/.obsidian: obsidian
+    ~/Obsidian/.obsidian.vimrc: obsidian/obsidian.vimrc 
+    ~/Obsidian/.obsidian: obsidian/obsidian
 
 - create:
     - ~/downloads
