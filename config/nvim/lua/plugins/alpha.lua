@@ -30,7 +30,8 @@ return {
         -- Set width
         for _, el in pairs(dashboard.section.buttons.val) do
             el.opts.position = "center"
-            el.opts.width = 40 -- or some other value
+            -- el.opts.width = 40 -- or some other value
+            el.opts.width = 36 -- or some other value
         end
 
         -- Set highlight
@@ -75,8 +76,9 @@ return {
                 local stats = require("lazy").stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
                 local version = "󰋼  " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
-                local plugins = "  " .. stats.count .. " plugins in " .. ms .. " ms"
-                local footer = version .. "\t" .. plugins .. "\n"
+                -- local plugins = "  " .. stats.count .. " plugins in " .. ms .. " ms"
+                local plugins = "  " .. stats.count .. " plugins"
+                local footer = " " ..version .. "\t   " .. plugins .. "\n"
                 dashboard.section.footer.val = footer
                 pcall(vim.cmd.AlphaRedraw)
             end,
