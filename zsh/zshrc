@@ -60,6 +60,12 @@ export GREP_OPTIONS='--color=always'
 export GREP_COLOR='0;94' # dull blue
 
 # ---------------------------------------- 
+# Wine
+# ---------------------------------------- 
+
+wine-gptk(){ WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"; }
+
+# ---------------------------------------- 
 # Aliases
 # ---------------------------------------- 
 
