@@ -8,7 +8,6 @@
     ~/.config/:
       glob: true
       path: config/*
-      exclude: [ "config/Autodesk", "config/lftp", "config/raycast" ]
     ~/.gitconfig: git/gitconfig
     ~/.lftprc: lftp/lftprc 
     ~/.tmux.conf: tmux/tmux.conf
