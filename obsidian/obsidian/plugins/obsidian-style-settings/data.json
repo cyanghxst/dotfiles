@@ -2,7 +2,6 @@
   "minimal-advanced@@styled-scrollbars": false,
   "minimal-advanced@@cursor": "default",
   "minimal-style@@workspace-background-translucent@@dark": "#0000004A",
-  "minimal-style@@tx2@@dark": "#FFFFFFD9",
   "minimal-style@@icon-muted": 0.5,
   "minimal-style@@active-line-on": false,
   "minimal-style@@sidebar-lines-off": false,
@@ -56,5 +55,6 @@
   "minimal-style@@tag-color@@light": "#FFFFFF",
   "minimal-style@@tag-background@@light": "#0E7DFE",
   "minimal-style@@tag-background-hover@@light": "#A6CFFF",
-  "minimal-style@@tab-stacked-pane-width": 800
+  "minimal-style@@tab-stacked-pane-width": 800,
+  "minimal-style@@tx2@@dark": "#FFFFFF99"
 }
