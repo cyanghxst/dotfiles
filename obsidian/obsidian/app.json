@@ -1,0 +1,21 @@
+{
+  "vimMode": true,
+  "foldHeading": false,
+  "showLineNumber": false,
+  "promptDelete": false,
+  "autoPairBrackets": false,
+  "autoPairMarkdown": false,
+  "spellcheck": false,
+  "foldIndent": false,
+  "showInlineTitle": false,
+  "newFileLocation": "current",
+  "strictLineBreaks": false,
+  "tabSize": 4,
+  "readableLineLength": true,
+  "showIndentGuide": false,
+  "livePreview": true,
+  "propertiesInDocument": "hidden",
+  "rightToLeft": false,
+  "focusNewTab": true,
+  "alwaysUpdateLinks": true
+}

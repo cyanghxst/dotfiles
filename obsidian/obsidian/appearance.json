@@ -1,0 +1,16 @@
+{
+  "accentColor": "#127bf3",
+  "cssTheme": "Minimal",
+  "translucency": true,
+  "showViewHeader": false,
+  "baseFontSize": 14,
+  "interfaceFontFamily": "",
+  "baseFontSizeAction": false,
+  "enabledCssSnippets": [
+    "inject",
+    "snippet",
+    "big-math"
+  ],
+  "nativeMenus": true,
+  "theme": "obsidian"
+}
