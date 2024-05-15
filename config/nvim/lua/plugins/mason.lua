@@ -7,11 +7,9 @@ return {
         -- import mason
         local mason = require("mason")
 
-        -- import mason-lspconfig
+        -- import mason lsp config
         local mason_lspconfig = require("mason-lspconfig")
 
-
-        -- enable mason and configure icons
         mason.setup({
             ui = {
                 icons = {
@@ -25,7 +23,14 @@ return {
         mason_lspconfig.setup({
             -- list of servers for mason to install
             ensure_installed = {
+                "tsserver",
+                "html",
+                "cssls",
+                "pyright",
             },
+
+            -- auto-install configured servers (with lspconfig)
+            automatic_installation = true,
         })
     end,
 }
