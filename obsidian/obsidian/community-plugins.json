@@ -13,7 +13,7 @@
   "obsidian-sortable",
   "obsidian-filename-heading-sync",
   "cm-editor-syntax-highlight-obsidian",
-  "mrj-jump-to-link",
   "obsidian-latex-suite",
-  "obsidian-pandoc"
+  "obsidian-pandoc",
+  "mrj-jump-to-link"
 ]
