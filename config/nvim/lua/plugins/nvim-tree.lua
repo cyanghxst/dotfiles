@@ -17,6 +17,9 @@ return {
         {"<leader>s", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"},
     },
     opts = {
+        filters = {
+            dotfiles = true
+        },
         hijack_cursor = true,
         on_attach = on_attach,
         update_focused_file = {
