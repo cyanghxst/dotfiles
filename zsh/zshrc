@@ -62,6 +62,9 @@ export GREP_COLOR='0;94' # dull blue
 # Java11 Path
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
+# TeX Path
+export PATH="$PATH:/Library/TeX/texbin"
+
 # ---------------------------------------- 
 # Wine64
 # ---------------------------------------- 
