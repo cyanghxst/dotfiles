@@ -6,7 +6,7 @@ return {
         vim.cmd.colorscheme [[tokyonight]]
     end,
     opts = function()
-        return { 
+        return {
             style = "night",
             transparent = true,
             terminal_colors = true,
