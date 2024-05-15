@@ -6,8 +6,6 @@ return {
 
         -- lsp support
         {"neovim/nvim-lspconfig"},
-        {"williamboman/mason.nvim"},
-        {"williamboman/mason-lspconfig.nvim"},
 
         -- autocompletion
         {"hrsh7th/cmp-nvim-lsp"},
