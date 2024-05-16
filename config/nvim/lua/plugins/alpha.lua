@@ -48,7 +48,7 @@ return {
         -- dashboard.opts.layout[1].val = 3
         -- dashboard.opts.layout[1].val = 6
         dashboard.opts.layout[1].val = 3
-        dashboard.opts.layout[3].val = 3
+        dashboard.opts.layout[3].val = 4
         table.insert(dashboard.config.layout, 5, {
             type = 'padding',
             val = 2,
