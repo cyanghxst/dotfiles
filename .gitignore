@@ -1,7 +1,7 @@
 # Ignore Mac system files
 .DS_Store
 
-*.plist
+# *.plist
 
 lazy-lock.json
 
