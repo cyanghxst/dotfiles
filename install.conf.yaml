@@ -15,7 +15,7 @@
     ~/.zprofile: zsh/zprofile 
     ~/.zshrc: zsh/zshrc
     ~/Obsidian/.obsidian.vimrc: obsidian/obsidian.vimrc 
-    ~/Obsidian/.obsidian: obsidian/obsidian
+    ~/Obsidian/Personal/.obsidian: obsidian/obsidian
 
 - create:
     - ~/downloads
