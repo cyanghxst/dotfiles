@@ -8,6 +8,7 @@
     ~/.config/:
       glob: true
       path: config/*
+      exclude: [ config/iterm2 ]
     ~/.gitconfig: git/gitconfig
     ~/.lftprc: lftp/lftprc 
     ~/.tmux.conf: tmux/tmux.conf
