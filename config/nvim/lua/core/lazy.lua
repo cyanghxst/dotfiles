@@ -18,11 +18,11 @@ require("lazy").setup("plugins", {
 		notify = false,
 	},
 	ui = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		border = "single",
+        border = "single",
+        -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, "single",
 		size = {
 			width = 0.8,
-			height = 0.8,
+			height = 0.9,
 		},
 	},
 })
