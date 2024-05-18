@@ -21,14 +21,13 @@ return {
             dotfiles = true
         },
         hijack_cursor = true,
-        on_attach = on_attach,
         update_focused_file = {
             enable = true,
             update_root = false,
         },
         sync_root_with_cwd = true,
         view = {
-            width = 30,
+            width = 28,
             side = "left",
         },
         git = {
