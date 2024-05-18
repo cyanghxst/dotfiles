@@ -23,13 +23,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Source zsh-autosuggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# brew-switch
-if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
-
 # ---------------------------------------- 
 # Environment Variables
 # ---------------------------------------- 
@@ -38,7 +31,7 @@ fi
 export EDITOR='nvim'
 
 # Default
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/xenon/.cargo/bin
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/xenon/.cargo/bin:/Users/xenon/.local/share/bob/nvim-bin
 
 # Locale
 export LANG=en_US.UTF-8
@@ -242,10 +235,17 @@ git_info() {
 
 }
 
+# PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
+# %(?.%{$fg[white]%}.%{$fg[red]%})%(!.#.󱐋)%{$reset_color%} '
+
 # Use 󱐋 as the non-root prompt character; # for root
 # Change the prompt character color if the last command had a nonzero exit code
 PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
 
-# PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
-# %(?.%{$fg[white]%}.%{$fg[red]%})%(!.#.󱐋)%{$reset_color%} '
+# Brew switch
+if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
