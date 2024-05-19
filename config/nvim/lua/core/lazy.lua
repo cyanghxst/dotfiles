@@ -18,8 +18,8 @@ require("lazy").setup("plugins", {
 		notify = false,
 	},
 	ui = {
-        border = "single",
-        -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, "single",
+        -- border = "single",
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		size = {
 			width = 0.8,
 			height = 0.9,
