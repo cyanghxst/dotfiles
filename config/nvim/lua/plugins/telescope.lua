@@ -22,6 +22,7 @@ return {
     },
     opts = {
         defaults = {
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
             prompt_prefix = "  ",
             selection_caret = "  ",
             mappings = {
