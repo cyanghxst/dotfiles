@@ -24,6 +24,8 @@ return {
         },
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
     },
     config = function()
@@ -39,13 +41,15 @@ return {
 
             window = {
                 completion = {
-                    winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,FloatBorder:TelescopeBorder",
+                    winhighlight = "Normal:CmpPmenu,FloatBorder:TelescopeBorder",
                     scrollbar = true,
-                    border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+                    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                    -- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
                 },
                 documentation = {
-                    border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-                    winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,FloatBorder:TelescopeBorder",
+                    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                    -- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+                    winhighlight = "Normal:CmpPmenu,FloatBorder:TelescopeBorder",
                 },
             },
             snippet = {
