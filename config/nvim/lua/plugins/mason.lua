@@ -7,7 +7,8 @@ return {
         require("mason").setup({
             ui = {
                 check_outdated_packages_on_open = true,
-                border = "single",
+                border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                -- border = "single",
                 width = 0.8,
                 height = 0.9,
                 icons = {
