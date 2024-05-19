@@ -27,6 +27,7 @@ return {
 
                 local blue = "#7aa2f7"
                 local black = "#1e2231"
+                local cyan = "#2ac3de"
                 local green = "#9ece6a"
                 local gray = "#414868"
                 local dark_gray = "#3b4261"
@@ -35,6 +36,12 @@ return {
 
                 -- EOB
                 -- hl.EndOfBuffer = { fg = "#1616e" }
+
+                -- Telescope
+                hl.TelescopePromptBorder = { fg = cyan }
+                hl.TelescopePromptTitle = { fg = cyan }
+                hl.TelescopeResultsTitle = { fg = cyan }
+                hl.TelescopeResultsBorder = { fg = cyan }
 
                 -- Dashboard
                 hl.AlphaHeader = { fg = blue }
@@ -55,13 +62,13 @@ return {
                 -- hl.LeapLabelSecondary = { bg = purple, fg = comment }
 
                 -- Gitsigns
-                hl.GitSignsAdd = { fg = blue }
-                hl.GitSignsAddNr = { fg = blue }
-                hl.GitSignsAddLn = { fg = blue }
-                hl.GitSignsChange = { fg = blue }
-                hl.GitSignsChangeNr = { fg = blue }
-                hl.GitSignsChangeLn = { fg = blue }
-                hl.GitSignsCurrentLineBlame = { fg = blue }
+                hl.GitSignsAdd = { fg = dark_gray }
+                hl.GitSignsAddNr = { fg = dark_gray }
+                hl.GitSignsAddLn = { fg = dark_gray }
+                hl.GitSignsChange = { fg = dark_gray }
+                hl.GitSignsChangeNr = { fg = dark_gray }
+                hl.GitSignsChangeLn = { fg = dark_gray }
+                hl.GitSignsCurrentLineBlame = { fg = dark_gray }
 
                 -- NvimTree
                 -- hl.NvimTreeGitDirty = { fg = blue }
