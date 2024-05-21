@@ -9,6 +9,7 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         lspconfig.lua_ls.setup({})
+        lspconfig.cssls.setup({})
         lspconfig.tsserver.setup({})
         lspconfig.html.setup({})
         vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
