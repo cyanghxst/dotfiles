@@ -25,6 +25,7 @@ return {
                 "cssls",
                 "html",
                 "lua_ls",
+                "tailwindcss",
             },
             automatic_installation = true,
         })
