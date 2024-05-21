@@ -20,8 +20,15 @@ return {
             },
         },
         {
-            "onsails/lspkind.nvim",
+            "roobert/tailwindcss-colorizer-cmp.nvim",
+            -- optionally, override the default options:
+            config = function()
+                require("tailwindcss-colorizer-cmp").setup({
+                    color_square_width = 2,
+                })
+            end,
         },
+        "onsails/lspkind.nvim",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lua",
