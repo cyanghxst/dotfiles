@@ -27,7 +27,7 @@ return {
         },
         sync_root_with_cwd = true,
         view = {
-            width = 21,
+            width = 27,
             side = "left",
         },
         git = {
