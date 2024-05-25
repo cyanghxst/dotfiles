@@ -7,16 +7,16 @@
 " ---------------------------------------- 
 
 " Specify a directory for plugins
-" call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
-" Plug 'ghifarit53/tokyonight-vim'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-surround'
-" Plug 'tribela/vim-transparent'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tribela/vim-transparent'
 
-" call plug#end()
+call plug#end()
 
 " ---------------------------------------- 
 " Color Settings
@@ -29,11 +29,11 @@ set termguicolors
 syntax on
 
 " Enable italics in theme
-" let g:tokyonight_italic=1
+let g:tokyonight_italic=1
 
 " Set the color scheme
 set background=dark
-" colorscheme tokyonight
+colorscheme tokyonight
 
 " Display italic characters
 hi Comment cterm=italic
@@ -42,24 +42,24 @@ hi Comment cterm=italic
 hi normal ctermbg=NONE guibg=NONE
 
 " Disable background
-" hi NonText ctermbg=NONE guibg=NONE
+hi NonText ctermbg=NONE guibg=NONE
 
 " ---------------------------------------- 
 " Status Line
 " ---------------------------------------- 
 
 " Enable status line
-set laststatus=2
+" set laststatus=2
 
 " Left side
-set statusline+=
-set statusline+=%1*
+" set statusline+=
+" set statusline+=%1*
 
 " Right side
-set statusline+=%=
-set statusline+=%f
-set statusline+=\ %m
-set statusline+=\ %P
+" set statusline+=%=
+" set statusline+=%f
+" set statusline+=\ %m
+" set statusline+=\ %P
 
 " Set colors
 hi user1 ctermbg=NONE guifg=#414868
@@ -69,7 +69,7 @@ hi user1 ctermbg=NONE guifg=#414868
 " ---------------------------------------- 
 
 " Enable status line
-" set laststatus=2
+set laststatus=2
 
 " Left side
 " set statusline+=%1*
@@ -78,29 +78,37 @@ hi user1 ctermbg=NONE guifg=#414868
 " set statusline+=\ %f\ 
 " set statusline+=%{&modified?'[+]':''}
 
+" Left side
+set statusline=
+set statusline+=%1*
+set statusline+=\ %{g:currentmode[mode()]}
+set statusline+=%2*
+set statusline+=\ %f 
+set statusline+=\ %{&modified?'[+]':''}
+
 " Right side
-" set statusline+=%=
-" set statusline+=%{&ff}
-" set statusline+=\ \ %{strlen(&fenc)?&fenc:'none'}
-" set statusline+=\ \ %P
-" set statusline+=\ \ ☰\ 
-" set statusline+=\ %l:%L\ 
+set statusline+=%=
+set statusline+=%{&ff}
+set statusline+=\ \ %{strlen(&fenc)?&fenc:'none'}
+set statusline+=\ \ %P
+set statusline+=\ \ ☰\ 
+set statusline+=\ %l:%L\ 
 
 " Set colors
-" hi user1 ctermbg=red ctermfg=black
-" hi user2 ctermbg=black ctermfg=white
+hi User1 ctermbg=red ctermfg=black guibg=#F7768E guifg=#444B6A
+hi User2 ctermbg=black ctermfg=white guibg=#444B6A guifg=#C3CCF9
 
 " Show modes in status line
-" let g:currentmode={
-"       \ 'n'  : 'NORMAL ',
-"       \ 'v'  : 'VISUAL ',
-"       \ 'V'  : 'VISUAL LINE ',
-"       \ '\<C-V>' : 'VISUAL BLOCK ',
-"       \ 'i'  : 'INSERT ',
-"       \ 'R'  : 'REPLACE ',
-"       \ 'Rv' : 'VISUAL REPLACE ',
-"       \ 'c'  : 'COMMAND ',
-"       \}
+let g:currentmode={
+      \ 'n'  : 'NORMAL ',
+      \ 'v'  : 'VISUAL ',
+      \ 'V'  : 'VISUAL LINE ',
+      \ '\<C-V>' : 'VISUAL BLOCK ',
+      \ 'i'  : 'INSERT ',
+      \ 'R'  : 'REPLACE ',
+      \ 'Rv' : 'VISUAL REPLACE ',
+      \ 'c'  : 'COMMAND ',
+      \}
 
 " ---------------------------------------- 
 " Basic Settings
