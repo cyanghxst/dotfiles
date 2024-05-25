@@ -14,7 +14,8 @@ return {
     },
     keys = {
         {"<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Find Grep"},
-        {"<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Tags"},
+        {"<leader>ft", "<cmd>Telescope help_tags<CR>", desc = "Find Tags"},
+        {"<leader>fh", "<cmd>Telescope highlights<CR>", desc = "Find Highlights"},
         {"<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffers"},
         {"<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files"},
         {"<leader>fo", "<cmd>Telescope oldfiles <CR>", desc = "Find Oldfiles"},
@@ -22,7 +23,8 @@ return {
     },
     opts = {
         defaults = {
-            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            -- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
             prompt_prefix = "  ",
             selection_caret = "  ",
             mappings = {
@@ -47,6 +49,9 @@ return {
                 theme = "dropdown",
             },
             help_tags = {
+                theme = "dropdown",
+            },
+            highlights = {
                 theme = "dropdown",
             },
             buffers = {
