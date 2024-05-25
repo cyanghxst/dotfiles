@@ -157,7 +157,7 @@ set number
 " hi LineNr guifg=#31354d
 
 " Cursorline
-" set cursorline
+set cursorline
 " set cursorlineopt=number
 hi cursorline cterm=bold
 " hi cursorlinenr guibg=NONE guifg=#a8b2d6
@@ -183,6 +183,7 @@ nnoremap Q <NOP>
 
 " Clear search highlight after hit enter
 nnoremap <CR> :nohl<CR>
+nnoremap <esc> :nohl<CR>
 
 " ---------------------------------------- 
 " Basic Autocommands
