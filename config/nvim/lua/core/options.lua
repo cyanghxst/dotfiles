@@ -44,6 +44,12 @@ opt.clipboard = "unnamedplus"
 cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
 
 -- Cursorline
+vim.wo.cursorline = true
+cmd[[hi cursorline gui=bold]]
+-- vim.api.nvim_set_option('number', false) -- Toggle hybrid relative number
+-- vim.api.nvim_set_option('relativenumber', true) -- Toggle relative number
+
+-- Hybrid Cursorline
 -- vim.wo.cursorline = true
 -- vim.api.nvim_set_option('number', false) -- Toggle hybrid relative number
 -- vim.api.nvim_set_option('relativenumber', true) -- Toggle relative number
