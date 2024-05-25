@@ -58,7 +58,7 @@ return {
 
                 -- Leap
                 -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
-                hl.LeapLabelPrimary = { fg = green, bold = true }
+                -- hl.LeapLabelPrimary = { fg = green, bold = true }
                 -- hl.LeapLabelSecondary = { bg = purple, fg = comment }
 
                 -- Gitsigns
