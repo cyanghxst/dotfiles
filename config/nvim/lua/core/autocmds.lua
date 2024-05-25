@@ -1,6 +1,7 @@
 -- Autoclose Nvimtree
-vim.api.nvim_create_autocmd({"QuitPre"}, {
-    callback = function() vim.cmd("NvimTreeClose") end,
+vim.api.nvim_create_autocmd('BufEnter', {
+    command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
+    nested = true,
 })
 
 -- Disable automatic comment insertion
