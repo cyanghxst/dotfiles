@@ -25,14 +25,16 @@ return {
             on_colors = function(colors) end,
             on_highlights = function(hl, c)
 
+                -- local white = "#c0caf5"
+                local red = "#FF067D"
+                local cyan = "#2ac3de"
                 local blue = "#7aa2f7"
                 local black = "#1e2231"
-                local cyan = "#2ac3de"
                 local green = "#9ece6a"
                 local gray = "#414868"
-                local dark_gray = "#3b4261"
-                local light_gray = "#a9b1d6"
-                -- local white = "#c0caf5"
+                local gray_dark = "#3b4261"
+                local gray_faded = "#232435"
+                local gray_light = "#a9b1d6"
 
                 -- EOB
                 -- hl.EndOfBuffer = { fg = "#1616e" }
@@ -47,14 +49,19 @@ return {
                 hl.AlphaHeader = { fg = blue }
                 hl.AlphaButtons = { fg = blue }
                 hl.AlphaShortcut = { fg = blue }
-                hl.AlphaFooter = { fg = dark_gray }
+                hl.AlphaFooter = { fg = gray_dark }
+
+                -- Search
+                hl.Search = { bg = green, fg = black }
+                hl.CurSearch = { bg = red, fg = black }
+                hl.IncSearch = { bg = red, fg = black }
 
                 -- CursorLine
-                -- hl.CursorLineNr = { fg = blue }
-                -- hl.CursorLine= { bg = "#16161e" }
+                hl.CursorLineNr = { fg = white }
+                hl.CursorLine = { bg = gray_faded }
 
                 -- MiniIndentScope
-                hl.MiniIndentscopeSymbol = { fg = dark_gray }
+                hl.MiniIndentscopeSymbol = { fg = gray_dark }
 
                 -- Leap
                 -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
@@ -62,13 +69,16 @@ return {
                 -- hl.LeapLabelSecondary = { bg = purple, fg = comment }
 
                 -- Gitsigns
-                hl.GitSignsAdd = { fg = dark_gray }
-                hl.GitSignsAddNr = { fg = dark_gray }
-                hl.GitSignsAddLn = { fg = dark_gray }
-                hl.GitSignsChange = { fg = dark_gray }
-                hl.GitSignsChangeNr = { fg = dark_gray }
-                hl.GitSignsChangeLn = { fg = dark_gray }
-                hl.GitSignsCurrentLineBlame = { fg = dark_gray }
+                hl.GitSignsAdd = { fg = gray_dark }
+                hl.GitSignsAddNr = { fg = gray_dark }
+                hl.GitSignsAddLn = { fg = gray_dark }
+                hl.GitSignsChange = { fg = gray_dark }
+                hl.GitSignsChangeNr = { fg = gray_dark }
+                hl.GitSignsChangeLn = { fg = gray_dark }
+                hl.GitSignsDelete = { fg = gray_dark }
+                hl.GitSignsDeleteNr = { fg = gray_dark }
+                hl.GitSignsTopDelete = { fg = gray_dark }
+                hl.GitSignsCurrentLineBlame = { fg = gray_dark }
 
                 -- NvimTree
                 -- hl.NvimTreeGitDirty = { fg = blue }
@@ -83,8 +93,8 @@ return {
                 hl.NvimTreeFolderArrowClosed = { fg = gray }
                 hl.NvimTreeOpenedFolderName = { fg = blue }
                 hl.NvimTreeEmptyFolderName = { fg = blue }
-                hl.NvimTreeRootFolder = { fg = light_gray, bold = true }
-                hl.NvimTreeSpecialFile = { fg = light_gray, bold = true }
+                hl.NvimTreeRootFolder = { fg = gray_light, bold = true }
+                hl.NvimTreeSpecialFile = { fg = gray_light, bold = true }
 
             end,
         }
