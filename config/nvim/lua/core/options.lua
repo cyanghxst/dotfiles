@@ -43,6 +43,10 @@ opt.clipboard = "unnamedplus"
 -- Cursor
 cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
 
+-- Status column
+-- opt.numberwidth = 3
+-- opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
+
 -- Cursorline
 -- vim.wo.cursorline = true
 -- cmd[[hi cursorline gui=bold]]
@@ -54,5 +58,5 @@ cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
 -- vim.api.nvim_set_option('number', false) -- Toggle hybrid relative number
 -- vim.api.nvim_set_option('relativenumber', true) -- Toggle relative number
 
--- Backspace
+-- Backspace indent
 -- opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
