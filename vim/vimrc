@@ -91,7 +91,8 @@ set statusline+=%=
 set statusline+=%{&ff}
 set statusline+=\ \ %{strlen(&fenc)?&fenc:'none'}
 set statusline+=\ \ %P
-set statusline+=\ \ ☰\ 
+" set statusline+=\ \ ☰\ 
+set statusline+=\ \ ✦\ 
 set statusline+=\ %l:%L\ 
 
 " Set colors
