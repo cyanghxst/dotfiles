@@ -15,10 +15,10 @@ opt.tabstop = 4
 
 -- Look and feel
 opt.number = true
-opt.scrolloff = 8
+opt.scrolloff = 17
 opt.showcmd = false
 opt.showmode = false
-opt.sidescrolloff = 30
+opt.sidescrolloff = 17
 opt.signcolumn = "yes"
 opt.startofline = true
 opt.wrap = false
