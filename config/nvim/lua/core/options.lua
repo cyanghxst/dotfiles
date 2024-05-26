@@ -40,9 +40,6 @@ opt.cmdheight=0
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
--- Cursor
-cmd[[set guicursor+=i:blinkon1]] -- Enable cursor blinking
-
 -- Include error signs in the number column
 -- opt.signcolumn = "number"
 
