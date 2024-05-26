@@ -31,6 +31,3 @@ map("v", "K", ":m '<-2<CR>gv=gv", opts)
 -- Indent blocks in visual mode
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
-
--- Disable annoying q:
-map("n", "q:", "<nop>", opts)
