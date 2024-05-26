@@ -1,6 +1,3 @@
--- Cursor
-vim.cmd[[set guicursor+=i:blinkon0]] -- Enable cursor blinking
-
 -- Disable lsp semantic tokens
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
