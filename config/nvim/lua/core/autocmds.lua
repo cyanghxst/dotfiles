@@ -1,3 +1,37 @@
+-- Disable lsp semantic tokens
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
+});
+
+-- Disable sign column in nvim-tree
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        if vim.bo.filetype == "NvimTree" then
+            vim.wo.statuscolumn = ""
+        end
+    end,
+})
+
+-- -- Disable sign column in alpha
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--     callback = function()
+--         if vim.bo.filetype == "alpha" then
+--             vim.wo.statuscolumn = ""
+--         end
+--     end,
+-- })
+
+-- -- Disable sign column in alpha
+-- vim.api.nvim_create_autocmd("Filetype", {
+--     pattern = "alpha",
+--     callback = function()
+--         vim.wo.statuscolumn = ""
+--     end
+-- })
+
 -- Autoclose Nvimtree
 vim.api.nvim_create_autocmd('BufEnter', {
     command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
@@ -26,13 +60,5 @@ augroup END
 
 -- Jump to last edit position on opening file
 vim.cmd([[
-  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 ]])
-
--- Disable lsp semantic tokens
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    client.server_capabilities.semanticTokensProvider = nil
-  end,
-});
