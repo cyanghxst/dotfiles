@@ -96,7 +96,7 @@ set statusline+=\ \ ✦\
 set statusline+=\ %l:%L\ 
 
 " Set colors
-hi User1 ctermbg=red ctermfg=black guibg=#F7768E guifg=#444B6A
+hi User1 ctermbg=red ctermfg=black guibg=#F7768E guifg=black
 hi User2 ctermbg=black ctermfg=white guibg=#444B6A guifg=#C3CCF9
 
 " Show modes in status line
