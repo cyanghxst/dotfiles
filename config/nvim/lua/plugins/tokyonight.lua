@@ -44,6 +44,7 @@ return {
                 hl.TelescopePromptTitle = { fg = cyan }
                 hl.TelescopeResultsTitle = { fg = cyan }
                 hl.TelescopeResultsBorder = { fg = cyan }
+                hl.TelescopeMatching = { fg = red }
 
                 -- Dashboard
                 hl.AlphaHeader = { fg = blue }
