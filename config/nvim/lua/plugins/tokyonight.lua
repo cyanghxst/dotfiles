@@ -31,6 +31,7 @@ return {
                 local blue = "#7aa2f7"
                 local black = "#1e2231"
                 local green = "#9ece6a"
+                local purple = "#9d7cd8"
                 local gray = "#414868"
                 local gray_dark = "#3b4261"
                 local gray_faded = "#232435"
@@ -44,7 +45,7 @@ return {
                 hl.TelescopePromptTitle = { fg = cyan }
                 hl.TelescopeResultsTitle = { fg = cyan }
                 hl.TelescopeResultsBorder = { fg = cyan }
-                hl.TelescopeMatching = { fg = red }
+                hl.TelescopeMatching = { fg = cyan }
 
                 -- Dashboard
                 hl.AlphaHeader = { fg = blue }
@@ -68,6 +69,18 @@ return {
                 -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
                 -- hl.LeapLabelPrimary = { fg = green, bold = true }
                 -- hl.LeapLabelSecondary = { bg = purple, fg = comment }
+
+                -- -- Gitsigns
+                -- hl.GitSignsAdd = { fg = green }
+                -- hl.GitSignsAddNr = { fg = green }
+                -- hl.GitSignsAddLn = { fg = green }
+                -- hl.GitSignsChange = { fg = purple }
+                -- hl.GitSignsChangeNr = { fg = purple }
+                -- hl.GitSignsChangeLn = { fg = purple }
+                -- hl.GitSignsDelete = { fg = red }
+                -- hl.GitSignsDeleteNr = { fg = red }
+                -- hl.GitSignsTopDelete = { fg = red }
+                -- hl.GitSignsCurrentLineBlame = { fg = gray_dark }
 
                 -- Gitsigns
                 hl.GitSignsAdd = { fg = gray_dark }
