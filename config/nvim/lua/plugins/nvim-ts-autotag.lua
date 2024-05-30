@@ -1,6 +1,6 @@
 return {
     "PriceHiller/nvim-ts-autotag",
-    enabled = false,
+    enabled = true,
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
