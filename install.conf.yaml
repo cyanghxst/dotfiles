@@ -17,6 +17,7 @@
     ~/.zshrc: zsh/zshrc
 
 - create:
+    - ~/.config
     - ~/downloads
     - ~/.vim/undo-history
 
