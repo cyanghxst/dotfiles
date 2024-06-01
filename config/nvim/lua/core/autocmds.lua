@@ -50,6 +50,14 @@ augroup END
 ]]
 
 -- Jump to last edit position on opening file
-vim.cmd([[
+vim.cmd[[
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-]])
+]]
+
+-- Fix auto-indentation for YAML files
+vim.cmd[[
+augroup yaml_fix
+    autocmd!
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
+augroup END
+]]
