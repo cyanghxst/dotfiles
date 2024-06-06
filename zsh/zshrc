@@ -105,7 +105,7 @@ alias forsay='\fortune > a.txt | cowsay && say -f a.txt && rm a.txt'
 alias neofetch='neofetch | lolcat -a -t -d 3 -s 60 -S 9'
 
 # fastfetch in rainbow color
-alias fastfetch='fastfetch | lolcat -a -t -d 3 -s 60 -S 9'
+alias fastfetch='fastfetch | lolcat -a -t -d 3 -s 60 -S 6'
 
 # pipe.sh in rainbow color
 alias pipes.sh='pipes.sh | lolcat'
