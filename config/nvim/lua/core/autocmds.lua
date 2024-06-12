@@ -1,5 +1,3 @@
--- vim.cmd[[autocmd BufEnter * lua vim.lsp.diagnostic.disable()]]
-
 -- Disable lsp semantic tokens
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
