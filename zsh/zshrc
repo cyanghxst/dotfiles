@@ -68,17 +68,17 @@ wine-gptk(){ WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-portin
 # Aliases
 # ---------------------------------------- 
 
-# List by long-list, color, alhabetical, and human-readable file size
-alias ls='ls -Glh'
-
 # List by long-list, color, modified time and human-readable file size
-alias lst='ls -Glth'
+alias ls='ls -Glth'
 
-# List only dotfiles by long-list, color, alphabetically and human-readable file size
-alias lsd='ls -Gldh .*'
+# List by long-list, color, alhabetical, and human-readable file size
+alias lsa='ls -Glh'
 
 # List only dotfiles by long-list, color, modified time and human-readable file size
-alias lsdt='ls -Gldth .*'
+alias lsd='ls -Gldth .*'
+
+# List only dotfiles by long-list, color, alphabetically and human-readable file size
+alias lsda='ls -Gldh .*'
 
 # Fortune with cowsay
 alias fortune='fortune | cowsay'
