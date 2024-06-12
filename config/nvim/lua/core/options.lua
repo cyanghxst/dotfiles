@@ -1,6 +1,13 @@
 local opt = vim.opt
 local cmd = vim.cmd
 
+-- Diagnostic settings
+vim.diagnostic.config {
+  virtual_text = false,
+  signs = false,
+  underline = false,
+}
+
 -- Colors
 opt.termguicolors = true
 
