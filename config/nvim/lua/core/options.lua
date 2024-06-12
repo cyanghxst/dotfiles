@@ -8,6 +8,8 @@ vim.diagnostic.config {
   underline = false,
 }
 
+opt.statuscolumn = "%=%{v:lnum} %s"
+
 -- Colors
 opt.termguicolors = true
 
@@ -52,7 +54,6 @@ opt.clipboard = "unnamedplus"
 
 -- Status column
 -- opt.statuscolumn = "%=%{v:relnum?v:relnum:v:lnum} %s"
-opt.statuscolumn = "%=%{v:lnum} %s"
 -- opt.numberwidth = 3
 -- opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
 
