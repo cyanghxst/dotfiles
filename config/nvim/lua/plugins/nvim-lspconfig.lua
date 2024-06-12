@@ -1,6 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
-    enabled = false,
+    enabled = true,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
@@ -9,11 +9,27 @@ return {
     },
     config = function()
         local lspconfig = require("lspconfig")
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
         lspconfig.lua_ls.setup({})
         lspconfig.cssls.setup({})
         lspconfig.tsserver.setup({})
         lspconfig.html.setup({})
         lspconfig.tailwindcss.setup({})
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        lspconfig.emmet_ls.setup({
+            -- on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+            init_options = {
+                html = {
+                    options = {
+                        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                        ["bem.enabled"] = true,
+                    },
+                },
+            }
+        })
         -- vim.diagnostic.config({
         --     virtual_text = false,
         -- })
