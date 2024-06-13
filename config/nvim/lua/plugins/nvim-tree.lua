@@ -14,7 +14,7 @@ return {
         end
     end,
     keys = {
-        {"<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"},
+        {"<C-c>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"},
     },
     opts = {
         filters = {
@@ -27,7 +27,7 @@ return {
         },
         sync_root_with_cwd = true,
         view = {
-            width = 25,
+            width = 30,
             side = "left",
         },
         git = {
