@@ -47,12 +47,23 @@ return {
         -- Set padding
         -- dashboard.opts.layout[1].val = 3
         -- dashboard.opts.layout[1].val = 6
-        dashboard.opts.layout[1].val = 2
-        dashboard.opts.layout[3].val = 3
+
+        -- new layout
+        dashboard.opts.layout[1].val = 6 -- header padding
+        dashboard.opts.layout[3].val = 3 -- body padding
         table.insert(dashboard.config.layout, 5, {
             type = 'padding',
-            val = 2,
+            val = 2, -- footer padding
         })
+
+        -- old layout
+        -- dashboard.opts.layout[1].val = 2
+        -- dashboard.opts.layout[3].val = 3
+        -- table.insert(dashboard.config.layout, 5, {
+        --     type = 'padding',
+        --     val = 2,
+        -- })
+
         return dashboard
     end,
 
@@ -82,7 +93,7 @@ return {
                 -- local footer = version .. "\t" .. plugins .. "\n"
 
                 local plugins = "  " .. stats.count .. " Plugins"
-                local footer = " " ..version .. "\t " .. plugins .. "\n"
+                local footer = " " ..version .. "\t  " .. plugins .. "\n"
 
                 dashboard.section.footer.val = footer
                 pcall(vim.cmd.AlphaRedraw)
