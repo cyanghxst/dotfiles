@@ -14,7 +14,7 @@ return {
         end
     end,
     keys = {
-        {"<C-c>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"},
+        {"<leader>s", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"},
     },
     opts = {
         filters = {
