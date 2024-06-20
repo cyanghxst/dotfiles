@@ -7,15 +7,15 @@ return {
         }
         local minimal_theme = {
             normal = {
+                a = { fg = colors.gray, bg = "none" },
+                b = { fg = colors.gray, bg = "none" },
+                c = { fg = colors.gray, bg = "none" },
+            },
+            inactive = {
                 a = { fg = colors.gray, bg = none },
                 b = { fg = colors.gray, bg = none },
                 c = { fg = colors.gray, bg = none },
             },
-            -- inactive = {
-            --     a = { fg = colors.gray, bg = none },
-            --     b = { fg = colors.gray, bg = none },
-            --     c = { fg = colors.gray, bg = none },
-            -- },
         }
         return {
             options = {
