@@ -7,21 +7,21 @@
 -- });
 
 -- Disable sign column in nvim-tree
-vim.api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-        if vim.bo.filetype == "NvimTree" then
-            vim.wo.statuscolumn = ""
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--     callback = function()
+--         if vim.bo.filetype == "NvimTree" then
+--             vim.wo.statuscolumn = ""
+--         end
+--     end,
+-- })
 
 -- Disable sign column in alpha
-vim.api.nvim_create_autocmd("Filetype", {
-    pattern = "alpha",
-    callback = function()
-        vim.opt_local.statuscolumn = ""
-    end
-})
+-- vim.api.nvim_create_autocmd("Filetype", {
+--     pattern = "alpha",
+--     callback = function()
+--         vim.opt_local.statuscolumn = ""
+--     end
+-- })
 
 -- Autoclose Nvimtree
 vim.api.nvim_create_autocmd('BufEnter', {
