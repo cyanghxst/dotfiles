@@ -1,8 +1,8 @@
 local opt = vim.opt
-local cmd = vim.cmd
+-- local cmd = vim.cmd
 
 -- Status column
-opt.statuscolumn = "%=%{v:lnum} %s"
+-- opt.statuscolumn = "%=%{v:lnum} %s"
 
 -- Diagnostic settings
 -- vim.diagnostic.config {
@@ -42,16 +42,13 @@ opt.smartcase = true
 opt.wildmenu = true
 
 -- Statusline
-opt.laststatus = 3
+-- opt.laststatus = 3
 
 -- Disable command bar
 opt.cmdheight=0
 
 -- Clipboard
 opt.clipboard = "unnamedplus"
-
--- Include error signs in the number column
--- opt.signcolumn = "number"
 
 -- Cursorline
 -- vim.wo.cursorline = true
