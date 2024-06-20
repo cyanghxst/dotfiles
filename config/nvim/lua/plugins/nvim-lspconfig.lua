@@ -34,5 +34,10 @@ return {
                 vim.keymap.set("n", "<leader>D", vim.lsp.buf.declaration, { buffer = ev.buf })
             end,
         })
+        handler = {
+            vim.diagnostic.config({
+                virtual_text = false,
+            })
+        }
     end,
 }
