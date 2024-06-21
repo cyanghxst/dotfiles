@@ -7,25 +7,20 @@ return {
         }
         local minimal_theme = {
             normal = {
-                a = { fg = colors.gray, bg = "none" },
-                b = { fg = colors.gray, bg = "none" },
-                c = { fg = colors.gray, bg = "none" },
+                a = { fg = colors.gray, bg = nil },
+                b = { fg = colors.gray, bg = nil },
+                c = { fg = colors.gray, bg = nil },
             },
             inactive = {
-                a = { fg = colors.gray, bg = "none" },
-                b = { fg = colors.gray, bg = "none" },
-                c = { fg = colors.gray, bg = "none" },
+                a = { fg = colors.gray, bg = nil },
+                b = { fg = colors.gray, bg = nil },
+                c = { fg = colors.gray, bg = nil },
             },
         }
         return {
             options = {
                 theme = minimal_theme,
-                disabled_filetypes = {
-                    "alpha",
-                    "lazy",
-                    "NvimTree",
-                    "dashboard",
-                },
+                disabled_filetypes = { "alpha", "lazy", "NvimTree", "dashboard" },
             },
             sections = {
                 lualine_a = {},
