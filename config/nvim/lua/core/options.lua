@@ -1,10 +1,10 @@
 local opt = vim.opt
--- local cmd = vim.cmd
 
 -- Status column
--- opt.statuscolumn = "%=%{v:lnum} %s"
+opt.statuscolumn = "%=%{v:lnum} %s"
 
 -- Diagnostic settings
+-- Uncomment if you want to customize diagnostics
 -- vim.diagnostic.config {
 --   virtual_text = false,
 --   signs = false,
@@ -42,24 +42,25 @@ opt.smartcase = true
 opt.wildmenu = true
 
 -- Statusline
+-- Uncomment if you want the global statusline
 -- opt.laststatus = 3
 
 -- Disable command bar
-opt.cmdheight=0
+opt.cmdheight = 0
 
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
 -- Cursorline
+-- Uncomment if you want to enable cursorline
 -- vim.wo.cursorline = true
--- cmd[[hi cursorline gui=bold]]
--- vim.api.nvim_set_option('number', false) -- Toggle hybrid relative number
--- vim.api.nvim_set_option('relativenumber', true) -- Toggle relative number
+-- vim.cmd[[hi CursorLine gui=bold]]
 
 -- Hybrid Cursorline
--- vim.wo.cursorline = true
--- vim.api.nvim_set_option('number', false) -- Toggle hybrid relative number
--- vim.api.nvim_set_option('relativenumber', true) -- Toggle relative number
+-- Uncomment if you want to toggle hybrid relative number
+-- vim.api.nvim_set_option('number', false)
+-- vim.api.nvim_set_option('relativenumber', true)
 
 -- Backspace indent
--- opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+-- Uncomment if you want to allow backspace on indent, end of line, or insert mode start position
+-- opt.backspace = "indent,eol,start"
