@@ -55,8 +55,8 @@ return {
 
                 -- Search
                 hl.Search = { bg = green, fg = black }
-                hl.CurSearch = { bg = red, fg = black }
-                hl.IncSearch = { bg = red, fg = black }
+                hl.CurSearch = { bg = blue, fg = black }
+                hl.IncSearch = { bg = blue, fg = black }
 
                 -- CursorLine
                 hl.CursorLineNr = { fg = white }
