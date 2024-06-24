@@ -1,6 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
-    enabled = true,
+    enabled = false,
     event = { "BufReadPost", "BufNewFile" },
     dependencies = "hrsh7th/cmp-nvim-lsp",
     config = function()
