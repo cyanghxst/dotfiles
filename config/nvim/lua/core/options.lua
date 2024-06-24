@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+-- Disable command bar
+opt.cmdheight = 0
+
 -- Status column
 opt.statuscolumn = "%=%{v:lnum} %s"
 
@@ -42,11 +45,6 @@ opt.smartcase = true
 opt.wildmenu = true
 
 -- Statusline
--- Uncomment if you want the global statusline
--- opt.laststatus = 3
-
--- Disable command bar
-opt.cmdheight = 0
 
 -- Clipboard
 opt.clipboard = "unnamedplus"
