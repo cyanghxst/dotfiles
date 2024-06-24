@@ -20,7 +20,10 @@ return {
         return {
             options = {
                 theme = minimal_theme,
-                disabled_filetypes = { "alpha", "lazy", "NvimTree", "dashboard" },
+                disabled_filetypes = { 
+                    statusline = { "alpha", "lazy", "NvimTree", "Telescope" },
+                },
+                globalstatus = true,
             },
             sections = {
                 lualine_a = {},
