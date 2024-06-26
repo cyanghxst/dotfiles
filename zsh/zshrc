@@ -76,7 +76,7 @@ alias keka='/Applications/Keka.app/Contents/MacOS/Keka --cli'
 alias gg='git-graph --style round'
 alias tm='transmission-cli'
 alias venv='source ~/.venv/bin/activate'
-alias zsh='source ~/.zshrc && clear'
+alias zsh='source ~/.zshrc'
 
 # ---------------------------------------- 
 # Fzf color options
@@ -118,6 +118,8 @@ function precmd() {
         echo ""
     fi
 }
+
+clear
 
 # ---------------------------------------- 
 # Manual Page Settings
