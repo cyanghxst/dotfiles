@@ -183,11 +183,11 @@ ssh_info() {
 }
 
 # venv
-venv_info() {
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        echo "%F{#414868}($(basename $VIRTUAL_ENV))%{$reset_color%} "
-    fi
-}
+# venv_info() {
+#     if [[ -n "$VIRTUAL_ENV" ]]; then
+#         echo "%F{red}($(basename $VIRTUAL_ENV))%F{#414868} "
+#     fi
+# }
 
 # Echoes information about Git repository status when inside a Git repository
 git_info() {
@@ -250,8 +250,11 @@ git_info() {
 
 # Use 󱐋 as the non-root prompt character; # for root
 # Change the prompt character color if the last command had a nonzero exit code
-PS1='$(venv_info)$(ssh_info)%F{#414868}%~%u $(git_info)
+PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
+
+# PS1='$(venv_info)$(ssh_info)%F{#414868}%~%u $(git_info)
+# %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
 
 # Brew switch
 if [ "$(arch)" = "arm64" ]; then
