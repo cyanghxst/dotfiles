@@ -17,23 +17,19 @@ export LANG=en_US.UTF-8
 
 # Paths
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/Users/cyanghxst/.cargo/bin:/Users/cyanghxst/.local/share/bob/nvim-bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export PATH="$PATH:/Library/TeX/texbin"
+
+# pyenv Environment
+export PYENV_ROOT="$HOME/.pyenv"
+if [[ -d $PYENV_ROOT/bin ]]; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+fi
 
 # Default grep color
 export GREP_OPTIONS='--color=always'
 export GREP_COLOR='0;94' # dull blue
-
-# Java11 Path
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
-
-# TeX Path
-export PATH="$PATH:/Library/TeX/texbin"
-
-# pyenv Path
-export PYENV_ROOT="$HOME/.pyenv"
-
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-
-eval "$(pyenv init -)"
 
 # ---------------------------------------- 
 # Source
@@ -44,6 +40,18 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source zsh-autosuggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Brew source
+if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
 
 # ---------------------------------------- 
 # Aliases
@@ -186,21 +194,3 @@ git_info() {
 
 PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
-
-# ---------------------------------------- 
-# brew source
-# ---------------------------------------- 
-
-if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
-
-# ---------------------------------------- 
-# pyenv
-# ---------------------------------------- 
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
