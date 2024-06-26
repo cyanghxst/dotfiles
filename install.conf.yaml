@@ -18,9 +18,6 @@
       glob: true
       path: config/*
       exclude: [ config/iterm2 ]
-    ~/.venv/:
-      glob: true
-      path: venv/*
     ~/.gitconfig: git/gitconfig
     ~/.lftprc: lftp/lftprc 
     ~/.tmux.conf: tmux/tmux.conf
