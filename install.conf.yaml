@@ -18,6 +18,9 @@
       glob: true
       path: config/*
       exclude: [ config/iterm2 ]
+    ~/.venv/bin/activate:
+      force: true
+      path: python/activate 
     ~/.gitconfig: git/gitconfig
     ~/.lftprc: lftp/lftprc 
     ~/.tmux.conf: tmux/tmux.conf
