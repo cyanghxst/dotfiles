@@ -47,8 +47,8 @@ alias ls='\ls -Glh'
 alias lst='\ls -Glth'
 alias lsd='\ls -Gldh .*'
 alias lsdt='\ls -Gldth .*'
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 alias fortune='fortune | cowsay'
-alias zsh='source ~/.zshrc && clear'
 alias cdc='cd && clear'
 alias cdd='cd ~/Downloads && ls'
 alias clear='unset NEW_LINE_BEFORE_PROMPT && clear'
@@ -62,6 +62,7 @@ alias keka='/Applications/Keka.app/Contents/MacOS/Keka --cli'
 alias gg='git-graph --style round'
 alias tm='transmission-cli'
 alias venv='source ~/.venv/bin/activate'
+alias zsh='source ~/.zshrc && clear'
 
 # ---------------------------------------- 
 # Fzf color options
