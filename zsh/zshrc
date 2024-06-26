@@ -256,9 +256,20 @@ PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # PS1='$(venv_info)$(ssh_info)%F{#414868}%~%u $(git_info)
 # %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
 
-# Brew switch
+# ---------------------------------------- 
+# brew source
+# ---------------------------------------- 
+
 if [ "$(arch)" = "arm64" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# ---------------------------------------- 
+# pyenv
+# ---------------------------------------- 
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
 fi
