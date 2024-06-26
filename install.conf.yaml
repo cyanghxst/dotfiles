@@ -5,8 +5,11 @@
 - clean: ['~']
 
 - create:
-    - ~/.config
-    - ~/.venv
+     ~/.config:
+      mode: 0755
+     ~/.venv:
+      mode: 0755
+- create:
     - ~/downloads
     - ~/.vim/undo-history
 
