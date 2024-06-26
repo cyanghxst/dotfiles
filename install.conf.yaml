@@ -4,22 +4,26 @@
 
 - clean: ['~']
 
+- create:
+    - ~/.config
+    - ~/.venv
+    - ~/downloads
+    - ~/.vim/undo-history
+
 - link:
     ~/.config/:
       glob: true
       path: config/*
       exclude: [ config/iterm2 ]
+    ~/.venv/:
+      glob: true
+      path: venv/*
     ~/.gitconfig: git/gitconfig
     ~/.lftprc: lftp/lftprc 
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc: vim/vimrc
     ~/.zprofile: zsh/zprofile 
     ~/.zshrc: zsh/zshrc
-
-- create:
-    - ~/.config
-    - ~/downloads
-    - ~/.vim/undo-history
 
 - shell:
     - ['git submodule update --init --recursive', Install submodules]
