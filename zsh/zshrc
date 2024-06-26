@@ -16,7 +16,6 @@ export EDITOR='nvim'
 export LANG=en_US.UTF-8
 
 # Paths
-# export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/local/bin:/opt/local/sbin:/Users/cyanghxst/.cargo/bin:/Users/cyanghxst/.local/share/bob/nvim-bin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/Users/cyanghxst/.cargo/bin:/Users/cyanghxst/.local/share/bob/nvim-bin:$PATH"
 
 # Default grep color
