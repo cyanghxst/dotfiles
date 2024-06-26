@@ -122,9 +122,6 @@ alias gg='git-graph --style round'
 # transmission-cli
 alias tm='transmission-cli'
 
-# python
-alias py='python3'
-
 # ---------------------------------------- 
 # Tab Completion Settings 
 # ---------------------------------------- 
