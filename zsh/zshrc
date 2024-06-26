@@ -122,6 +122,9 @@ alias gg='git-graph --style round'
 # transmission-cli
 alias tm='transmission-cli'
 
+# python virtual environment
+alias venv='source ~/.venv/bin/activate'
+
 # ---------------------------------------- 
 # Tab Completion Settings 
 # ---------------------------------------- 
