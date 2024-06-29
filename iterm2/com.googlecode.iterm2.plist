@@ -716,7 +716,7 @@
 			<key>Mouse Reporting allow mouse wheel</key>
 			<true/>
 			<key>Name</key>
-			<string>Tokyo Night Desktop (182x43) (25,20)</string>
+			<string>Tokyo Night - Desktop (182x43) (25,20)</string>
 			<key>Non Ascii Font</key>
 			<string>Menlo-Regular 11</string>
 			<key>Non-ASCII Anti Aliased</key>
@@ -843,6 +843,8 @@
 			<true/>
 			<key>Use Non-ASCII Font</key>
 			<false/>
+			<key>Use Selected Text Color</key>
+			<true/>
 			<key>Use Tab Color</key>
 			<false/>
 			<key>Use Underline Color</key>
@@ -1538,7 +1540,7 @@
 			<key>Mouse Reporting allow mouse wheel</key>
 			<true/>
 			<key>Name</key>
-			<string>Tokyo Night Laptop 1 (140x34) (25,20)</string>
+			<string>Tokyo Night - Laptop 1 (140x34) (25,20)</string>
 			<key>Non Ascii Font</key>
 			<string>Menlo-Regular 11</string>
 			<key>Non-ASCII Anti Aliased</key>
@@ -2360,7 +2362,7 @@
 			<key>Mouse Reporting allow mouse wheel</key>
 			<true/>
 			<key>Name</key>
-			<string>Tokyo Night Laptop 2 (117x33) (25,20)</string>
+			<string>Tokyo Night - Laptop 2 (117x33) (25,20)</string>
 			<key>Non Ascii Font</key>
 			<string>Menlo-Regular 11</string>
 			<key>Non-ASCII Anti Aliased</key>
@@ -3182,7 +3184,7 @@
 			<key>Mouse Reporting allow mouse wheel</key>
 			<true/>
 			<key>Name</key>
-			<string>Tokyo Night Laptop 3 (154x37) (25,20)</string>
+			<string>Tokyo Night - Laptop 3 (154x37) (25,20)</string>
 			<key>Non Ascii Font</key>
 			<string>Menlo-Regular 11</string>
 			<key>Non-ASCII Anti Aliased</key>
