@@ -78,9 +78,6 @@ alias tm='transmission-cli'
 alias venv='source ~/.venv/bin/activate'
 alias zsh='source ~/.zshrc'
 
-# the fuck
-eval $(thefuck --alias)
-
 # ---------------------------------------- 
 # Fzf color options
 # ---------------------------------------- 
