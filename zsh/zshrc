@@ -78,6 +78,9 @@ alias tm='transmission-cli'
 alias venv='source ~/.venv/bin/activate'
 alias zsh='source ~/.zshrc'
 
+# the fuck
+eval $(thefuck --alias)
+
 # ---------------------------------------- 
 # Fzf color options
 # ---------------------------------------- 
@@ -196,3 +199,6 @@ git_info() {
 
 PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
+
+# PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
+# %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.✦)%{$reset_color%} '
