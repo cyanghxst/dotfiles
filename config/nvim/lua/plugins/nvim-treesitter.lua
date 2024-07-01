@@ -6,7 +6,10 @@ return {
     opts = {
         auto_install = false,
         highlight = { enable = true, additional_vim_regex_highlighting = false },
-        indent = { enable = true },
+        indent = {
+            enable = false,
+            disable = { "python" }
+        },
         ensure_installed = {
             "query",
             "vim",
