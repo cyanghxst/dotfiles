@@ -9,6 +9,9 @@ bindkey -e
 # Environment Variables
 # ---------------------------------------- 
 
+# Term
+export TERM=xterm-256color
+
 # Default editor
 export EDITOR='nvim'
 
@@ -199,11 +202,3 @@ PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 
 # PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.✦)%{$reset_color%} '
-
-# if command -v fortune > /dev/null 2>&1 && command -v cowsay > /dev/null 2>&1 && command -v lolcat > /dev/null 2>&1; then
-#     \fortune | cowsay -n | lolcat
-# fi
-
-# if command -v fastfetch > /dev/null 2>&1 && command -v lolcat > /dev/null 2>&1; then
-#     fastfetch
-# fi
