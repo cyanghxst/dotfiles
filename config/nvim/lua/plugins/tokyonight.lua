@@ -25,17 +25,19 @@ return {
             on_colors = function(colors) end,
             on_highlights = function(hl, c)
 
-                -- local white = "#c0caf5"
-                local red = "#FF067D"
+                local white = "#c0caf5"
+                local magenta = "#FF067D"
                 local cyan = "#2ac3de"
                 local blue = "#7aa2f7"
-                local black = "#1e2231"
                 local green = "#9ece6a"
                 local purple = "#9d7cd8"
-                local gray = "#414868"
-                local gray_dark = "#3b4261"
-                local gray_faded = "#232435"
-                local gray_light = "#a9b1d6"
+                local bone = "#a9b1d6"
+                local gray1 = "#414868"
+                local gray2 = "#3b4261"
+                local gray3 = "#232435"
+                local gray4 = "#201e2b"
+                local black = "#1e2231"
+                local background = "#16151d"
 
                 -- EOB
                 -- hl.EndOfBuffer = { fg = "#1616e" }
@@ -51,7 +53,7 @@ return {
                 hl.AlphaHeader = { fg = blue }
                 hl.AlphaButtons = { fg = blue }
                 hl.AlphaShortcut = { fg = blue }
-                hl.AlphaFooter = { fg = gray_dark }
+                hl.AlphaFooter = { fg = gray2 }
 
                 -- Search
                 hl.Search = { bg = green, fg = black }
@@ -60,10 +62,15 @@ return {
 
                 -- CursorLine
                 hl.CursorLineNr = { fg = white }
-                hl.CursorLine = { bg = gray_faded }
+                hl.CursorLine = { bg = gray3 }
+
+                -- menu
+                hl.Pmenu = { bg = gray4 }
+                hl.NormalFloat = { bg = gray4 }
+                -- hl.PmenuSel = { bg = gray3 }
 
                 -- MiniIndentScope
-                hl.MiniIndentscopeSymbol = { fg = gray_dark }
+                hl.MiniIndentscopeSymbol = { fg = gray2 }
 
                 -- Leap
                 -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
@@ -77,22 +84,22 @@ return {
                 -- hl.GitSignsChange = { fg = purple }
                 -- hl.GitSignsChangeNr = { fg = purple }
                 -- hl.GitSignsChangeLn = { fg = purple }
-                -- hl.GitSignsDelete = { fg = red }
-                -- hl.GitSignsDeleteNr = { fg = red }
-                -- hl.GitSignsTopDelete = { fg = red }
-                -- hl.GitSignsCurrentLineBlame = { fg = gray_dark }
+                -- hl.GitSignsDelete = { fg = magenta }
+                -- hl.GitSignsDeleteNr = { fg = magenta }
+                -- hl.GitSignsTopDelete = { fg = magenta }
+                -- hl.GitSignsCurrentLineBlame = { fg = gray2 }
 
                 -- Gitsigns
-                hl.GitSignsAdd = { fg = gray_dark }
-                hl.GitSignsAddNr = { fg = gray_dark }
-                hl.GitSignsAddLn = { fg = gray_dark }
-                hl.GitSignsChange = { fg = gray_dark }
-                hl.GitSignsChangeNr = { fg = gray_dark }
-                hl.GitSignsChangeLn = { fg = gray_dark }
-                hl.GitSignsDelete = { fg = gray_dark }
-                hl.GitSignsDeleteNr = { fg = gray_dark }
-                hl.GitSignsTopDelete = { fg = gray_dark }
-                hl.GitSignsCurrentLineBlame = { fg = gray_dark }
+                hl.GitSignsAdd = { fg = gray2 }
+                hl.GitSignsAddNr = { fg = gray2 }
+                hl.GitSignsAddLn = { fg = gray2 }
+                hl.GitSignsChange = { fg = gray2 }
+                hl.GitSignsChangeNr = { fg = gray2 }
+                hl.GitSignsChangeLn = { fg = gray2 }
+                hl.GitSignsDelete = { fg = gray2 }
+                hl.GitSignsDeleteNr = { fg = gray2 }
+                hl.GitSignsTopDelete = { fg = gray2 }
+                hl.GitSignsCurrentLineBlame = { fg = gray2 }
 
                 -- NvimTree
                 -- hl.NvimTreeGitDirty = { fg = blue }
@@ -103,12 +110,12 @@ return {
                 -- hl.NvimTreeGitDeleted = { fg = blue }
                 -- hl.NvimTreeCursorLine = { bg = black }
                 hl.NvimTreeFolderName = { fg = blue }
-                hl.NvimTreeFolderArrowOpen = { fg = gray }
-                hl.NvimTreeFolderArrowClosed = { fg = gray }
+                hl.NvimTreeFolderArrowOpen = { fg = gray1 }
+                hl.NvimTreeFolderArrowClosed = { fg = gray1 }
                 hl.NvimTreeOpenedFolderName = { fg = blue }
                 hl.NvimTreeEmptyFolderName = { fg = blue }
-                hl.NvimTreeRootFolder = { fg = gray_light, bold = true }
-                hl.NvimTreeSpecialFile = { fg = gray_light, bold = true }
+                hl.NvimTreeRootFolder = { fg = bone, bold = true }
+                hl.NvimTreeSpecialFile = { fg = bone, bold = true }
 
             end,
         }
