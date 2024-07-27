@@ -58,6 +58,7 @@ return {
                     -- winhighlight = "Normal:CmpPmenu,FloatBorder:TelescopeBorder",
                 },
             },
+
             snippet = {
                 scrollbar = true,
                 expand = function(args)
