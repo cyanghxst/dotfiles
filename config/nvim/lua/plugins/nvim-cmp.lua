@@ -49,9 +49,9 @@ return {
 
             window = {
                 completion = {
+                    -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
                     -- winhighlight = "Normal:CmpPmenu,FloatBorder:TelescopeBorder",
                     scrollbar = true,
-                    -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
                 },
                 documentation = {
                     -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -80,6 +80,7 @@ return {
                     select = false,
                 }),
             },
+
             sources = {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
