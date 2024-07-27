@@ -49,7 +49,7 @@ return {
         -- dashboard.opts.layout[1].val = 6
 
         -- new layout
-        dashboard.opts.layout[1].val = 6 -- header padding
+        dashboard.opts.layout[1].val = 7 -- header padding
         dashboard.opts.layout[3].val = 3 -- body padding
         table.insert(dashboard.config.layout, 5, {
             type = 'padding',
