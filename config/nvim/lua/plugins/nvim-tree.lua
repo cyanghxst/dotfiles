@@ -61,8 +61,8 @@ return {
             icons = {
                 modified_placement = "before",
                 show = {
-                    file = false,
-                    folder = false,
+                    file = true,
+                    folder = true,
                     folder_arrow = true,
                     git = false,
                     modified = true,
@@ -75,6 +75,8 @@ return {
                     folder = {
                         arrow_open = "",
                         arrow_closed = "",
+                        default = "",
+                        open = "",
                     },
                     -- git = {
                     --     unstaged = "[u]",
