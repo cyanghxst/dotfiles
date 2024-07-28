@@ -71,7 +71,7 @@ return {
 
             mapping = {
                 ["<C-p>"] = cmp.mapping.select_prev_item(),
-                ["<tab>"] = cmp.mapping.select_next_item(),
+                ["<Tab>"] = cmp.mapping.select_next_item(),
                 ["<C-n>"] = cmp.mapping.select_next_item(),
                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
