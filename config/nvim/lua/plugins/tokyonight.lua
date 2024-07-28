@@ -78,6 +78,9 @@ return {
                 -- MiniIndentScope
                 hl.MiniIndentscopeSymbol = { fg = gray2 }
 
+                -- lazy
+                hl.LazyNormal = { bg = background }
+
                 -- Leap
                 -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
                 -- hl.LeapLabelPrimary = { fg = green, bold = true }
