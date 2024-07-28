@@ -65,9 +65,10 @@ return {
                 hl.CursorLine = { bg = gray3 }
 
                 -- menu
-                hl.Pmenu = { bg = gray4 }
-                hl.NormalFloat = { bg = gray4 }
-                -- hl.PmenuSel = { bg = gray3 }
+                hl.Pmenu = { bg = gray3 }
+                hl.NormalFloat = { bg = gray3 }
+                hl.FloatBorder = { fg = gray1 }
+                hl.PmenuSel = { fg = background, bg = blue }
 
                 -- MiniIndentScope
                 hl.MiniIndentscopeSymbol = { fg = gray2 }

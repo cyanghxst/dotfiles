@@ -49,13 +49,13 @@ return {
 
             window = {
                 completion = {
-                    -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-                    -- winhighlight = "Normal:CmpPmenu,FloatBorder:TelescopeBorder",
-                    scrollbar = true,
+                    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                    winhighlight = "Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+                    scrollbar = false,
                 },
                 documentation = {
-                    -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-                    -- winhighlight = "Normal:CmpPmenu,FloatBorder:TelescopeBorder",
+                    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                    winhighlight = "Normal:CmpPmenu,FloatBorder:FloatBorder",
                 },
             },
 
