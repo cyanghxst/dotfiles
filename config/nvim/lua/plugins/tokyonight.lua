@@ -48,7 +48,7 @@ return {
                 hl.TelescopeResultsTitle = { bg = blue, fg = background }
                 hl.TelescopeResultsBorder = { fg = gray1 }
                 hl.TelescopeSelection = { bg = gray3 }
-                -- hl.TelescopeSelection = { fg = background, bg = gray3 }
+                -- hl.TelescopeSelection = { fg = background, bg = blue }
                 hl.TelescopeMatching = { fg = cyan }
 
                 -- Dashboard
