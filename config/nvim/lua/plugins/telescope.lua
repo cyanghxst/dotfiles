@@ -37,6 +37,7 @@ return {
                     end
                 }
             },
+
             preview = {
                 hide_on_startup = true -- hide previewer when picker starts
             },
@@ -45,18 +46,23 @@ return {
             find_files = {
                 theme = "dropdown",
             },
+
             live_grep = {
                 theme = "dropdown",
             },
+
             help_tags = {
                 theme = "dropdown",
             },
+
             highlights = {
                 theme = "dropdown",
             },
+
             buffers = {
                 theme = "dropdown",
             },
+
             oldfiles = {
                 theme = "dropdown",
             },
