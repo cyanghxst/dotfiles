@@ -11,6 +11,7 @@ return {
                 end
                 return "make install_jsregexp"
             end)(),
+
             dependencies = {
                 {
                     "rafamadriz/friendly-snippets",
@@ -20,6 +21,7 @@ return {
                 },
             },
         },
+
         {
             "roobert/tailwindcss-colorizer-cmp.nvim",
             -- optionally, override the default options:
@@ -29,6 +31,7 @@ return {
                 })
             end,
         },
+
         "onsails/lspkind.nvim",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
@@ -40,7 +43,6 @@ return {
     config = function()
         local cmp = require("cmp")
         local luasnip = require("luasnip")
-        -- local lspkind = require('lspkind')
         local icons = {
             Text = "󰉿",
             Method = "󰆧",
