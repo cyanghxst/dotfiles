@@ -6,6 +6,8 @@ return {
     config = function()
         local lsp = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
 
         lsp.lua_ls.setup({
             capabilities = capabilities,
@@ -32,6 +34,14 @@ return {
                 "typescript",
                 "vue",
             },
+        })
+
+        lsp.cssls.setup({
+            capabilities = capabilities,
+        })
+
+        lsp.html.setup({
+            capabilities = capabilities,
         })
 
         -- You must make sure volar is setup
