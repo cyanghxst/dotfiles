@@ -40,7 +40,7 @@ return {
                 local background = "#16151d"
 
                 -- EOB
-                -- hl.EndOfBuffer = { fg = "#1616e" }
+                hl.EndOfBuffer = { fg = background}
 
                 -- Telescope
                 hl.TelescopePromptBorder = { fg = gray1 }
