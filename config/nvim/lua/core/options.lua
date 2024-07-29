@@ -44,7 +44,8 @@ opt.clipboard = "unnamedplus"
 
 -- Cursorline
 -- Uncomment if you want to enable cursorline
--- vim.wo.cursorline = true
+o.cursorline = true
+o.cursorlineopt = "number"
 -- vim.cmd[[hi CursorLine gui=bold]]
 
 -- Hybrid Cursorline
