@@ -4,7 +4,7 @@ local opt = vim.opt
 opt.cmdheight = 0
 
 -- Status column
-opt.statuscolumn = "%=%{v:lnum} %s"
+-- opt.statuscolumn = "%=%{v:lnum} %s"
 
 -- Diagnostic settings
 -- Uncomment if you want to customize diagnostics
