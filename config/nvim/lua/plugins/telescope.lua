@@ -12,6 +12,7 @@ return {
             end
         }
     },
+
     keys = {
         {"<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Find Grep"},
         {"<leader>ft", "<cmd>Telescope help_tags<CR>", desc = "Find Tags"},
@@ -21,6 +22,7 @@ return {
         {"<leader>fo", "<cmd>Telescope oldfiles <CR>", desc = "Find Oldfiles"},
         {"<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find All Files"},
     },
+
     opts = {
         defaults = {
             -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -42,6 +44,7 @@ return {
                 hide_on_startup = true -- hide previewer when picker starts
             },
         },
+
         pickers = {
             find_files = {
                 theme = "dropdown",
