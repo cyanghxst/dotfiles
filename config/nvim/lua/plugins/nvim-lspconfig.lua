@@ -6,6 +6,7 @@ return {
     config = function()
         local lsp = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
         lsp.lua_ls.setup({
             capabilities = capabilities,
             settings = {
@@ -15,6 +16,7 @@ return {
                 },
             },
         })
+
         lsp.clangd.setup({ capabilities = capabilities })
 
         vim.keymap.set("n", "<leader>M", vim.diagnostic.open_float)
@@ -34,10 +36,9 @@ return {
                 vim.keymap.set("n", "<leader>D", vim.lsp.buf.declaration, { buffer = ev.buf })
             end,
         })
-        handler = {
-            vim.diagnostic.config({
-                virtual_text = false,
-            })
-        }
+
+        vim.diagnostic.config({
+            virtual_text = true,
+        })
     end,
 }
