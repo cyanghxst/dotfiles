@@ -5,13 +5,22 @@ return {
     dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
     opts = {
         auto_install = false,
-        highlight = { enable = true, additional_vim_regex_highlighting = false },
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+            disable = { "html" }
+        },
+
         indent = {
             enable = false,
             disable = { "python" }
         },
+
         ensure_installed = {
             "query",
+            "html",
+            "javascript",
+            "css",
             "vim",
             "vimdoc",
             "lua",
