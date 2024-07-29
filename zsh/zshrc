@@ -154,9 +154,9 @@ git_info() {
     local AHEAD="%F{#456841}NUM%{$reset_color%}"
     local BEHIND="%F{#684141}NUM%{$reset_color%}"
     local MERGING="%F{#614168}󱐌%{$reset_color%}"
-    local UNTRACKED="%F{#684141}%{$reset_color%}"
-    local MODIFIED="%F{#676841}%{$reset_color%}"
-    local STAGED="%F{#456841}%{$reset_color%}"
+    local UNTRACKED="%F{#684141}%{$reset_color%}"
+    local MODIFIED="%F{#676841}%{$reset_color%}"
+    local STAGED="%F{#456841}%{$reset_color%}"
 
     local -a DIVERGENCES
     local -a FLAGS
