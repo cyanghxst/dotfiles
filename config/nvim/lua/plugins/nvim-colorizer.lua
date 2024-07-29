@@ -16,7 +16,7 @@ return {
             mode = "virtualtext",
             tailwind = false,
             sass = { enable = false, parsers = { "css" }, },
-            virtualtext = "󱓻",
+            virtualtext = "",
             always_update = false
         },
         buftypes = {},
