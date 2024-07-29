@@ -22,20 +22,20 @@ return {
             hide_inactive_statusline = true,
             dim_inactive = false,
             lualine_bold = false,
-            on_colors = function(colors) end,
+            -- on_colors = function(colors) end,
             on_highlights = function(hl, c)
 
                 local white = "#c0caf5"
-                local magenta = "#ff067d"
-                local cyan = "#2ac3de"
+                -- local magenta = "#ff067d"
+                -- local cyan = "#2ac3de"
                 local blue = "#7aa2f7"
                 local green = "#9ece6a"
-                local purple = "#9d7cd8"
+                -- local purple = "#9d7cd8"
                 local bone = "#a9b1d6"
                 local gray1 = "#414868"
                 local gray2 = "#3b4261"
                 local gray3 = "#232435"
-                local gray4 = "#201e2b"
+                -- local gray4 = "#201e2b"
                 local black = "#1e2231"
                 local background = "#16151d"
 
@@ -44,11 +44,13 @@ return {
 
                 -- Telescope
                 hl.TelescopePromptBorder = { fg = gray1 }
-                hl.TelescopePromptTitle = { bg = blue, fg = background }
-                hl.TelescopeResultsTitle = { bg = blue, fg = background }
+                -- hl.TelescopePromptTitle = { bg = blue, fg = background }
+                hl.TelescopePromptTitle = { fg = gray1 }
+                -- hl.TelescopeResultsTitle = { bg = blue, fg = background }
+                hl.TelescopeResultsTitle = { fg = gray1 }
                 hl.TelescopeResultsBorder = { fg = gray1 }
                 -- hl.TelescopeSelection = { bg = gray3 }
-                hl.TelescopeSelection = { fg = background, bg = blue }
+                -- hl.TelescopeSelection = { fg = background, bg = blue }
 
                 -- Dashboard
                 hl.AlphaHeader = { fg = blue }
