@@ -1,18 +1,11 @@
 local opt = vim.opt
+local o = vim.o
 
 -- Disable command bar
 opt.cmdheight = 0
 
 -- Status column
--- opt.statuscolumn = "%=%{v:lnum} %s"
-
--- Diagnostic settings
--- Uncomment if you want to customize diagnostics
--- vim.diagnostic.config {
---   virtual_text = false,
---   signs = false,
---   underline = false,
--- }
+opt.statuscolumn = "%=%{v:lnum} %s"
 
 -- Colors
 opt.termguicolors = true
