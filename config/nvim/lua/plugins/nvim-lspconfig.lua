@@ -17,6 +17,26 @@ return {
             },
         })
 
+        lsp.tsserver.setup({
+            init_options = {
+                plugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                        languages = {"javascript", "typescript", "vue"},
+                    },
+                },
+            },
+            filetypes = {
+                "javascript",
+                "typescript",
+                "vue",
+            },
+        })
+
+        -- You must make sure volar is setup
+        -- e.g. require'lspconfig'.volar.setup{}
+        -- See volar's section for more information
         lsp.clangd.setup({ capabilities = capabilities })
 
         vim.keymap.set("n", "<leader>M", vim.diagnostic.open_float)
