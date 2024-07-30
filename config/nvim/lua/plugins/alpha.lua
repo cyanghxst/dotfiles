@@ -45,6 +45,7 @@ return {
         dashboard.section.footer.opts.hl = "AlphaFooter"
 
         -- Set padding
+        -- dashboard.opts.layout[1].val = 2
         -- dashboard.opts.layout[1].val = 3
         -- dashboard.opts.layout[1].val = 6
 
@@ -55,14 +56,6 @@ return {
             type = 'padding',
             val = 2, -- footer padding
         })
-
-        -- old layout
-        -- dashboard.opts.layout[1].val = 2
-        -- dashboard.opts.layout[3].val = 3
-        -- table.insert(dashboard.config.layout, 5, {
-        --     type = 'padding',
-        --     val = 2,
-        -- })
 
         return dashboard
     end,
