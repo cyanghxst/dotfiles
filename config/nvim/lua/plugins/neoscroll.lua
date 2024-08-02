@@ -3,6 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     enabled = true,
     config = {
-        hide_cursor = false,
+        hide_cursor = true,
+        easing = "linear",
     }
 }
