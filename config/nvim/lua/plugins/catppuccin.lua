@@ -1,6 +1,6 @@
 return {
     "catppuccin/nvim",
-    enabled = true,
+    enabled = false,
     priority = 1000,
     init = function()
         vim.cmd.colorscheme [[catppuccin]]
