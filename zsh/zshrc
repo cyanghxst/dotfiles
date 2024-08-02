@@ -190,10 +190,10 @@ git_info() {
 
     local -a GIT_INFO
     GIT_INFO+=( "%F{#414868}on%{$reset_color%}" )
+    [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
     GIT_INFO+=( "%F{#414868}$GIT_LOCATION%{$reset_color%}" )
     [ -n "$GIT_STATUS" ] && GIT_INFO+=( "$GIT_STATUS" )
     [[ ${#DIVERGENCES[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)DIVERGENCES}" )
-    [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
     echo "${(j: :)GIT_INFO}"
 }
 
