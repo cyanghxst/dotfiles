@@ -22,8 +22,7 @@ return {
             hide_inactive_statusline = true,
             dim_inactive = false,
             lualine_bold = false,
-            -- on_colors = function(colors) end,
-            on_highlights = function(hl, c)
+            on_highlights = function(hl, _)
 
                 local white = "#c0caf5"
                 -- local magenta = "#ff067d"
