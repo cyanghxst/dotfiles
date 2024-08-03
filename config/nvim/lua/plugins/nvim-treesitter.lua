@@ -4,7 +4,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
     opts = {
-        auto_install = false,
+        auto_install = true,
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = false,
