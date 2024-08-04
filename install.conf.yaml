@@ -27,6 +27,7 @@
     ~/.vimrc: vim/vimrc
     ~/.zprofile: zsh/zprofile 
     ~/.zshrc: zsh/zshrc
+    ~/Library/Application Support/tlrc/config.toml: tldr/config.toml
 
 - shell:
     - ['git submodule update --init --recursive', Install submodules]
