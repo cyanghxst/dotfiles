@@ -16,7 +16,6 @@
 [alias]
 	lol = log --graph --decorate --oneline
 	lola = log --graph --decorate --oneline --all
-	tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
 	lg = log -14 --graph --all --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
 	lga = log --graph --all --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
     rebase-og = "!f() { git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE=\"%cD\" git commit --amend --no-edit' rebase -i \"$1\"; }; f"
