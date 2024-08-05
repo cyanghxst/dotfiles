@@ -17,4 +17,4 @@
 	lol = log --graph --decorate --oneline
 	lola = log --graph --decorate --oneline --all
 	tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
-	lg = log -10 --graph --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
+	lg = log -10 --graph --all --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
