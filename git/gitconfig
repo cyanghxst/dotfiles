@@ -14,7 +14,7 @@
 	status = auto
 	interactive = auto
 [alias]
-	lol = log -14 --graph --decorate --oneline --all
+	lol = log -20 --graph --decorate --oneline --all
 	lola = log --graph --decorate --oneline --all
 	lg = log -14 --graph --all --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
 	lga = log --graph --all --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
