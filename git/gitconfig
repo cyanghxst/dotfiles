@@ -14,10 +14,10 @@
 	status = auto
 	interactive = auto
 [alias]
-	lol = log -20 --graph --decorate --oneline --all
-	lola = log --graph --decorate --oneline --all
-	lg = log -14 --graph --all --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
-	lga = log --graph --all --abbrev-commit --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %Cgreen(%cr)%Creset'
+	lol = log -20 --all --decorate --graph --oneline --pretty=format:'%C(auto)%d%Creset %C(bold yellow)%h%Creset - %s %C(black)(%cr)%Creset'
+	lola = log --all --decorate --graph --oneline --pretty=format:'%C(auto)%d%Creset %C(bold yellow)%h%Creset - %s %C(black)(%cr)%Creset'
+	lg = log -14 --all --abbrev-commit --graph --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %C(green)(%cr)%Creset'
+	lga = log --all --abbrev-commit --graph --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %C(green)(%cr)%Creset'
     rebase-og = "!f() { git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE=\"%cD\" git commit --amend --no-edit' rebase -i \"$1\"; }; f"
 [color "status"]
 	changed = yellow
