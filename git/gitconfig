@@ -16,9 +16,6 @@
 [alias]
 	lol = log -20 --all --decorate --graph --oneline --pretty=format:'%C(bold yellow)%h%Creset - %C(auto)%d%Creset %s %C(black)(%cr)%Creset'
 	lola = log --all --decorate --graph --oneline --pretty=format:'%C(bold yellow)%h%Creset - %C(auto)%d%Creset %s %C(black)(%cr)%Creset'
-	lg = log -14 --all --abbrev-commit --graph --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %C(green)(%cr)%Creset'
-	lga = log --all --abbrev-commit --graph --pretty=format:'%C(auto)%d%Creset%n %C(bold yellow)%h%Creset - %s %C(green)(%cr)%Creset'
-    lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(auto)%d%C(reset)' --abbrev-commit --date=relative
     rebase-og = "!f() { git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE=\"%cD\" git commit --amend --no-edit' rebase -i \"$1\"; }; f"
 [color "status"]
 	changed = yellow
