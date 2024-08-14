@@ -1,5 +1,5 @@
 # Disable feat
-set ftp:use-feat false
+# set ftp:use-feat false
 
 # Set prompt formatting
 set prompt "\n\[\e[0;90m\][lftp] \u\@\h \w\n\[\e[0;97m\]󱐋 "
