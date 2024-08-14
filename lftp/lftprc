@@ -8,4 +8,4 @@ set prompt "\n\[\e[0;90m\][lftp] \u\@\h \w\n\[\e[0;97m\]󱐋 "
 set color:dir-colors "rs=0:di=00;34:fi=00;97:ln=01;35:*.txt=00;33:*.html=00;32:"
 
 # Set ssh key
-set sftp:connect-program "ssh -p 22 -a -x -i /Users/xenon/.ssh/id_ed25519"
+# set sftp:connect-program "ssh -p 22 -a -x -i /Users/xenon/.ssh/id_ed25519"
