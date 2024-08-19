@@ -77,19 +77,21 @@ return {
                         arrow_closed = "",
                         default = "",
                         open = "",
+                        empty = "",
+                        empty_open = "",
                     },
                     -- git = {
-                    --     unstaged = "[u]",
-                    --     staged = "",
-                    --     unmerged = "",
-                    --     renamed = "󰛿",
-                    --     untracked = "󰋗",
-                    --     deleted = "󰍶",
-                    --     ignored = "◌",
-                    -- }
-                }
-            },
-            special_files = { "README.md" },
+                        --     unstaged = "[u]",
+                        --     staged = "",
+                        --     unmerged = "",
+                        --     renamed = "󰛿",
+                        --     untracked = "󰋗",
+                        --     deleted = "󰍶",
+                        --     ignored = "◌",
+                        -- }
+                    }
+                },
+                special_files = { "README.md" },
+            }
         }
     }
-}
