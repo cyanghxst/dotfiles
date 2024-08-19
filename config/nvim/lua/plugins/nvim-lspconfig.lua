@@ -9,6 +9,10 @@ return {
         -- local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+        lsp.jdtls.setup({
+            capabilities = capabilities,
+        })
+
         lsp.lua_ls.setup({
             capabilities = capabilities,
             settings = {
