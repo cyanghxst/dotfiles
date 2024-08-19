@@ -203,3 +203,7 @@ PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 
 # PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.✦)%{$reset_color%} '
+
+# SDK man
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
