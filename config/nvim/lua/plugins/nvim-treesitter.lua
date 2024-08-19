@@ -20,6 +20,7 @@ return {
             "query",
             "html",
             "javascript",
+            "java",
             "css",
             "vim",
             "vimdoc",
