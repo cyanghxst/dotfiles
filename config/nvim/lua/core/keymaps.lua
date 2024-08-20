@@ -32,6 +32,23 @@ map("v", "K", ":m '<-2<CR>gv=gv", opts)
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
+-- Disable floating window when the return key is hit
+vim.keymap.set("n", "<cr>", function()
+    local found_float = false
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_config(win).relative ~= '' then
+            vim.api.nvim_win_close(win, true)
+            found_float = true
+        end
+    end
+
+    if found_float then
+        return
+    end
+
+    vim.diagnostic.open_float(nil, { focus = false, scope = 'cursor' })
+end, { desc = 'Toggle Diagnostics' })
+
 -- LSP
 map("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 map("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
