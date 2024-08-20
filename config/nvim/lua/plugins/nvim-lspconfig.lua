@@ -2,11 +2,12 @@ return {
     "neovim/nvim-lspconfig",
     enabled = true,
     event = { "BufReadPost", "BufNewFile" },
-    dependencies = "hrsh7th/cmp-nvim-lsp",
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
         local lsp = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
-        -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+        -- Uncomment this if you need additional customization
         capabilities.textDocument.completion.completionItem.snippetSupport = true
 
         lsp.lua_ls.setup({
