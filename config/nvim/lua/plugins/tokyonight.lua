@@ -81,6 +81,9 @@ return {
                 -- lazy
                 hl.LazyNormal = { bg = background }
 
+                -- float
+                hl.NormalFloat = { bg = background }
+
                 -- Leap
                 -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
                 -- hl.LeapLabelPrimary = { fg = green, bold = true }
