@@ -47,7 +47,9 @@ return {
         -- You must make sure volar is setup
         -- e.g. require'lspconfig'.volar.setup{}
         -- See volar's section for more information
-        lsp.clangd.setup({ capabilities = capabilities })
+        lsp.clangd.setup({
+            capabilities = capabilities
+        })
 
         vim.keymap.set("n", "<leader>M", vim.diagnostic.open_float)
         vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
