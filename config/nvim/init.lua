@@ -9,3 +9,5 @@ require("core.lazy")
 require("core.options")
 require("core.autocmds")
 require("core.keymaps")
+
+require('lspconfig.ui.windows').default_options.border = 'single'
