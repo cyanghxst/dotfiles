@@ -21,7 +21,7 @@ return {
         })
 
         require("mason-lspconfig").setup({
-            ensure_installed = { "lua_ls", "pyright", "tsserver", "jdtls" }, -- List of servers to automatically install
+            ensure_installed = { "lua_ls", "pyright", "tsserver", "jdtls", "ruby_lsp" }, -- List of servers to automatically install
             automatic_installation = true, -- Automatically install servers
         })
 
