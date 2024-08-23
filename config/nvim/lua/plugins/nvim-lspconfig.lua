@@ -45,6 +45,10 @@ return {
             capabilities = capabilities,
         })
 
+        lsp.ruby_lsp.setup({
+            capabilities = capabilities,
+        })
+
         -- You must make sure volar is setup
         -- e.g. require'lspconfig'.volar.setup{}
         -- See volar's section for more information
