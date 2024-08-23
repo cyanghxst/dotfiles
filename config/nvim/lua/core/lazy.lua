@@ -20,9 +20,9 @@ require("lazy").setup("plugins", {
 	ui = {
         -- border = "single",
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		size = {
-			width = 0.8,
-			height = 0.9,
-		},
+		-- size = {
+		-- 	width = 0.8,
+		-- 	height = 0.8,
+		-- },
 	},
 })
