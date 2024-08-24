@@ -40,7 +40,7 @@ export GREP_OPTIONS='--color=always'
 export GREP_COLOR='0;94' # dull blue
 
 # SDK man
-export SDKMAN_DIR="$HOME/.sdkman"
+export SDKMAN_DIR="/opt/homebrew/opt/sdkman-cli/libexec"
 sdk() {
   unset -f sdk
   [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
