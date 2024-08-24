@@ -44,7 +44,7 @@ local config = {
     settings = {
         java = {
             -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-            home = '/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/current/bin/java',
+            home = '/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/22.0.2-tem',
             eclipse = {
                 downloadSources = true,
             },
