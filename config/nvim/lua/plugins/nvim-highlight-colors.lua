@@ -14,7 +14,7 @@ return {
             virtual_symbol_prefix = '',
 
             ---Set virtual symbol suffix (defaults to ' ')
-            virtual_symbol_suffix = ' ',
+            virtual_symbol_suffix = '',
 
             ---Set virtual symbol position()
             ---@usage 'inline'|'eol'|'eow'
