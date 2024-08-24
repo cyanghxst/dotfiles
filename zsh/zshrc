@@ -94,10 +94,11 @@ alias zsh='source ~/.zshrc'
 export FZF_DEFAULT_OPTS='
 --height=40% --layout=reverse --info=inline --border --margin=1 --padding=1
 --color=fg:#c0caf5,fg+:#16161e
+--pointer=">"
 --color=bg:-1,bg+:#9ece6a
 --color=hl:#fa2d90,hl+:#16161e
 --color=gutter:#414868
---color=scrollbar:#16161e
+--color=scrollbar:#414868
 --color=info:#9ece6a,pointer:#16161e
 --color=border:#414868,spinner:#7aa2f7,header:#7E8E91,marker:#F92672,prompt:#9ece6a'
 
