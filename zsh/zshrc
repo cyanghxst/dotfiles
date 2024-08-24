@@ -1,13 +1,13 @@
-# ---------------------------------------- 
+# ----------------------------------------
 # General
-# ---------------------------------------- 
+# ----------------------------------------
 
 # Emacs key bindings
 bindkey -e
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Environment Variables
-# ---------------------------------------- 
+# ----------------------------------------
 
 # Term
 export TERM=xterm-256color
@@ -43,9 +43,9 @@ export GREP_COLOR='0;94' # dull blue
 export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Aliases
-# ---------------------------------------- 
+# ----------------------------------------
 
 alias ls='\ls -Glh'
 alias lst='\ls -Glth'
@@ -69,9 +69,9 @@ alias tm='transmission-cli'
 alias venv='source ~/.venv/bin/activate'
 alias zsh='source ~/.zshrc'
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Fzf color options
-# ---------------------------------------- 
+# ----------------------------------------
 
 export FZF_DEFAULT_OPTS='
 --height=40% --layout=reverse --info=inline --border --margin=1 --padding=1
@@ -84,24 +84,24 @@ export FZF_DEFAULT_OPTS='
 --color=info:#9ece6a,pointer:#16161e
 --color=border:#414868,spinner:#7aa2f7,header:#7E8E91,marker:#F92672,prompt:#9ece6a'
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Wine64
-# ---------------------------------------- 
+# ----------------------------------------
 
 wine-gptk() {
     WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"
 }
 
-# ---------------------------------------- 
-# Tab Completion Settings 
-# ---------------------------------------- 
+# ----------------------------------------
+# Tab Completion Settings
+# ----------------------------------------
 
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Prompt Settings
-# ---------------------------------------- 
+# ----------------------------------------
 
 function precmd() {
     if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
@@ -113,9 +113,9 @@ function precmd() {
 
 clear
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Manual Page Settings
-# ---------------------------------------- 
+# ----------------------------------------
 
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
@@ -124,9 +124,9 @@ export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
 export LESS_TERMCAP_us=$(tput smul; tput setaf 4) # blue
 export LESS_TERMCAP_me=$(tput sgr0)
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Josh Dick's zsh prompt
-# ---------------------------------------- 
+# ---------------------------------------
 
 setopt prompt_subst
 autoload -U colors && colors
@@ -192,9 +192,9 @@ PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.✦)%{$reset_color%} '
 
-# ---------------------------------------- 
+# ----------------------------------------
 # Source
-# ---------------------------------------- 
+# ----------------------------------------
 
 # Source zsh-syntax-highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
