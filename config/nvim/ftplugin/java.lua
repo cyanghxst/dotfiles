@@ -57,6 +57,10 @@ local config = {
                         name = "JavaSE-17",
                         path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem",
                     },
+                    {
+                        name = "JavaSE-17",
+                        path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/22.0.2-tem",
+                    },
                 }
             },
             maven = {
