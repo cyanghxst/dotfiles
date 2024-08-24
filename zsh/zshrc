@@ -39,30 +39,9 @@ eval "$(rbenv init -)"
 export GREP_OPTIONS='--color=always'
 export GREP_COLOR='0;94' # dull blue
 
-# ---------------------------------------- 
-# Source
-# ---------------------------------------- 
-
-# Source zsh-syntax-highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Source zsh-autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Sourcee tmc-autocomplete
-source /Users/cyanghxst/.tmc-autocomplete.sh || true
-
-# Brew source
-if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
-
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
+# SDK man
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
 # ---------------------------------------- 
 # Aliases
@@ -213,6 +192,27 @@ PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.✦)%{$reset_color%} '
 
-# SDK man
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+# ---------------------------------------- 
+# Source
+# ---------------------------------------- 
+
+# Source zsh-syntax-highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Source zsh-autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Brew source
+if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+# Source tmc-autocomplete
+source /Users/cyanghxst/.tmc-autocomplete.sh || true
