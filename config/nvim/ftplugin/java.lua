@@ -54,6 +54,10 @@ local config = {
                 -- The runtime name parameters need to match specific Java execution environments.  See https://github.com/tamago324/nlsp-settings.nvim/blob/2a52e793d4f293c0e1d61ee5794e3ff62bfbbb5d/schemas/_generated/jdtls.json#L317-L334
                 runtimes = {
                     {
+                        name = "JavaSE-1.8",
+                        path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/8.0.422-zulu",
+                    },
+                    {
                         name = "JavaSE-17",
                         path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem",
                     },
