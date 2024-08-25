@@ -58,8 +58,8 @@ local config = {
                         path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem",
                     },
                     {
-                        name = "JavaSE-17",
-                        path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/22.0.2-tem",
+                        name = "JavaSE-21",
+                        path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/21.0.4-tem",
                     },
                 }
             },
