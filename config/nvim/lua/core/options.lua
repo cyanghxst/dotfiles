@@ -42,9 +42,9 @@ opt.wildmenu = true
 opt.clipboard = "unnamedplus"
 
 -- Cursorline
--- Uncomment if you want to enable cursorline
 o.cursorline = true
 o.cursorlineopt = "number"
+-- Uncomment if you want to enable cursorline
 -- vim.cmd[[hi CursorLine gui=bold]]
 
 -- Hybrid Cursorline
