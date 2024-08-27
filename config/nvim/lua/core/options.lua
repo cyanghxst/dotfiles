@@ -38,8 +38,6 @@ opt.incsearch = true
 opt.smartcase = true
 opt.wildmenu = true
 
--- Statusline
-
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
