@@ -123,6 +123,7 @@ export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;30:cd=43;30:su=37;41:sg=30
 # ----------------------------------------
 
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 autoload -Uz compinit && compinit -C
 
 # ----------------------------------------
