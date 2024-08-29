@@ -90,6 +90,10 @@ alias tm='transmission-cli'
 alias venv='source ~/.venv/bin/activate'
 alias zsh='source ~/.zshrc'
 
+jvr() {
+    javac "$1" && java "${1%.*}"
+}
+
 # ----------------------------------------
 # Fzf color options
 # ----------------------------------------
