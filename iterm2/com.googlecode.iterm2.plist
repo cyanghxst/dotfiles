@@ -1412,15 +1412,15 @@
 			<key>Link Color</key>
 			<dict>
 				<key>Alpha Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.792156862745098</real>
 				<key>Color Space</key>
-				<string>sRGB</string>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.85490196078431369</real>
+				<real>0.84313725490196079</real>
 				<key>Red Component</key>
-				<real>0.45098039215686281</real>
+				<real>0.5490196078431373</real>
 			</dict>
 			<key>Link Color (Dark)</key>
 			<dict>
