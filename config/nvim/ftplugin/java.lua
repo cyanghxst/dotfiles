@@ -1,20 +1,14 @@
--- JDTLS (Java LSP) configuration
 local jdtls = require('jdtls')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.env.HOME .. '/jdtls-workspace/' .. project_name
 
--- Needed for debugging
 local bundles = {
     vim.fn.glob(vim.env.HOME .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
 }
 
--- Needed for running/debugging unit tests
 vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.HOME .. "/.local/share/nvim/mason/share/java-test/*.jar", 1), "\n"))
 
--- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
-    -- The command that starts the language server
-    -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     cmd = {
         '/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem/bin/java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -27,20 +21,13 @@ local config = {
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-
-        -- Eclipse jdtls location
         '-jar', vim.env.HOME .. '/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
-        -- TODO Update this to point to the correct jdtls subdirectory for your OS (config_linux, config_mac, config_win, etc)
         '-configuration', vim.env.HOME .. '/.local/share/nvim/mason/packages/jdtls/config_mac_arm',
         '-data', workspace_dir
     },
 
-    -- This is the default if not provided, you can remove it. Or adjust as needed.
-    -- One dedicated LSP server & client will be started per unique root_dir
     root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'pom.xml', 'build.gradle'}),
 
-    -- Here you can configure eclipse.jdt.ls specific settings
-    -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     settings = {
         java = {
             -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
@@ -50,21 +37,10 @@ local config = {
             },
             configuration = {
                 updateBuildConfiguration = "interactive",
-                -- TODO Update this by adding any runtimes that you need to support your Java projects and removing any that you don't have installed
-                -- The runtime name parameters need to match specific Java execution environments.  See https://github.com/tamago324/nlsp-settings.nvim/blob/2a52e793d4f293c0e1d61ee5794e3ff62bfbbb5d/schemas/_generated/jdtls.json#L317-L334
                 runtimes = {
-                    {
-                        name = "JavaSE-1.8",
-                        path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/8.0.422-zulu",
-                    },
-                    {
-                        name = "JavaSE-17",
-                        path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem",
-                    },
-                    {
-                        name = "JavaSE-21",
-                        path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/21.0.4-tem",
-                    },
+                    { name = "JavaSE-1.8", path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/8.0.422-zulu" },
+                    { name = "JavaSE-17", path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem" },
+                    { name = "JavaSE-21", path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/21.0.4-tem" },
                 }
             },
             maven = {
@@ -120,13 +96,11 @@ local config = {
                 useBlocks = true,
             },
         },
-        -- Needed for auto-completion with method signatures and placeholders
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
         flags = {
             allow_incremental_sync = true,
         },
         init_options = {
-            -- References the bundles defined above to support Debugging and Unit Testing
             bundles = bundles
         },
     }
