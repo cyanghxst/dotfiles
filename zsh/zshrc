@@ -58,10 +58,6 @@ eval "$(rbenv init -)"
 export GREP_OPTIONS='--color=always'
 export GREP_COLOR='0;94' # dull blue
 
-# SDK man
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-
 # ----------------------------------------
 # Aliases
 # ----------------------------------------
@@ -242,3 +238,7 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
+
+# SDK man
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
