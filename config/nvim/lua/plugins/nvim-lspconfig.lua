@@ -20,7 +20,7 @@ return {
             },
         })
 
-        lsp.tsserver.setup({
+        lsp.ts_ls.setup({
             init_options = {
                 plugins = {
                     {
