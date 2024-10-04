@@ -107,8 +107,8 @@ local config = {
 
     -- Needed for debugging
     config['on_attach'] = function(client, bufnr)
-        jdtls.setup_dap({ hotcodereplace = 'auto' })
-        require('jdtls.dap').setup_dap_main_class_configs()
+        -- jdtls.setup_dap({ hotcodereplace = 'auto' })
+        -- require('jdtls.dap').setup_dap_main_class_configs()
     end
 
     -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
