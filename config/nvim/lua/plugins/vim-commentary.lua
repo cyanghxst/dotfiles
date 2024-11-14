@@ -1,5 +1,5 @@
 return {
     "tpope/vim-commentary",
-    enabled = false,
+    enabled = true,
     event = { "BufReadPre", "BufNewFile" },
 }
