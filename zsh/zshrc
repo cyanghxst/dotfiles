@@ -88,9 +88,13 @@ alias tm='transmission-cli'
 alias venv='source ~/.venv/bin/activate'
 alias zsh='source ~/.zshrc'
 
-jvr() {
-    javac "$1" && java "${1%.*}"
-}
+# ----------------------------------------
+# Functions
+# ----------------------------------------
+
+jvr() { javac $1 && java "${1%.*}" }
+co() { g++ -std=c++17 -O2 $1 -o "${1%.*}" -Wall; }
+run() { co $1 && ./${1%.*} & fg; }
 
 # ----------------------------------------
 # Fzf color options
