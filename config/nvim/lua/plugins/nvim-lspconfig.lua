@@ -10,6 +10,7 @@ return {
         -- Uncomment this if you need additional customization
         capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+        -- Lua LSP setup
         lsp.lua_ls.setup({
             capabilities = capabilities,
             settings = {
@@ -20,66 +21,60 @@ return {
             },
         })
 
+        -- TypeScript LSP setup
         lsp.ts_ls.setup({
             init_options = {
                 plugins = {
                     {
                         name = "@vue/typescript-plugin",
                         location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-                        languages = {"javascript", "typescript", "vue"},
+                        languages = { "javascript", "typescript", "vue" },
                     },
                 },
             },
-            filetypes = {
-                "javascript",
-                "typescript",
-                "vue",
-            },
+            filetypes = { "javascript", "typescript", "vue" },
         })
 
-        lsp.cssls.setup({
-            capabilities = capabilities,
-        })
+        -- CSS LSP setup
+        lsp.cssls.setup({ capabilities = capabilities })
 
-        lsp.html.setup({
-            capabilities = capabilities,
-        })
+        -- HTML LSP setup
+        lsp.html.setup({ capabilities = capabilities })
 
-        lsp.ruby_lsp.setup({
-            capabilities = capabilities,
-        })
+        -- Ruby LSP setup
+        lsp.ruby_lsp.setup({ capabilities = capabilities })
 
-        -- You must make sure volar is setup
-        -- e.g. require'lspconfig'.volar.setup{}
-        -- See volar's section for more information
+        -- Clangd LSP setup with custom formatting options
         lsp.clangd.setup({
-            capabilities = capabilities
+            cmd = {
+                "clangd",
+                "--fallback-style=webkit"
+            },
+            filetypes = { "cpp", "c", "objc", "objcpp" },
+            capabilities = capabilities,
         })
 
+        -- Diagnostic configuration
         vim.diagnostic.config({
             virtual_text = true,
-        })
-
-        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-            vim.lsp.handlers.hover,
-            {border = 'rounded'}
-        )
-
-        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-            vim.lsp.handlers.signature_help,
-            {border = 'rounded'}
-        )
-
-        -- Diagnostic signs
-        vim.diagnostic.config({
             signs = {
                 text = {
-                    [vim.diagnostic.severity.ERROR] = '', -- or other icon of your choice here, this is just what my config has:
+                    [vim.diagnostic.severity.ERROR] = '',
                     [vim.diagnostic.severity.WARN] = '',
                     [vim.diagnostic.severity.INFO] = '󰋼',
                     [vim.diagnostic.severity.HINT] = '󰌵',
                 },
             },
         })
+
+        -- Hover and signature handlers with rounded borders
+        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+            vim.lsp.handlers.hover,
+            { border = 'rounded' }
+        )
+        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+            vim.lsp.handlers.signature_help,
+            { border = 'rounded' }
+        )
     end,
 }
