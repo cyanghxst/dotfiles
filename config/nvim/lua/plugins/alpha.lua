@@ -15,8 +15,9 @@ return {
             [[ ███████████ ███    ███ █████████ █████ █████ ████ █████ ]],
             [[██████  █████████████████████ ████ █████ █████ ████ ██████]],
         }
-
         dashboard.section.header.val = header
+
+        -- Define buttons
         dashboard.section.buttons.val = {
             dashboard.button("f", " " .. " Find File", ":Telescope find_files<CR>"),
             dashboard.button("t", " " .. " Find Text", ":Telescope live_grep<CR>"),
@@ -34,7 +35,22 @@ return {
             el.opts.width = 36 -- or some other value
         end
 
-        -- Set highlight
+        -- Dynamically calculate padding
+        local term_height = vim.o.lines
+        local header_padding = math.max(2, math.floor((term_height - 17) / 4)) -- Adjust as needed
+        local footer_padding = math.max(1, math.floor((term_height - 20) / 6))
+
+        -- Apply layout padding
+        dashboard.opts.layout = {
+            { type = "padding", val = header_padding },
+            dashboard.section.header,
+            { type = "padding", val = 3 }, -- Space between header and buttons
+            dashboard.section.buttons,
+            { type = "padding", val = footer_padding },
+            dashboard.section.footer,
+        }
+
+        -- Set highlight groups
         for _, button in ipairs(dashboard.section.buttons.val) do
             button.opts.hl = "AlphaButtons"
             button.opts.hl_shortcut = "AlphaShortcut"
@@ -43,19 +59,6 @@ return {
         dashboard.section.header.opts.hl = "AlphaHeader"
         dashboard.section.buttons.opts.hl = "AlphaButtons"
         dashboard.section.footer.opts.hl = "AlphaFooter"
-
-        -- Set padding
-        -- dashboard.opts.layout[1].val = 2
-        -- dashboard.opts.layout[1].val = 3
-        -- dashboard.opts.layout[1].val = 6
-
-        -- new layout
-        dashboard.opts.layout[1].val = 7 -- header padding
-        dashboard.opts.layout[3].val = 3 -- body padding
-        table.insert(dashboard.config.layout, 5, {
-            type = 'padding',
-            val = 2, -- footer padding
-        })
 
         return dashboard
     end,
