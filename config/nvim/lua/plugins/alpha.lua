@@ -24,7 +24,8 @@ return {
             dashboard.button("n", " " .. " New File", ":ene | startinsert<CR>"),
             dashboard.button("r", " " .. " Recent", ":Telescope oldfiles<CR>"),
             dashboard.button("u", " " .. " Update", ":Lazy update<CR>"),
-            dashboard.button("s", " " .. " Settings", ":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR> | :lua vim.cmd('wincmd l')<CR>"),
+            dashboard.button("s", " " .. " Settings", ":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :Neotree<CR> | :lua vim.cmd('wincmd l')<CR>"),
+            -- dashboard.button("s", " " .. " Settings", ":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR> | :lua vim.cmd('wincmd l')<CR>"),
             dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
         }
 
