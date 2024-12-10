@@ -14,6 +14,7 @@ return {
                 "Trouble",
                 "nvimtree",
                 "dashboard",
+                "neo-tree"
             },
             callback = function()
                 vim.b.miniindentscope_disable = true
