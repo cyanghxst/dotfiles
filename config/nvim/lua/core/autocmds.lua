@@ -1,8 +1,8 @@
 -- Disable sign column in tree
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        if vim.bo.filetype == "neo-tree" then
-        -- if vim.bo.filetype == "NvimTree" then
+        -- if vim.bo.filetype == "neo-tree" then
+        if vim.bo.filetype == "NvimTree" then
             vim.wo.statuscolumn = ""
         end
     end,
@@ -16,11 +16,11 @@ vim.api.nvim_create_autocmd("Filetype", {
     end
 })
 
--- -- Autoclose tree
--- vim.api.nvim_create_autocmd('BufEnter', {
---     command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
---     nested = true,
--- })
+-- Autoclose tree
+vim.api.nvim_create_autocmd('BufEnter', {
+    command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
+    nested = true,
+})
 
 vim.api.nvim_set_hl(0, "NeoTreeRootName", { fg = "#a9b1d6", bold = false, italic = false })
 
