@@ -1,7 +1,7 @@
 return {
     "nvim-tree/nvim-tree.lua",
     cmd = "NvimTreeToggle",
-    enabled = true,
+    enabled = false,
     init = function()
         vim.api.nvim_set_hl(0, "NvimTreeModifiedFile", { fg = "#a9b1d6" })
         vim.g.loaded_netrw = 1 -- disable netrw
