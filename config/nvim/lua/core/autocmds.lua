@@ -1,15 +1,8 @@
--- Disable lsp semantic tokens
--- vim.api.nvim_create_autocmd("LspAttach", {
---     callback = function(args)
---         local client = vim.lsp.get_client_by_id(args.data.client_id)
---         client.server_capabilities.semanticTokensProvider = nil
---     end,
--- });
-
--- Disable sign column in nvim-tree
+-- Disable sign column in tree
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        if vim.bo.filetype == "NvimTree" then
+        if vim.bo.filetype == "neo-tree" then
+        -- if vim.bo.filetype == "NvimTree" then
             vim.wo.statuscolumn = ""
         end
     end,
@@ -23,11 +16,13 @@ vim.api.nvim_create_autocmd("Filetype", {
     end
 })
 
--- Autoclose Nvimtree
-vim.api.nvim_create_autocmd('BufEnter', {
-    command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-    nested = true,
-})
+-- -- Autoclose tree
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--     command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
+--     nested = true,
+-- })
+
+vim.api.nvim_set_hl(0, "NeoTreeRootName", { fg = "#a9b1d6", bold = false, italic = false })
 
 -- Disable automatic comment insertion
 vim.cmd[[autocmd FileType * setlocal formatoptions-=cro]]
