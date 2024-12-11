@@ -38,14 +38,14 @@ return {
 
         -- Dynamically calculate padding
         local term_height = vim.o.lines
-        local header_padding = math.max(2, math.floor((term_height - 17) / 4)) -- Adjust as needed
+        local header_padding = math.max(2, math.floor((term_height - 20) / 4)) -- Adjust as needed
         local footer_padding = math.max(1, math.floor((term_height - 20) / 6))
 
         -- Apply layout padding
         dashboard.opts.layout = {
             { type = "padding", val = header_padding },
             dashboard.section.header,
-            { type = "padding", val = 3 }, -- Space between header and buttons
+            { type = "padding", val = 4 }, -- Space between header and buttons
             dashboard.section.buttons,
             { type = "padding", val = footer_padding },
             dashboard.section.footer,
