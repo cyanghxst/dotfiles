@@ -31,33 +31,6 @@ setopt hist_find_no_dups
 # Term
 export TERM=xterm-256color
 
-# Default editor
-export EDITOR='nvim'
-
-# Locale
-export LANG=en_US.UTF-8
-
-# Paths
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/Users/cyanghxst/.cargo/bin:/Users/cyanghxst/.local/share/bob/nvim-bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
-export PATH="$PATH:/Library/TeX/texbin"
-export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
-export DYLD_FALLBACK_LIBRARY_PATH="/opt/homebrew/lib:/usr/lib"
-
-# pyenv Environment
-export PYENV_ROOT="$HOME/.pyenv"
-if [[ -d $PYENV_ROOT/bin ]]; then
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-fi
-
-# rbenv
-eval "$(rbenv init -)"
-
-# Default grep color
-export GREP_OPTIONS='--color=always'
-export GREP_COLOR='0;94' # dull blue
-
 # ----------------------------------------
 # Aliases
 # ----------------------------------------
@@ -89,12 +62,13 @@ alias venv='source ~/.venv/bin/activate'
 alias zsh='source ~/.zshrc'
 
 # ----------------------------------------
-# Functions
+# Custom functions
 # ----------------------------------------
 
 jvr() { javac $1 && java "${1%.*}" }
 co() { g++ -std=c++17 -O2 $1 -o "${1%.*}" -Wall; }
 run() { co $1 && ./${1%.*} & fg; }
+wine-gptk() { WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@" }
 
 # ----------------------------------------
 # Fzf color options
@@ -110,14 +84,6 @@ export FZF_DEFAULT_OPTS='
 --color=scrollbar:#414868
 --color=info:#9ece6a,pointer:#16161e
 --color=border:#414868,spinner:#7aa2f7,header:#7E8E91,marker:#F92672,prompt:#9ece6a'
-
-# ----------------------------------------
-# Wine64
-# ----------------------------------------
-
-wine-gptk() {
-    WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"
-}
 
 # ----------------------------------------
 # List colors settings
@@ -232,22 +198,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source zsh-autosuggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Brew source
-if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
-
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-# SDK man
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
 # mise
 eval "$(mise activate zsh)"
