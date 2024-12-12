@@ -24,7 +24,6 @@ return {
             dashboard.button("n", " " .. " New File", ":ene | startinsert<CR>"),
             dashboard.button("r", " " .. " Recent", ":Telescope oldfiles<CR>"),
             dashboard.button("u", " " .. " Update", ":Lazy update<CR>"),
-            -- dashboard.button("s", " " .. " Settings", ":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :Neotree<CR> | :lua vim.cmd('wincmd l')<CR>"),
             dashboard.button("s", " " .. " Settings", ":cd ~/.config/nvim | :e lua/plugins/alpha.lua | :NvimTreeToggle<CR> | :lua vim.cmd('wincmd l')<CR>"),
             dashboard.button("q", " " .. " Quit", ":qa!<CR>"),
         }
@@ -32,14 +31,13 @@ return {
         -- Set width
         for _, el in pairs(dashboard.section.buttons.val) do
             el.opts.position = "center"
-            -- el.opts.width = 40 -- or some other value
-            el.opts.width = 36 -- or some other value
+            el.opts.width = 36
         end
 
         -- Dynamically calculate padding
         local term_height = vim.o.lines
-        local header_padding = math.max(2, math.floor((term_height - 20) / 4)) -- Adjust as needed
-        local footer_padding = math.max(1, math.floor((term_height - 20) / 6))
+        local header_padding = math.max(2, math.floor((term_height - 14) / 4)) -- Adjust as needed
+        -- local footer_padding = math.max(1, math.floor((term_height - 20) / 6))
 
         -- Apply layout padding
         dashboard.opts.layout = {
@@ -47,7 +45,7 @@ return {
             dashboard.section.header,
             { type = "padding", val = 4 }, -- Space between header and buttons
             dashboard.section.buttons,
-            { type = "padding", val = footer_padding },
+            { type = "padding", val = 3 },
             dashboard.section.footer,
         }
 
