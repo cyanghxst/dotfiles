@@ -13,8 +13,6 @@ return {
             styles = {
                 comments = { italic = true },
                 keywords = { italic = true },
-                functions = {},
-                variables = {},
                 sidebars = "transparent",
                 floats = "transparent",
             },
@@ -83,23 +81,6 @@ return {
 
                 -- float
                 hl.NormalFloat = { bg = background }
-
-                -- Leap
-                -- hl.LeapBackdrop = { fg = c.comment, link = "comment" }
-                -- hl.LeapLabelPrimary = { fg = green, bold = true }
-                -- hl.LeapLabelSecondary = { bg = purple, fg = comment }
-
-                -- -- Gitsigns
-                -- hl.GitSignsAdd = { fg = green }
-                -- hl.GitSignsAddNr = { fg = green }
-                -- hl.GitSignsAddLn = { fg = green }
-                -- hl.GitSignsChange = { fg = purple }
-                -- hl.GitSignsChangeNr = { fg = purple }
-                -- hl.GitSignsChangeLn = { fg = purple }
-                -- hl.GitSignsDelete = { fg = magenta }
-                -- hl.GitSignsDeleteNr = { fg = magenta }
-                -- hl.GitSignsTopDelete = { fg = magenta }
-                -- hl.GitSignsCurrentLineBlame = { fg = gray2 }
 
                 -- Gitsigns
                 hl.GitSignsAdd = { fg = gray2 }
