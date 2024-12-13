@@ -12,8 +12,8 @@ return {
         },
 
         signs = {
-            add          = { text = "⎮" },
-            change       = { text = "⎮" },
+            add          = { text = "│" },
+            change       = { text = "│" },
             delete       = { text = "_" },
             topdelete    = { text = "‾" },
             changedelete = { text = "~" },
@@ -21,8 +21,8 @@ return {
         },
 
         signs_staged = {
-            add          = { text = "⎮" },
-            change       = { text = "⎮" },
+            add          = { text = "│" },
+            change       = { text = "│" },
             delete       = { text = "_" },
             topdelete    = { text = "‾" },
             changedelete = { text = "~" },
