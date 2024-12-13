@@ -21,95 +21,78 @@ return {
             dim_inactive = false,
             lualine_bold = false,
             on_highlights = function(hl, _)
-
-                local white = "#c0caf5"
-                -- local magenta = "#ff067d"
-                -- local cyan = "#2ac3de"
-                local blue = "#7aa2f7"
-                local green = "#9ece6a"
-                -- local purple = "#9d7cd8"
-                local bone = "#a9b1d6"
-                local gray1 = "#414868"
-                local gray2 = "#3b4261"
-                local gray3 = "#232435"
-                -- local gray4 = "#201e2b"
-                local black = "#1e2231"
-                local background = "#16151d"
+                local palette = {
+                    white = "#c0caf5",
+                    blue = "#7aa2f7",
+                    green = "#9ece6a",
+                    bone = "#a9b1d6",
+                    gray1 = "#414868",
+                    gray2 = "#3b4261",
+                    gray3 = "#232435",
+                    black = "#1e2231",
+                    background = "#16151d",
+                }
 
                 -- EOB
-                hl.EndOfBuffer = { fg = background}
+                hl.EndOfBuffer = { fg = palette.background }
 
                 -- Telescope
-                hl.TelescopePromptBorder = { fg = gray1 }
-                -- hl.TelescopePromptTitle = { bg = blue, fg = background }
-                hl.TelescopePromptTitle = { fg = gray1 }
-                -- hl.TelescopeResultsTitle = { bg = blue, fg = background }
-                hl.TelescopeResultsTitle = { fg = gray1 }
-                hl.TelescopeResultsBorder = { fg = gray1 }
-                -- hl.TelescopeSelection = { bg = gray3 }
-                -- hl.TelescopeSelection = { fg = background, bg = blue }
+                hl.TelescopePromptBorder = { fg = palette.gray1 }
+                hl.TelescopePromptTitle = { bg = palette.blue, fg = palette.background }
+                hl.TelescopeResultsTitle = { bg = palette.blue, fg = palette.background }
+                hl.TelescopeResultsBorder = { fg = palette.gray1 }
+                hl.TelescopeSelection = { bg = palette.gray3, fg = palette.blue }
 
                 -- Dashboard
-                hl.AlphaHeader = { fg = blue }
-                hl.AlphaButtons = { fg = blue }
-                hl.AlphaShortcut = { fg = blue }
-                hl.AlphaFooter = { fg = gray2 }
+                hl.AlphaHeader = { fg = palette.blue }
+                hl.AlphaButtons = { fg = palette.blue }
+                hl.AlphaShortcut = { fg = palette.blue }
+                hl.AlphaFooter = { fg = palette.gray2 }
 
                 -- Search
-                hl.Search = { bg = green, fg = black }
-                hl.CurSearch = { bg = blue, fg = black }
-                hl.IncSearch = { bg = blue, fg = black }
+                hl.Search = { bg = palette.green, fg = palette.black }
+                hl.CurSearch = { bg = palette.blue, fg = palette.black }
+                hl.IncSearch = { bg = palette.blue, fg = palette.black }
 
                 -- CursorLine
-                hl.CursorLineNr = { fg = white }
-                hl.CursorLine = { bg = gray3 }
+                hl.CursorLineNr = { fg = palette.white }
+                hl.CursorLine = { bg = palette.gray3 }
 
-                -- menu
-                hl.Pmenu = { bg = gray3 }
-                hl.NormalFloat = { bg = gray3 }
-                hl.FloatBorder = { fg = gray1 }
-                hl.PmenuSel = { fg = background, bg = blue }
+                -- Menu
+                hl.Pmenu = { bg = palette.gray3 }
+                hl.NormalFloat = { bg = palette.background }
+                hl.FloatBorder = { fg = palette.gray1 }
+                hl.PmenuSel = { fg = palette.background, bg = palette.blue }
 
-                -- mason
-                hl.MasonNormal = { bg = background }
+                -- Mason
+                hl.MasonNormal = { bg = palette.background }
 
                 -- MiniIndentScope
-                hl.MiniIndentscopeSymbol = { fg = gray2 }
+                hl.MiniIndentscopeSymbol = { fg = palette.gray2 }
 
-                -- lazy
-                hl.LazyNormal = { bg = background }
+                -- Lazy
+                hl.LazyNormal = { bg = palette.background }
 
-                -- float
-                hl.NormalFloat = { bg = background }
-
-                -- Gitsigns
-                hl.GitSignsAdd = { fg = gray2 }
-                hl.GitSignsAddNr = { fg = gray2 }
-                hl.GitSignsAddLn = { fg = gray2 }
-                hl.GitSignsChange = { fg = gray2 }
-                hl.GitSignsChangeNr = { fg = gray2 }
-                hl.GitSignsChangeLn = { fg = gray2 }
-                hl.GitSignsDelete = { fg = gray2 }
-                hl.GitSignsDeleteNr = { fg = gray2 }
-                hl.GitSignsTopDelete = { fg = gray2 }
-                hl.GitSignsCurrentLineBlame = { fg = gray2 }
+                -- GitSigns
+                hl.GitSignsAdd = { fg = palette.gray2 }
+                hl.GitSignsAddNr = { fg = palette.gray2 }
+                hl.GitSignsAddLn = { fg = palette.gray2 }
+                hl.GitSignsChange = { fg = palette.gray2 }
+                hl.GitSignsChangeNr = { fg = palette.gray2 }
+                hl.GitSignsChangeLn = { fg = palette.gray2 }
+                hl.GitSignsDelete = { fg = palette.gray2 }
+                hl.GitSignsDeleteNr = { fg = palette.gray2 }
+                hl.GitSignsTopDelete = { fg = palette.gray2 }
+                hl.GitSignsCurrentLineBlame = { fg = palette.gray2 }
 
                 -- NvimTree
-                -- hl.NvimTreeGitDirty = { fg = blue }
-                -- hl.NvimTreeGitStaged = { fg = blue }
-                -- hl.NvimTreeGitMerge = { fg = blue }
-                -- hl.NvimTreeGitRenamed = { fg = blue }
-                -- hl.NvimTreeGitNew = { fg = blue }
-                -- hl.NvimTreeGitDeleted = { fg = blue }
-                -- hl.NvimTreeCursorLine = { bg = black }
-                hl.NvimTreeFolderName = { fg = blue }
-                hl.NvimTreeFolderArrowOpen = { fg = gray1 }
-                hl.NvimTreeFolderArrowClosed = { fg = gray1 }
-                hl.NvimTreeOpenedFolderName = { fg = blue }
-                hl.NvimTreeEmptyFolderName = { fg = blue }
-                hl.NvimTreeRootFolder = { fg = bone, bold = true }
-                hl.NvimTreeSpecialFile = { fg = bone, bold = true }
-
+                hl.NvimTreeFolderName = { fg = palette.blue }
+                hl.NvimTreeFolderArrowOpen = { fg = palette.gray2 }
+                hl.NvimTreeFolderArrowClosed = { fg = palette.gray2 }
+                hl.NvimTreeOpenedFolderName = { fg = palette.blue }
+                hl.NvimTreeEmptyFolderName = { fg = palette.blue }
+                hl.NvimTreeRootFolder = { fg = palette.bone, bold = true }
+                hl.NvimTreeSpecialFile = { fg = palette.bone, bold = true }
             end,
         }
     end,
