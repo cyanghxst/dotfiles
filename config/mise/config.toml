@@ -1,3 +1,5 @@
 [tools]
+neovim = "latest"
+python = "latest"
 usage = "latest"
 zig = "latest"
