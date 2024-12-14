@@ -41,7 +41,7 @@ return {
                 hl.TelescopePromptTitle = { bg = palette.blue, fg = palette.background }
                 hl.TelescopeResultsTitle = { bg = palette.blue, fg = palette.background }
                 hl.TelescopeResultsBorder = { fg = palette.gray1 }
-                hl.TelescopeSelection = { bg = palette.gray3, fg = palette.blue }
+                hl.TelescopeSelection = { bg = palette.blue, fg = palette.background }
 
                 -- Dashboard
                 hl.AlphaHeader = { fg = palette.blue }
