@@ -12,6 +12,13 @@ keymap("n", "<leader>l", "<cmd>Lazy<cr>", opts)
 keymap("n", "<cr>", "<cmd>nohlsearch<cr>", opts)
 keymap("n", "<esc>", "<cmd>nohlsearch<cr>", opts)
 
+-- Duplicate a line and comment out the first line
+keymap("n", "yc", "yygccp", { remap = true, silent = true})
+
+-- Move selected lines with shift+j or shift+k
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Better navigation
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
