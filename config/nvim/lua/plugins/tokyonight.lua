@@ -40,10 +40,11 @@ return {
 
                 -- Telescope
                 hl.TelescopePromptBorder = { fg = palette.gray1 }
-                hl.TelescopePromptTitle = { bg = palette.blue, fg = palette.background }
+                hl.TelescopePromptTitle = { fg = palette.gray1 }
                 hl.TelescopeResultsTitle = { bg = palette.blue, fg = palette.background }
                 hl.TelescopeResultsBorder = { fg = palette.gray1 }
-                hl.TelescopeSelection = { bg = palette.blue, fg = palette.background }
+                -- hl.TelescopePromptTitle = { bg = palette.blue, fg = palette.background }
+                -- hl.TelescopeSelection = { bg = palette.blue, fg = palette.background }
 
                 -- Dashboard
                 hl.AlphaHeader = { fg = palette.blue }
