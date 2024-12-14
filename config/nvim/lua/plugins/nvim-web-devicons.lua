@@ -5,14 +5,21 @@ return {
         override = {
             js = {
                 icon = "",
-                color = "#F7E019",
-                -- cterm_color = "65",
+                color = "#f7e019",
+                cterm_color = "185",
                 name = "Javascript"
             },
             zip = {
                 icon = "󰗄",
-                color = "orange",
+                color = "#eca517",
+                cterm_color = "214",
                 name = "zip"
+            },
+            default_icon = {
+                icon = "󰈔",
+                color = "#6d8086",
+                cterm_color = "66",
+                name = "default"
             }
         };
     }
