@@ -10,7 +10,7 @@ vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.HOME .. "/.local/share/nv
 
 local config = {
     cmd = {
-        '/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem/bin/java',
+        '/Users/cyanghxst/.local/share/mise/installs/java/temurin-17.0.13+11/bin/java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -31,16 +31,16 @@ local config = {
     settings = {
         java = {
             -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-            home = '/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem',
+            home = '/Users/cyanghxst/.local/share/mise/installs/java/temurin-17.0.13+11',
             eclipse = {
                 downloadSources = true,
             },
             configuration = {
                 updateBuildConfiguration = "interactive",
                 runtimes = {
-                    { name = "JavaSE-1.8", path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/8.0.422-zulu" },
-                    { name = "JavaSE-17", path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/17.0.12-tem" },
-                    { name = "JavaSE-21", path = "/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/21.0.4-tem" },
+                    { name = "JavaSE-1.8", path = "/Users/cyanghxst/.local/share/mise/installs/java/zulu-8.82.0.21" },
+                    { name = "JavaSE-17", path = "/Users/cyanghxst/.local/share/mise/installs/java/temurin-17.0.13+11" },
+                    { name = "JavaSE-21", path = "/Users/cyanghxst/.local/share/mise/installs/java/temurin-21.0.5+11.0.LTS" },
                 }
             },
             maven = {
