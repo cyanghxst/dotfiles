@@ -14,9 +14,16 @@ export EDITOR='nvim'
 # Paths
 # ----------------------------------------
 
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/Users/cyanghxst/.cargo/bin:/Users/cyanghxst/.local/share/bob/nvim-bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+
+export PATH="/Users/cyanghxst/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="$PATH:/Library/TeX/texbin"
+
+# ----------------------------------------
+# DYLD Library Paths
+# ----------------------------------------
+
 export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
 export DYLD_FALLBACK_LIBRARY_PATH="/opt/homebrew/lib:/usr/lib"
 
