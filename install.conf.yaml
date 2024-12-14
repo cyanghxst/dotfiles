@@ -9,15 +9,11 @@
       mode: 0755
      ~/.venv:
       mode: 0755
-- create:
-    - ~/downloads
-    - ~/.vim/undo-history
 
 - link:
     ~/.config/:
       glob: true
       path: config/*
-      exclude: [ config/iterm2 ]
     ~/.venv/bin/activate:
       force: true
       path: python/activate 
