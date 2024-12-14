@@ -1,5 +1,10 @@
 [tools]
+gradle = "latest"
+java = "temurin-21.0.5+11.0.LTS"
+maven = "latest"
 neovim = "latest"
+node = "latest"
 python = "latest"
+ruby = "latest"
 usage = "latest"
 zig = "latest"
