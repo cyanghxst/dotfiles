@@ -5,41 +5,27 @@ local opts = { noremap = true, silent = true }
 -- General Keymaps
 -- ============================
 
--- Lazy plugin manager
+-- Plugin management
 keymap("n", "<leader>l", "<cmd>Lazy<cr>", opts)
 
--- Toggle highlight off
+-- Search and highlights
 keymap("n", "<cr>", "<cmd>nohlsearch<cr>", opts)
 keymap("n", "<esc>", "<cmd>nohlsearch<cr>", opts)
 
--- Duplicate a line and comment out the first line
-keymap("n", "yc", "yygccp", { remap = true, silent = true})
+-- Duplicate line and comment
+keymap("n", "yc", "yygccp", { remap = true, silent = true })
 
--- Move selected lines with shift+j or shift+k
-keymap("v", "J", ":m '>+1<CR>gv=gv")
-keymap("v", "K", ":m '<-2<CR>gv=gv")
-
--- Better navigation
-keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-
--- Window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-
--- Buffer navigation
-keymap("n", "H", "<cmd>bprevious<cr>", opts)
-keymap("n", "L", "<cmd>bnext<cr>", opts)
-
--- Move blocks in visual mode
+-- Block movement
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 
--- Indent blocks in visual mode
+-- Indent blocks
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Better line navigation
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Disable floating window on return key
 keymap("n", "<cr>", function()
@@ -51,6 +37,31 @@ keymap("n", "<cr>", function()
     end
     vim.diagnostic.open_float(nil, { focus = false, scope = 'cursor' })
 end, { desc = 'Toggle Diagnostics' })
+
+-- ============================
+-- Window & Buffer Navigation
+-- ============================
+
+-- Window navigation
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Buffer navigation
+keymap("n", "H", "<cmd>bprevious<cr>", opts)
+keymap("n", "L", "<cmd>bnext<cr>", opts)
+
+-- ============================
+-- Plugin-Specific Keymaps
+-- ============================
+
+-- NvimTree
+keymap("n", "<leader>s", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle" })
+
+-- Bufremove
+keymap("n", "<leader>ww", function() require("mini.bufremove").delete(0, false) end, { desc = "Delete Buffer" })
+keymap("n", "<leader>wq", function() require("mini.bufremove").delete(0, true) end, { desc = "Delete Buffer (Force)" })
 
 -- ============================
 -- Telescope Keymaps
@@ -85,7 +96,7 @@ keymap("n", "<leader>tr", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
 keymap("i", "<C-Space>", "<cmd>lua vim.lsp.buf.completion()<CR>", opts)
 
 -- ============================
--- DAP (Debugging) Keymaps
+-- Debugging (DAP) Keymaps
 -- ============================
 
 keymap("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
