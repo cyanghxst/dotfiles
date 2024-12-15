@@ -34,27 +34,27 @@ export TERM="xterm-kitty"
 # Aliases
 # ----------------------------------------
 
+# Better ls
 alias ls='\ls -Glh'
 alias lst='\ls -Glth'
 alias lsd='\ls -Gldh .*'
 alias lsdt='\ls -Gldth .*'
-alias cdc='cd && clear'
-alias cdd='cd ~/Downloads && ls'
-alias cdf='cd $(find . ! -name ".*" -maxdepth 1 -type d | sort | fzf)'
-alias cf='cd $(find . -type d -not -path "./.*" -not -path "./.git" | sed "s|^\./||" | sort | fzf)'
-alias dirs='dirs -v'
-alias gcc='gcc-14'
-alias g++='g++-14'
-alias reset='unset NEW_LINE_BEFORE_PROMPT && reset'
-alias forsay='\fortune > a.txt | cowsay && say -f a.txt && rm a.txt'
-alias fortune='fortune | cowsay'
-alias pipes.sh='pipes.sh | lolcat'
+
+# FZF
 alias nf='fzf --print0 | xargs -0 -o nvim'
 alias of='fzf --print0 | xargs -0 -o open'
-alias keka='/Applications/Keka.app/Contents/MacOS/Keka --cli'
+alias cf='cd $(find . -type d -not -path "./.*" -not -path "./.git" | sed "s|^\./||" | sort | fzf)'
+alias cf1='cd $(find . -type d -not -path "./.*" -not -path "./.git" -maxdepth 1 | sed "s|^\./||" | sort | fzf)'
+
+# C & CPP
+alias gcc='gcc-14'
+alias g++='g++-14'
+
+# Misc.
+alias dirs='dirs -v'
+alias forsay='\fortune > a.txt | cowsay && say -f a.txt && rm a.txt'
+alias fortune='fortune | cowsay'
 alias gg='git-graph --style round'
-alias tm='transmission-cli'
-alias venv='source ~/.venv/bin/activate'
 alias zsh='source ~/.zshrc'
 
 # ----------------------------------------
@@ -111,7 +111,7 @@ autoload -Uz compinit && compinit -C
 # Prompt Settings
 # ----------------------------------------
 
-function precmd() {
+precmd() {
     if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
         NEW_LINE_BEFORE_PROMPT=1
     elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
