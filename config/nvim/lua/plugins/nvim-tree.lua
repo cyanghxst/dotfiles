@@ -13,7 +13,6 @@ return {
             end
         end
     end,
-    keys = { {"<leader>s", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"}, },
     opts = {
         filters = { dotfiles = true },
         hijack_cursor = true,
