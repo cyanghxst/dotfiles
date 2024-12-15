@@ -62,6 +62,7 @@ alias zsh='source ~/.zshrc'
 # Custom functions
 # ----------------------------------------
 
+mkcd() { mkdir $1 && cd $1 }
 jvr() { javac $1 && java "${1%.*}" }
 co() { g++ -std=c++17 -O2 $1 -o "${1%.*}" -Wall; }
 run() { co $1 && ./${1%.*} & fg; }
