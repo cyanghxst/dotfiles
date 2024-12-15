@@ -11,6 +11,7 @@ return {
             local current_window = vim.fn.win_getid()
             require("leap").leap { target_windows = { current_window } }
         end)
+
         -- search in all windows
         vim.keymap.set({"n", "x", "o"}, "gs", function()
             local focusable_windows_on_tabpage = vim.tbl_filter(
@@ -19,6 +20,7 @@ return {
             )
             require('leap').leap { target_windows = focusable_windows_on_tabpage }
         end)
+
         -- search in other windows
         -- vim.keymap.set({"n", "x", "o"}, "gs", function()
         --     require("leap").leap { target_windows = require("leap.util").get_enterable_windows() }
