@@ -13,23 +13,13 @@ return {
             end
         end
     end,
-    keys = {
-        {"<leader>s", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"},
-    },
+    keys = { {"<leader>s", "<cmd>NvimTreeToggle<cr>", desc = "Toggle"}, },
     opts = {
-        filters = {
-            dotfiles = true
-        },
+        filters = { dotfiles = true },
         hijack_cursor = true,
-        update_focused_file = {
-            enable = true,
-            update_root = false,
-        },
+        update_focused_file = { enable = true, update_root = false, },
         sync_root_with_cwd = true,
-        view = {
-            width = 25,
-            side = "left",
-        },
+        view = { width = 25, side = "left", },
         git = {
             enable = false,
             ignore = false,
@@ -39,21 +29,15 @@ return {
         diagnostics = {
             enable = false,
             show_on_dirs = true,
-            icons = {
-                hint = "",
-                info = "",
-                warning = "",
-                error = "",
-            },
+            icons = { hint = "", info = "", warning = "", error = "", },
         },
-        -- modified = {
-        --     enable = false,
-        --     show_on_dirs = false,
-        --     show_on_open_dirs = true,
-        -- },
+        modified = {
+            enable = false,
+            show_on_dirs = false,
+            show_on_open_dirs = true,
+        },
         renderer = {
             highlight_git = false,
-            -- root folder in uppercase hack
             root_folder_label = function(path)
                 local project = vim.fn.fnamemodify(path, ":t")
                 return string.upper(project)
@@ -80,18 +64,17 @@ return {
                         empty = "",
                         empty_open = "",
                     },
-                    -- git = {
-                        --     unstaged = "[u]",
-                        --     staged = "",
-                        --     unmerged = "",
-                        --     renamed = "󰛿",
-                        --     untracked = "󰋗",
-                        --     deleted = "󰍶",
-                        --     ignored = "◌",
-                        -- }
+                    git = {
+                        unstaged = "[u]",
+                        staged = "",
+                        unmerged = "",
+                        renamed = "󰛿",
+                        untracked = "󰋗",
+                        deleted = "󰍶",
+                        ignored = "◌",
                     }
-                },
-                special_files = { "README.md" },
+                }
             }
         }
     }
+}
