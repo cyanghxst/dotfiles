@@ -51,6 +51,7 @@ alias gcc='gcc-14'
 alias g++='g++-14'
 
 # Misc.
+alias clear='unset NEW_LINE_BEFORE_PROMPT && clear'
 alias dirs='dirs -v'
 alias forsay='\fortune > a.txt | cowsay && say -f a.txt && rm a.txt'
 alias fortune='fortune | cowsay'
@@ -118,6 +119,8 @@ precmd() {
         echo ""
     fi
 }
+
+clear
 
 # ----------------------------------------
 # Manual Page Settings
