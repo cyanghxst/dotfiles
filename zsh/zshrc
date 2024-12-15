@@ -62,10 +62,21 @@ alias zsh='source ~/.zshrc'
 # Custom functions
 # ----------------------------------------
 
-mkcd() { mkdir $1 && cd $1 }
-jvr() { javac $1 && java "${1%.*}" }
-co() { g++ -std=c++17 -O2 $1 -o "${1%.*}" -Wall; }
-run() { co $1 && ./${1%.*} & fg; }
+mkcd() {
+    if [ -z "$1" ]; then
+        echo "mkcd: enter a directory name"
+        return 1
+    elif [ -d "$1" ]; then
+        echo "mkcd: '$1' already exists"
+        cd "$1" || return 1
+    else
+        mkdir -p "$1" && cd "$1" || return 1
+    fi
+}
+
+jvr() { javac "$1" && java "${1%.*}" }
+co() { g++ -std=c++17 -O2 "$1" -o "${1%.*}" -Wall; }
+run() { co "$1" && ./"${1%.*}" & fg; }
 wine-gptk() { WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@" }
 
 # ----------------------------------------
