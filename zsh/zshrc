@@ -43,8 +43,8 @@ alias lsdt='\ls -Gldth .*'
 # FZF
 alias nf='fzf --print0 | xargs -0 -o nvim'
 alias of='fzf --print0 | xargs -0 -o open'
-alias cf='cd $(find . -type d -not -path "./.*" -not -path "./.git" | sed "s|^\./||" | sort | fzf)'
-alias cf1='cd $(find . -type d -not -path "./.*" -not -path "./.git" -maxdepth 1 | sed "s|^\./||" | sort | fzf)'
+alias cf='cd $(find . -type d -not -path "*/.git*" -not -path "./.*" | sed "s|^\./||" | sort | fzf || pwd)'
+alias cf1='cd $(find . -type d -not -path "*/.git*" -not -path "./.*" -maxdepth 1 | sed "s|^\./||" | sort | fzf || pwd)'
 
 # C & CPP
 alias gcc='gcc-14'
