@@ -21,26 +21,22 @@
         {
             "type": "uptime",
             "key": "uptime   ",
-            "keyColor": "yellow" 
+            "keyColor": "yellow"
         },
-        {
-            "type": "packages",
-            "key": "packages ",
-            "keyColor": "yellow"  
-        },
+        "break",
         {
             "type": "shell",
             "key": "shell    ",
-            "keyColor": "yellow" 
+            "keyColor": "yellow"
         },
         {
             "type": "terminal",
             "key": "terminal ",
-            "keyColor": "yellow" 
+            "keyColor": "yellow"
         },
         {
-            "type": "de",
-            "key": "de       ",
+            "type": "packages",
+            "key": "packages ",
             "keyColor": "yellow"
         },
         "break",
@@ -57,14 +53,15 @@
         },
         "break",
         {
-            "type": "memory",
-            "key": "memory   ",
-            "keyColor": "yellow"
-        },
-        {
             "type": "disk",
             "key": "disk     ",
             "format": "{size-used} / {size-total} ({size-percentage})",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "memory",
+            "key": "memory   ",
+            "format": "0{used} / 0{total} ({percentage})",
             "keyColor": "yellow"
         },
         "break",
