@@ -20,6 +20,13 @@ return {
             },
         })
 
+        -- Clangd
+        lsp.clangd.setup({
+            cmd = { "clangd", "--fallback-style=webkit" },
+            filetypes = { "cpp", "c", "objc", "objcpp" },
+            capabilities = capabilities,
+        })
+
         -- TypeScript
         lsp.ts_ls.setup({
             init_options = {
@@ -39,19 +46,12 @@ return {
         lsp.jsonls.setup({ capabilities = capabilities })
         lsp.ruby_lsp.setup({ capabilities = capabilities })
 
-        -- Clangd
-        lsp.clangd.setup({
-            cmd = { "clangd", "--fallback-style=webkit" },
-            filetypes = { "cpp", "c", "objc", "objcpp" },
-            capabilities = capabilities,
-        })
-
         -- Diagnostic configuration
         vim.diagnostic.config({
             virtual_text = true,
             signs = {
                 text = {
-                    [vim.diagnostic.severity.HINT] = '󰎃',
+                    [vim.diagnostic.severity.HINT] = '󰩳',
                     [vim.diagnostic.severity.INFO] = '󰞋',
                     [vim.diagnostic.severity.WARN] = '󰀧',
                     [vim.diagnostic.severity.ERROR] = '',
