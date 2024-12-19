@@ -5,20 +5,28 @@
 - clean: ['~']
 
 - create:
-     ~/.config:
+    ~/.config:
       mode: 0755
 
 - link:
     ~/.config/:
       glob: true
       path: config/*
-    ~/.gitconfig: git/gitconfig
-    ~/.lftprc: lftp/lftprc 
-    ~/.tmux.conf: tmux/tmux.conf
-    ~/.vimrc: vim/vimrc
-    ~/.zprofile: zsh/zprofile 
-    ~/.zshrc: zsh/zshrc
-    ~/Library/Application Support/tlrc/config.toml: tldr/config.toml
+      exclude:
+        - config/gitconfig
+        - config/lftp
+        - config/tmux
+        - config/vim
+        - config/zsh
+    
+    # Non XDG configs
+    ~/.gitconfig: config/git/gitconfig
+    ~/.lftprc: config/lftp/lftprc
+    ~/.tmux.conf: config/tmux/tmux.conf
+    ~/.vimrc: config/vim/vimrc
+    ~/.zprofile: config/zsh/zprofile
+    ~/.zshrc: config/zsh/zshrc
+    ~/Library/Application Support/tlrc/config.toml: config/tldr/config.toml
 
 - shell:
-    - ['git submodule update --init --recursive', Install submodules]
+    - ['git submodule update --init --recursive', Initialize Git submodules]
