@@ -18,6 +18,7 @@
         - config/tmux
         - config/vim
         - config/zsh
+        - config/iterm2
     
     # Non XDG configs
     ~/.gitconfig: config/git/gitconfig
