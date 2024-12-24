@@ -75,7 +75,8 @@ mkcd() {
 }
 
 jvr() { javac "$1" && java "${1%.*}" }
-co() { g++ -std=c++17 -O2 "$1" -o "${1%.*}" -Wall; }
+# co() { g++ -std=c++17 -O2 "$1" -o "${1%.*}" -Wall; }
+co() { g++ -std=c++17 -O0 "$1" -o "${1%.*}" -Wall -Wextra -pedantic-errors; }
 run() { co "$1" && ./"${1%.*}" & fg; }
 wine-gptk() { WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@" }
 
