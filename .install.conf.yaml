@@ -13,6 +13,7 @@
       glob: true
       path: config/*
       exclude:
+        - config/clangd
         - config/gitconfig
         - config/lftp
         - config/tmux
@@ -21,6 +22,7 @@
         - config/iterm2
     
     # Non XDG configs
+    ~/.clang-format: config/clangd/clang-format
     ~/.gitconfig: config/git/gitconfig
     ~/.lftprc: config/lftp/lftprc
     ~/.tmux.conf: config/tmux/tmux.conf
