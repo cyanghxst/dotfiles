@@ -2,3 +2,6 @@ BasedOnStyle: Google
 ColumnLimit: 0
 IndentWidth: 4
 TabWidth: 4
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortBlocksOnASingleLine: true
+AllowShortFunctionsOnASingleLine: true
