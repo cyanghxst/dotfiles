@@ -46,7 +46,7 @@ alias of='fzf --print0 | xargs -0 -o open'
 alias cf='cd $(find . -type d -not -path "*/.git*" -not -path "./.*" | sed "s|^\./||" | sort | fzf || pwd)'
 alias cf1='cd $(find . -type d -not -path "*/.git*" -not -path "./.*" -maxdepth 1 | sed "s|^\./||" | sort | fzf || pwd)'
 
-# C & CPP
+# GCC
 alias gcc='gcc-14'
 alias g++='g++-14'
 
@@ -74,10 +74,14 @@ mkcd() {
     fi
 }
 
-jvr() { javac "$1" && java "${1%.*}" }
-# co() { g++ -std=c++17 -O2 "$1" -o "${1%.*}" -Wall; }
-co() { g++ -std=c++17 -O0 "$1" -o "${1%.*}" -Wall -Wextra -pedantic-errors; }
-run() { co "$1" && ./"${1%.*}" & fg; }
+# Java
+jrun() { javac "$1" && java "${1%.*}" }
+
+# GCC
+ccom() { g++ -std=c++23 -O0 "$1" -o "${1%.*}" -Wall -Werror -Wextra -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors; }
+crun() { ccom "$1" && ./"${1%.*}" & fg; }
+
+# Wine
 wine-gptk() { WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@" }
 
 # ----------------------------------------
