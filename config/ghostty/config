@@ -10,12 +10,23 @@ theme = tokyonight
 mouse-hide-while-typing = true
 
 # Mac Specific Settings
-macos-titlebar-style = hidden
+macos-titlebar-style = tabs
+window-colorspace = display-p3
 
 # Window
-window-height = 100
-window-width = 200
-window-padding-x = 3
-window-padding-y = 3
+window-height = 46
+window-width = 174
+window-padding-x = 27
+window-padding-y = 13
 window-padding-balance = true
 window-padding-color = background
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Misc
+title = " "
+shell-integration-features = no-cursor
+confirm-close-surface = false
+scrollback-limit = 5000
