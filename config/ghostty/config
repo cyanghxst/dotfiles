@@ -48,6 +48,15 @@ cursor-style = "block"
 cursor-style-blink = false
 
 # ----------------------------------------
+# Icon
+# ----------------------------------------
+
+# macos-icon = custom-style
+# macos-icon-frame = aluminum
+# macos-icon-ghost-color = grey
+# macos-icon-screen-color = dark grey,black
+
+# ----------------------------------------
 # Miscellaneous
 # ----------------------------------------
 
