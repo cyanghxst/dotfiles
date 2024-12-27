@@ -54,4 +54,4 @@ cursor-style-blink = false
 title = " "
 shell-integration-features = "no-cursor"
 confirm-close-surface = false
-scrollback-limit = 5000
+scrollback-limit = 10485760
