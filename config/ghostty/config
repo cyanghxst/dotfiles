@@ -1,32 +1,57 @@
+# ----------------------------------------
+# Ghostty Configuration
+# ----------------------------------------
+
+# ----------------------------------------
 # Fonts
+# ----------------------------------------
+
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 15
 adjust-underline-position = 4
 
+# ----------------------------------------
 # Theme
-theme = tokyonight
+# ----------------------------------------
 
+theme = "tokyonight"
+
+# ----------------------------------------
 # Mouse
+# ----------------------------------------
+
 mouse-hide-while-typing = true
 
-# Mac Specific Settings
-macos-titlebar-style = tabs
-window-colorspace = display-p3
+# ----------------------------------------
+# macOS-Specific Settings
+# ----------------------------------------
 
+macos-titlebar-style = "tabs"
+window-colorspace = "display-p3"
+
+# ----------------------------------------
 # Window
+# ----------------------------------------
+
 window-height = 46
 window-width = 174
 window-padding-x = 27
 window-padding-y = 13
 window-padding-balance = true
-window-padding-color = background
+window-padding-color = "background"
 
+# ----------------------------------------
 # Cursor
-cursor-style = block
+# ----------------------------------------
+
+cursor-style = "block"
 cursor-style-blink = false
 
-# Misc
+# ----------------------------------------
+# Miscellaneous
+# ----------------------------------------
+
 title = " "
-shell-integration-features = no-cursor
+shell-integration-features = "no-cursor"
 confirm-close-surface = false
 scrollback-limit = 5000
