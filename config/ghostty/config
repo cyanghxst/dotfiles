@@ -3,64 +3,63 @@
 # ----------------------------------------
 
 # ----------------------------------------
-# Fonts
+# General
 # ----------------------------------------
 
-font-family = "JetBrainsMono Nerd Font Mono"
-font-size = 15
-adjust-underline-position = 4
+scrollback-limit = 10485760
+confirm-close-surface = false
 
 # ----------------------------------------
-# Theme
-# ----------------------------------------
-
-theme = "tokyonight"
-
-# ----------------------------------------
-# Mouse
+# Mouse and cursor
 # ----------------------------------------
 
 mouse-hide-while-typing = true
 
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = "no-cursor"
+
 # ----------------------------------------
-# macOS-Specific Settings
+# Appearance
 # ----------------------------------------
 
-macos-titlebar-style = "tabs"
+# Color
+theme = "tokyonight"
 window-colorspace = "display-p3"
+
+# Fonts
+font-size = 15
+font-family = "JetBrainsMono Nerd Font Mono"
+
+# Misc.
+adjust-underline-position = 4
 
 # ----------------------------------------
 # Window
 # ----------------------------------------
 
+# Dimensions
 window-height = 42
 window-width = 173
+
+# Padding
 window-padding-x = 27
 window-padding-y = 15
 window-padding-balance = true
 window-padding-color = "background"
 
 # ----------------------------------------
-# Cursor
+# Title bar
 # ----------------------------------------
 
-cursor-style = "block"
-cursor-style-blink = false
+title = " "
+macos-titlebar-style = "tabs"
 
 # ----------------------------------------
-# Icon
+# Dock icon
 # ----------------------------------------
 
 # macos-icon = custom-style
 # macos-icon-frame = aluminum
 # macos-icon-ghost-color = grey
 # macos-icon-screen-color = dark grey,black
-
-# ----------------------------------------
-# Miscellaneous
-# ----------------------------------------
-
-title = " "
-shell-integration-features = "no-cursor"
-confirm-close-surface = false
-scrollback-limit = 10485760
