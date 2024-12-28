@@ -33,10 +33,10 @@ window-colorspace = "display-p3"
 # Window
 # ----------------------------------------
 
-window-height = 46
-window-width = 174
+window-height = 42
+window-width = 173
 window-padding-x = 27
-window-padding-y = 13
+window-padding-y = 15
 window-padding-balance = true
 window-padding-color = "background"
 
