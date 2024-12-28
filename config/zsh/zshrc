@@ -25,18 +25,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # ----------------------------------------
-# Environment Variables
-# ----------------------------------------
-
-if pgrep -x "kitty" >/dev/null; then
-    export TERM="xterm-kitty"
-elif ps aux | grep -v grep | grep -q "/Applications/Ghostty.app/Contents/MacOS/ghostty"; then
-    export TERM="xterm-ghostty"
-else
-    export TERM="xterm-256color"
-fi
-
-# ----------------------------------------
 # Aliases
 # ----------------------------------------
 
