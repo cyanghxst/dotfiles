@@ -48,6 +48,9 @@ window-padding-y = 15
 window-padding-balance = true
 window-padding-color = "background"
 
+# Misc.
+window-save-state = never
+
 # ----------------------------------------
 # Title bar
 # ----------------------------------------
