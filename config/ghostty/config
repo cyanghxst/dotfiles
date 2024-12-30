@@ -28,6 +28,7 @@ shell-integration-features = "no-cursor"
 # Color
 theme = "tokyonight"
 window-colorspace = "display-p3"
+background = 16151d
 
 # Fonts
 font-size = 15
