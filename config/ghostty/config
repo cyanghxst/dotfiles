@@ -25,9 +25,8 @@ shell-integration-features = "no-cursor"
 # Appearance
 # ----------------------------------------
 
-# Color
+# Theme
 theme = "tokyonight"
-window-colorspace = "display-p3"
 background = 16151d
 
 # Fonts
@@ -36,6 +35,7 @@ font-family = "JetBrainsMono Nerd Font Mono"
 
 # Misc.
 adjust-underline-position = 4
+window-colorspace = "display-p3"
 
 # ----------------------------------------
 # Window
