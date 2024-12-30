@@ -19,6 +19,7 @@
         - config/tmux
         - config/vim
         - config/zsh
+        - config/tldr
         - config/iterm2
     
     # Non XDG configs
