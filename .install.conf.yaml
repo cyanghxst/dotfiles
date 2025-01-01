@@ -23,6 +23,7 @@
         - config/iterm2
     
     # Non XDG configs
+    ~/Library/Preferences/clangd: config/clangd
     ~/.clang-format: config/clangd/clang-format
     ~/.gitconfig: config/git/gitconfig
     ~/.lftprc: config/lftp/lftprc
