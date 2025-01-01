@@ -1,0 +1,34 @@
+CompileFlags:
+  Add: 
+    - -std=c++23
+    - -O0
+    - -Wall
+    - -Werror
+    - -Wextra
+    - -Weffc++
+    - -Wconversion
+    - -Wsign-conversion
+    - -pedantic-errors
+
+Index:
+  Background: true
+  FileLimit: 10000
+
+Clangd:
+  Diagnostics: true
+  Hover: true
+  SignatureHelp: true
+
+Completion:
+  Filters:
+    - keyword
+    - variable
+    - function
+  Snippets: true
+
+Formatting:
+  Style: "LLVM"
+  ColumnLimit: 100
+
+FallbackFlags:
+  Add: [-std=c++23]
