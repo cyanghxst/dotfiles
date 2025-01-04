@@ -7,20 +7,26 @@
 - create:
     ~/.config:
       mode: 0755
+    ~/.zsh/functions:
+      mode: 0755
 
 - link:
+    ~/.zsh/functions:
+      glob: true
+      path: config/zsh/functions/*
     ~/.config/:
       glob: true
       path: config/*
       exclude:
         - config/clangd
         - config/gitconfig
+        - config/iterm2
         - config/lftp
+        - config/scripts
         - config/tmux
+        - config/tldr
         - config/vim
         - config/zsh
-        - config/tldr
-        - config/iterm2
     
     # Non XDG configs
     ~/Library/Preferences/clangd: config/clangd
@@ -28,10 +34,10 @@
     ~/.gitconfig: config/git/gitconfig
     ~/.lftprc: config/lftp/lftprc
     ~/.tmux.conf: config/tmux/tmux.conf
+    ~/Library/Application Support/tlrc/config.toml: config/tldr/config.toml
     ~/.vimrc: config/vim/vimrc
     ~/.zprofile: config/zsh/zprofile
     ~/.zshrc: config/zsh/zshrc
-    ~/Library/Application Support/tlrc/config.toml: config/tldr/config.toml
 
 - shell:
     - ['git submodule update --init --recursive', Initialize Git submodules]

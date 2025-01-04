@@ -177,6 +177,11 @@ PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # Source
 # ----------------------------------------
 
+# Source all functions from ~/.zsh/functions directory
+for func in ~/.zsh/functions/*.zsh; do
+    source "$func"
+done
+
 # mise
 eval "$(mise activate zsh)"
 
