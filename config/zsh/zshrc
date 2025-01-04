@@ -55,34 +55,6 @@ alias gg='git-graph --style round'
 alias zsh='source ~/.zshrc'
 
 # ----------------------------------------
-# Custom functions
-# ----------------------------------------
-
-mkcd() {
-    if [ -z "$1" ]; then
-        echo "mkcd: enter a directory name"
-        return 1
-    elif [ -d "$1" ]; then
-        echo "mkcd: '$1' already exists"
-        cd "$1" || return 1
-    else
-        mkdir -p "$1" && cd "$1" || return 1
-    fi
-}
-
-# Java
-jrun() { javac "$1" && java "${1%.*}" }
-
-# GCC
-ccom() { g++ -std=c++23 -O0 "$1" -o "${1%.*}" -Wall -Werror -Wextra -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors; }
-crun() { ccom "$1" && ./"${1%.*}"; }
-# ccom() { g++ -std=c++17 -O2 -o "${1%.*}" $1 -Wall; }
-# crun() { ccom "$1" && ./"${1%.*}" & fg; }
-
-# Wine
-wine-gptk() { WINEESYNC=1 WINEPREFIX=~/my-game-prefix $(brew --prefix game-porting-toolkit)/bin/wine64 "$@" }
-
-# ----------------------------------------
 # Fzf color options
 # ----------------------------------------
 
