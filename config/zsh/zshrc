@@ -7,6 +7,9 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+# mise
+eval "$(mise activate zsh)"
+
 # ----------------------------------------
 # History
 # ----------------------------------------
@@ -177,13 +180,10 @@ PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
 # Source
 # ----------------------------------------
 
-# Source all functions from ~/.zsh/functions directory
+# Source custom functions
 for func in ~/.zsh/functions/*.zsh; do
     source "$func"
 done
-
-# mise
-eval "$(mise activate zsh)"
 
 # Source zsh-autosuggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
