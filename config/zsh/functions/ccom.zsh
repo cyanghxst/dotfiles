@@ -1,38 +1,24 @@
 ccom() {
-    if [ "$#" -eq 0 ]; then
-        echo "Usage: ccom file1.cpp [file2.cpp ...] [-o output_executable]"
-        return 1
-    fi
+    local output=""
+    local files=()
 
-    OUTPUT="a.out"
-    FILES=()
-
-    while [[ "$#" -gt 0 ]]; do
+    while [[ $# -gt 0 ]]; do
         case "$1" in
             -o)
-                shift
-                OUTPUT="$1"
-                ;;
-            *.cpp)
-                FILES+=("$1")
+                output="$2"
+                shift 2
                 ;;
             *)
-                echo "Unknown argument: $1"
-                return 1
+                files+=("$1")
+                shift
                 ;;
         esac
-        shift
     done
 
-    if [ "${#FILES[@]}" -eq 0 ]; then
-        echo "No source files provided. Please specify .cpp files."
-        return 1
+    if [[ -z "$output" ]]; then
+        output="${files[1]%.*}"  # Use the name of the first file as default
     fi
 
-    if [ "${#FILES[@]}" -eq 1 ] && [ "$OUTPUT" == "a.out" ]; then
-        OUTPUT="${FILES[0]%.cpp}"
-    fi
-
-    g++-14 -std=c++23 -O0 "${FILES[@]}" -o "$OUTPUT" -Wall -Werror -Wextra -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors
-    # g++-14 -std=c++17 -O2 "${FILES[@]}" -o "$OUTPUT" -Wall
+    g++ -std=c++23 -O0 "${files[@]}" -o "$output" -Wall -Werror -Wextra -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors
+    # g++ -std=c++17 -O2 -o "${files[@]}" "$output" -Wall }
 }
