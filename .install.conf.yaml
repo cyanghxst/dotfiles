@@ -7,13 +7,16 @@
 - create:
     ~/.config:
       mode: 0755
-    ~/.zsh/functions:
+    ~/.zsh:
       mode: 0755
 
 - link:
-    ~/.zsh/functions:
+    ~/.zsh:
       glob: true
-      path: config/zsh/functions/*
+      path: config/zsh/*
+      exclude:
+        - config/zsh/zprofile
+        - config/zsh/zshrc
     ~/.config/:
       glob: true
       path: config/*
