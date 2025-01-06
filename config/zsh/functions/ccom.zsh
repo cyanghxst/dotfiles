@@ -19,6 +19,6 @@ ccom() {
         output="${files[1]%.*}"  # Use the name of the first file as default
     fi
 
-    g++ -std=c++23 -O0 "${files[@]}" -o "$output" -Wall -Werror -Wextra -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors
+    g++ -std=c++20 -O0 "${files[@]}" -o "$output" -Wall -Werror -Wextra -Weffc++ -Wconversion -Wsign-conversion -pedantic-errors
     # g++ -std=c++17 -O2 -o "${files[@]}" "$output" -Wall }
 }
