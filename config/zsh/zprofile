@@ -14,6 +14,7 @@ export EDITOR='nvim'
 # Paths
 # ----------------------------------------
 
+export PATH="$HOME/.local/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/findutils/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/grep/libexec/gnubin:/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="$PATH:/Library/TeX/texbin"
 
