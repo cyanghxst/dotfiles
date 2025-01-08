@@ -9,6 +9,8 @@
       mode: 0755
     ~/.zsh:
       mode: 0755
+    ~/.local/bin:
+      mode: 0755
 
 - link:
     ~/.zsh:
@@ -44,3 +46,10 @@
 
 - shell:
     - ['git submodule update --init --recursive', Initialize Git submodules]
+    - |
+      for script in ~/git/repos/dotfiles/config/scripts/*; do
+          if [ -f "$script" ]; then
+              script_name=$(basename "$script" .sh)
+              ln -sf "$script" "$HOME/.local/bin/$script_name"
+          fi
+      done
