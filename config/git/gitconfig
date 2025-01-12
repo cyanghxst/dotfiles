@@ -5,6 +5,7 @@
 	defaultBranch = main
 [core]
 	editor = nvim
+    autocrlf = input
 [advice]
 	detachedHead = false
 [color]
