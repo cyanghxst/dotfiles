@@ -5,6 +5,6 @@ TabWidth: 4
 PointerAlignment: Left
 SpacesInContainerLiterals: true
 Cpp11BracedListStyle: false
-AllowShortBlocksOnASingleLine: Empty
-AllowShortFunctionsOnASingleLine: Empty
+# AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: WithoutElse
