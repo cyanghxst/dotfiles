@@ -32,7 +32,7 @@
         - config/tldr
         - config/vim
         - config/zsh
-    
+
     # Non XDG configs
     ~/Library/Preferences/clangd: config/clangd
     ~/.clang-format: config/clangd/clang-format
