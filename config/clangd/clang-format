@@ -8,3 +8,5 @@ Cpp11BracedListStyle: false
 AllowShortBlocksOnASingleLine: Never
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: WithoutElse
+AlignTrailingComments:
+    Kind: Always
