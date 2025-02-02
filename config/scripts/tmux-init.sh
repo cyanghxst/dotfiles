@@ -4,11 +4,11 @@ if [ -n "$TMUX" ]; then
     exit 0
 fi
 
-sessions=("main" "lcpp" "1160" "1181" "1280")
+sessions=("main" "dsa" "1160" "1181" "1280")
 
 directories=(
     "$HOME/git/repos/dotfiles/"
-    "$HOME/code/learn-cpp"
+    "$HOME/code/dsa"
     "$HOME/code/langara/cpsc-1160"
     "$HOME/code/langara/cpsc-1181"
     "$HOME/code/langara/cpsc-1280"
