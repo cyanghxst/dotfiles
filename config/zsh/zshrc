@@ -128,3 +128,6 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# sdkman
+source /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh
