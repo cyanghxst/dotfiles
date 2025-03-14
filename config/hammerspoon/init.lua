@@ -5,38 +5,23 @@ local function app_running(app_name)
 	return app ~= nil
 end
 
-local function kill_app(app_name)
+local function restart_app_if_open(app_name)
 	local app = hs.application.get(app_name)
 	if app then
 		app:kill()
-	end
-end
+		hs.timer.doAfter(1, function()
+			hs.application.open(app_name)
 
-local function restart_terminal_apps()
-	kill_app("Ghostty")
-	kill_app("kitty")
-
-	-- Relaunch both apps
-	hs.timer.doAfter(1, function()
-		hs.application.open("Ghostty")
-		hs.application.open("kitty")
-
-		-- Poll until apps open, then center them immediately
-		local poll_timer = hs.timer.doEvery(0.1, function()
-			local ghostty = hs.application.get("Ghostty")
-			local kitty = hs.application.get("kitty")
-
-			if ghostty and ghostty:mainWindow() then
-				center_window("Ghostty")
-				poll_timer:stop()
-			end
-
-			if kitty and kitty:mainWindow() then
-				center_window("kitty")
-				poll_timer:stop()
-			end
+			-- Poll until the app opens, then center it
+			local poll_timer = hs.timer.doEvery(0.1, function()
+				local running_app = hs.application.get(app_name)
+				if running_app and running_app:mainWindow() then
+					poll_timer:stop()
+					center_window(app_name)
+				end
+			end)
 		end)
-	end)
+	end
 end
 
 local function center_window(app_name)
@@ -44,15 +29,20 @@ local function center_window(app_name)
 	if app then
 		local win = app:mainWindow()
 		if win then
-			local screen_frame = win:screen():frame() -- Get screen size
-			local win_frame = win:frame() -- Get window size
+			local screen = win:screen()
+			if screen then
+				local screen_frame = screen:frame() -- Get screen size
+				local win_frame = win:frame() -- Get window size
 
-			-- Calculate centered position
-			local new_x = screen_frame.x + (screen_frame.w - win_frame.w) / 2
-			local new_y = screen_frame.y + (screen_frame.h - win_frame.h) / 2
+				-- Calculate centered position
+				local new_x = screen_frame.x + (screen_frame.w - win_frame.w) / 2
+				local new_y = screen_frame.y + (screen_frame.h - win_frame.h) / 2
 
-			-- Move the window instantly
-			win:setFrame({ x = new_x, y = new_y, w = win_frame.w, h = win_frame.h })
+				-- Move the window only if necessary
+				if win:frame().x ~= new_x or win:frame().y ~= new_y then
+					win:setFrame({ x = new_x, y = new_y, w = win_frame.w, h = win_frame.h })
+				end
+			end
 		end
 	end
 end
@@ -72,8 +62,8 @@ local function update_terminal_config()
 	local ghostty_config = "/Users/cyanghxst/git/repos/dotfiles/config/ghostty/config"
 	local kitty_config = "/Users/cyanghxst/git/repos/dotfiles/config/kitty/kitty.conf"
 
+	-- **Apply settings only if necessary**
 	if is_external_connected or power_source == "AC Power" then
-		-- External monitor
 		hs.execute("sed -i '' 's/^font-size = 14/# font-size = 14/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^# font-size = 15/font-size = 15/' " .. ghostty_config)
 
@@ -85,18 +75,18 @@ local function update_terminal_config()
 		hs.execute("sed -i '' 's/^window-height = 38/# window-height = 38/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^window-width = 149/# window-width = 149/' " .. ghostty_config)
 
-		-- Padding (Ensure correct uncommenting)
+		-- Padding
 		hs.execute("sed -i '' 's/^# window-padding-x = 27/window-padding-x = 27/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^# window-padding-y = 15/window-padding-y = 15/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^window-padding-x = 28/# window-padding-x = 28/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^window-padding-y = 17/# window-padding-y = 17/' " .. ghostty_config)
+		hs.execute("sed -i '' 's/^# window-padding-balance = true/window-padding-balance = true/' " .. ghostty_config)
 
 		hs.execute("sed -i '' 's/^# initial_window_width 177c/initial_window_width 177c/' " .. kitty_config)
 		hs.execute("sed -i '' 's/^# initial_window_height 44c/initial_window_height 44c/' " .. kitty_config)
 		hs.execute("sed -i '' 's/^initial_window_width 152c/# initial_window_width 152c/' " .. kitty_config)
 		hs.execute("sed -i '' 's/^initial_window_height 39c/# initial_window_height 39c/' " .. kitty_config)
 	else
-		-- Laptop mode
 		hs.execute("sed -i '' 's/^font-size = 15/# font-size = 14/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^# font-size = 14/font-size = 14/' " .. ghostty_config)
 
@@ -108,11 +98,12 @@ local function update_terminal_config()
 		hs.execute("sed -i '' 's/^# window-height = 38/window-height = 38/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^# window-width = 149/window-width = 149/' " .. ghostty_config)
 
-		-- Padding (Ensure correct uncommenting)
+		-- Padding
 		hs.execute("sed -i '' 's/^window-padding-x = 27/# window-padding-x = 27/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^window-padding-y = 15/# window-padding-y = 15/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^# window-padding-x = 28/window-padding-x = 28/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^# window-padding-y = 17/window-padding-y = 17/' " .. ghostty_config)
+		hs.execute("sed -i '' 's/^window-padding-balance = true/# window-padding-balance = true/' " .. ghostty_config)
 
 		hs.execute("sed -i '' 's/^initial_window_width 177c/# initial_window_width 177c/' " .. kitty_config)
 		hs.execute("sed -i '' 's/^initial_window_height 44c/# initial_window_height 44c/' " .. kitty_config)
@@ -120,8 +111,15 @@ local function update_terminal_config()
 		hs.execute("sed -i '' 's/^# initial_window_height 39c/initial_window_height 39c/' " .. kitty_config)
 	end
 
-	-- Relaunch terminal apps only if needed
-	restart_terminal_apps()
+	-- **Only restart apps if they are already running**
+	restart_app_if_open("Ghostty")
+	restart_app_if_open("kitty")
+
+	-- **Ensure windows are centered properly**
+	hs.timer.doAfter(2, function()
+		center_window("Ghostty")
+		center_window("kitty")
+	end)
 
 	-- Notify user
 	hs.notify
