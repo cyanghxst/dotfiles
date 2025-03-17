@@ -87,7 +87,7 @@ local function update_terminal_config()
 		hs.execute("sed -i '' 's/^initial_window_width 152c/# initial_window_width 152c/' " .. kitty_config)
 		hs.execute("sed -i '' 's/^initial_window_height 39c/# initial_window_height 39c/' " .. kitty_config)
 	else
-		hs.execute("sed -i '' 's/^font-size = 15/# font-size = 14/' " .. ghostty_config)
+		hs.execute("sed -i '' 's/^font-size = 15/# font-size = 15/' " .. ghostty_config)
 		hs.execute("sed -i '' 's/^# font-size = 14/font-size = 14/' " .. ghostty_config)
 
 		hs.execute("sed -i '' 's/^font_size 15/font_size 14/' " .. kitty_config)
