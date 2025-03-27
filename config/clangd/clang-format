@@ -6,7 +6,7 @@ PointerAlignment: Left
 SpacesInContainerLiterals: true
 Cpp11BracedListStyle: false
 AllowShortBlocksOnASingleLine: Never
-AllowShortFunctionsOnASingleLine: None
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: WithoutElse
 AlignTrailingComments:
     Kind: Always
