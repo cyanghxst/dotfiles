@@ -4,14 +4,12 @@ if [ -n "$TMUX" ]; then
     exit 0
 fi
 
-sessions=("main" "dsa" "1160" "1181" "1280")
+sessions=("main" "dsa" "2150")
 
 directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/code/dsa"
-    "$HOME/code/langara/cpsc-1160"
-    "$HOME/code/langara/cpsc-1181"
-    "$HOME/code/langara/cpsc-1280"
+    "$HOME/code/langara/cpsc-2150"
 )
 
 for i in "${!sessions[@]}"; do
