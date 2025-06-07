@@ -4,7 +4,7 @@ IndentWidth: 4
 TabWidth: 4
 PointerAlignment: Left
 SpacesInContainerLiterals: true
-Cpp11BracedListStyle: false
+Cpp11BracedListStyle: true
 AllowShortBlocksOnASingleLine: Never
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: WithoutElse
