@@ -4,3 +4,4 @@
 # *.plist
 
 lazy-lock.json
+.aider*
