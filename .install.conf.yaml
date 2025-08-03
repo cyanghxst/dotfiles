@@ -35,6 +35,7 @@
         - config/zsh
 
     # Non XDG configs
+    ~/.aider.conf.yml: config/aider/aider.conf.yml
     ~/.hammerspoon/init.lua: config/hammerspoon/init.lua
     ~/Library/Preferences/clangd: config/clangd
     ~/.clang-format: config/clangd/clang-format
