@@ -62,5 +62,11 @@ git_info() {
     echo "${(j: :)GIT_INFO}"
 }
 
-PS1='$(ssh_info)%F{#414868}%~%u $(git_info)
+venv_info() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "%F{#414868}($(basename $VIRTUAL_ENV))%{$reset_color%} "
+    fi
+}
+
+PS1='$(venv_info)$(ssh_info)%F{#414868}%~%u $(git_info)
 %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
