@@ -2,67 +2,50 @@
 # Aider config
 # ----------------------------------------
 
-# Note: You can only put OpenAI and Anthropic API keys in the YAML
-# config file. Keys for all APIs can be stored in a .env file:
-# https://aider.chat/docs/config/dotenv.html
+# Only OpenAI and Anthropic API keys can be included in the YAML config
+# Keys for all APIs can be stored in a .env file: https://aider.chat/docs/config/dotenv.html
 
 # ----------------------------------------
 # Options
 # ----------------------------------------
 
-# Show this help message and exit
-# help: xxx
+# help: xxx # Show this help message and exit
 
 # ----------------------------------------
 # Main Model
 # ----------------------------------------
 
-# Specify the model to use for the main chat
-model: gemini-2.5-pro
+model: gemini-2.5-pro-preview-05-06
 
 # ----------------------------------------
 # Output Settings
 # ----------------------------------------
 
-# Use colors suitable for a dark terminal background
+pretty: true # colorized output
 # dark-mode: true
-
-# Use colors suitable for a light terminal background
-# light-mode: false
-
-# Enable/disable pretty, colorized output (default: True)
-pretty: true
-
-# Enable/disable streaming responses (default: True)
+# light-mode: true
 # stream: true
 
-# Set custom colors (hex values)
+# Custom colors (hex values)
 user-input-color: "#9ece6a"
-tool-output-color: "xxx"
-tool-error-color: "#FF2222"
-tool-warning-color: "#FFA500"
-assistant-output-color: "#0088ff"
+#tool-output-color: "xxx"
+tool-error-color: "#f7768e"
+tool-warning-color: "#d8b072"
+assistant-output-color: "#90ccfa"
 
 # Completion menu colors
-# completion-menu-color: "xxx"
-# completion-menu-bg-color: "xxx"
-# completion-menu-current-color: "xxx"
-# completion-menu-current-bg-color: "xxx"
+completion-menu-color: "#9ece6a"
+completion-menu-bg-color: "#000000"
+completion-menu-current-color: "#00ffff"
+completion-menu-current-bg-color: "#9ece6a"
 
-# Markdown code theme (default: default)
-# Other options: monokai, solarized-dark, solarized-light,
-# or a Pygments builtin style (https://pygments.org/styles)
-# code-theme: default
+# code-theme: default # see pygments builtin style (https://pygments.org/styles)
 
-# Show diffs when committing changes
-# show-diffs: false
+show-diffs: true
 
 # ----------------------------------------
 # Other Settings
 # ----------------------------------------
-
-# Use VI editing mode in the terminal
-vim: true
 
 # Specify which editor to use for the /editor command
 editor: nvim
