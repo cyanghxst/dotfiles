@@ -2,8 +2,7 @@
 # Aider config
 # ----------------------------------------
 
-# Only OpenAI and Anthropic API keys can be included in the YAML config
-# Keys for all APIs can be stored in a .env file: https://aider.chat/docs/config/dotenv.html
+# See also: https://aider.chat/docs/config/dotenv.html
 
 # ----------------------------------------
 # Options
@@ -31,15 +30,15 @@ user-input-color: "#9ece6a"
 #tool-output-color: "xxx"
 tool-error-color: "#f7768e"
 tool-warning-color: "#d8b072"
-assistant-output-color: "#90ccfa"
+assistant-output-color: "#c1c9f1"
 
 # Completion menu colors
 completion-menu-color: "#9ece6a"
 completion-menu-bg-color: "#000000"
-completion-menu-current-color: "#00ffff"
+completion-menu-current-color: "#000000"
 completion-menu-current-bg-color: "#9ece6a"
 
-# code-theme: default # see pygments builtin style (https://pygments.org/styles)
+code-theme: friendly-grayscale # https://pygments.org/styles
 
 show-diffs: true
 
