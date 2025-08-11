@@ -1,4 +1,22 @@
 # ----------------------------------------
+# Homebrew
+# ----------------------------------------
+
+if [[ "$(arch)" == "arm64" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    BREW_PREFIX="/opt/homebrew/"
+    INTEL_BREW_PREFIX="/usr/local/"
+
+    if [[ -x "$INTEL_BREW_PREFIX/bin/brew" ]]; then
+        PATH="$PATH:$INTEL_BREW_PREFIX/bin:$INTEL_BREW_PREFIX/sbin"
+    fi
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+    BREW_PREFIX="/usr/local/"
+fi
+
+# ----------------------------------------
 # Locale & Editor
 # ----------------------------------------
 
@@ -8,8 +26,6 @@ export EDITOR="nvim"
 # ----------------------------------------
 # Paths
 # ----------------------------------------
-
-BREW_PREFIX="/opt/homebrew/"
 
 for pkg in coreutils findutils gnu-sed grep gawk; do
     gnubin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
@@ -26,16 +42,6 @@ export PATH
 # DYLD Library
 export DYLD_LIBRARY_PATH="$BREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
 export DYLD_FALLBACK_LIBRARY_PATH="$BREW_PREFIX/lib:/usr/lib"
-
-# ----------------------------------------
-# Brew Environment
-# ----------------------------------------
-
-if [[ "$(arch)" == "arm64" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
 
 # ----------------------------------------
 # SDKMAN Initialization
