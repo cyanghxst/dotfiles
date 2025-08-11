@@ -11,7 +11,11 @@ export EDITOR="nvim"
 
 BREW_PREFIX="$(brew --prefix)"
 
-# export PATH="$HOME/.local/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/findutils/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/grep/libexec/gnubin:/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+for pkg in coreutils findutils gnu-sed grep gawk; do
+    gnubin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
+    [[ -d "$gnubin" ]] && PATH="$gnubin:$PATH"
+done
+
 PATH="$HOME/.local/bin:$PATH"
 PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
 PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
