@@ -14,14 +14,19 @@ export EDITOR='nvim'
 # Paths
 # ----------------------------------------
 
+BREW_PREFIX="$(brew --prefix)"
+
 # export PATH="$HOME/.local/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/findutils/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/grep/libexec/gnubin:/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
-export PATH="$PATH:/Library/TeX/texbin"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
+PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+PATH="$PATH:/Library/TeX/texbin"
+
+export PATH
 
 # DYLD Library
-export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
-export DYLD_FALLBACK_LIBRARY_PATH="/opt/homebrew/lib:/usr/lib"
+export DYLD_LIBRARY_PATH="$BREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
+export DYLD_FALLBACK_LIBRARY_PATH="$BREW_PREFIX/lib:/usr/lib"
 
 # ----------------------------------------
 # Brew Environment
