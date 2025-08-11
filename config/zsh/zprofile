@@ -9,7 +9,7 @@ export EDITOR="nvim"
 # Paths
 # ----------------------------------------
 
-BREW_PREFIX="$(brew --prefix)"
+BREW_PREFIX="/opt/homebrew/"
 
 for pkg in coreutils findutils gnu-sed grep gawk; do
     gnubin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
