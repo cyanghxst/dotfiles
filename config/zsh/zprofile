@@ -50,3 +50,9 @@ export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 # ----------------------------------------
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1 # disable venv prompt in lieu of custom one
+
+# ----------------------------------------
+# Misc.
+# ----------------------------------------
+
+export PROFILE_SOURCED=1
