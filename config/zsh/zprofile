@@ -49,4 +49,4 @@ export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 # Python
 # ----------------------------------------
 
-export VIRTUAL_ENV_DISABLE_PROMPT=1 # disable venv prompt in leiu of custom one
+export VIRTUAL_ENV_DISABLE_PROMPT=1 # disable venv prompt in lieu of custom one
