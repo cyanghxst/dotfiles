@@ -5,15 +5,15 @@
 if [[ "$(arch)" == "arm64" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
-    BREW_PREFIX="/opt/homebrew/"
-    INTEL_BREW_PREFIX="/usr/local/"
+    BREW_PREFIX="/opt/homebrew"
+    INTEL_BREW_PREFIX="/usr/local"
 
     if [[ -x "$INTEL_BREW_PREFIX/bin/brew" ]]; then
         PATH="$PATH:$INTEL_BREW_PREFIX/bin:$INTEL_BREW_PREFIX/sbin"
     fi
 else
     eval "$(/usr/local/bin/brew shellenv)"
-    BREW_PREFIX="/usr/local/"
+    BREW_PREFIX="/usr/local"
 fi
 
 # ----------------------------------------
