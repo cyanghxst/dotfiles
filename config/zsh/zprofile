@@ -27,10 +27,10 @@ export EDITOR="nvim"
 # Paths
 # ----------------------------------------
 
-for pkg in coreutils findutils gnu-sed grep gawk; do
-    gnubin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
-    [[ -d "$gnubin" ]] && PATH="$gnubin:$PATH"
-done
+ for pkg in coreutils findutils gnu-sed grep gawk; do
+     gnu_bin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
+     [[ -d "$gnu_bin" ]] && PATH="$gnu_bin:$PATH"
+ done
 
 PATH="$HOME/.local/bin:$PATH"
 PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
