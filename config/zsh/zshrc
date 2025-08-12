@@ -39,11 +39,12 @@ setopt hist_find_no_dups
 # Aliases
 # ----------------------------------------
 
-# Better ls
-alias ls='\ls -Glh'
-alias lst='\ls -Glth'
-alias lsd='\ls -Gldh .*'
-alias lsdt='\ls -Gldth .*'
+# Better ls (gnu)
+LS_COMMON="--color=auto --literal"
+alias ls="command ls $LS_COMMON -lh"
+alias lst="command ls $LS_COMMON -lth"
+alias lsd="command ls $LS_COMMON -ldh .*"
+alias lsdt="command ls $LS_COMMON -ldth .*"
 
 # FZF
 alias nf='fzf --print0 | xargs -0 -o nvim'
