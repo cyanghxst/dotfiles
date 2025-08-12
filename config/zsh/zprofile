@@ -42,8 +42,8 @@ export EDITOR="nvim"
  export PATH
 
 # DYLD Library
-export DYLD_LIBRARY_PATH="$BREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
-export DYLD_FALLBACK_LIBRARY_PATH="$BREW_PREFIX/lib:/usr/lib"
+# export DYLD_LIBRARY_PATH="$BREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
+# export DYLD_FALLBACK_LIBRARY_PATH="$BREW_PREFIX/lib:/usr/lib"
 
 # ----------------------------------------
 # SDKMAN Initialization
