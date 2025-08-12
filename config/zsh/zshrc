@@ -57,6 +57,7 @@ alias gcc='gcc-14'
 alias g++='g++-14'
 
 # Misc.
+alias grep='grep --color=auto'
 alias clear='unset NEW_LINE_BEFORE_PROMPT && clear'
 alias dirs='dirs -v'
 alias fastfetch='fastfetch | lolcat -F 0.097 -S 30 -a -d 1 -s 35'
