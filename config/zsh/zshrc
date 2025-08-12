@@ -47,7 +47,6 @@ alias lsd="command ls $LS_COMMON -ldh .*"
 alias lsdt="command ls $LS_COMMON -ldth .*"
 
 # FZF
-alias nf='fzf --print0 | xargs -0 -o nvim'
 alias of='fzf --print0 | xargs -0 -o open'
 alias cf='cd "$(find . -type d -not -path "*/.git*" -not -path "./.*" | sed "s|^\./||" | sort | fzf || pwd)"'
 alias cf1='cd "$(find . -maxdepth 1 -type d -not -path "*/.git*" -not -path "./.*" | sed "s|^\./||" | sort | fzf || pwd)"'
