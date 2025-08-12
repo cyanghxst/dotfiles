@@ -32,12 +32,14 @@ export EDITOR="nvim"
      [[ -d "$gnu_bin" ]] && PATH="$gnu_bin:$PATH"
  done
 
-PATH="$HOME/.local/bin:$PATH"
-PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
-PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
-PATH="$PATH:/Library/TeX/texbin"
+ PATH="$HOME/.local/bin:$PATH"
+ PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
 
-export PATH
+ [[ $(arch) != "arm64" ]] && PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+ PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+ PATH="$PATH:/Library/TeX/texbin"
+
+ export PATH
 
 # DYLD Library
 export DYLD_LIBRARY_PATH="$BREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
