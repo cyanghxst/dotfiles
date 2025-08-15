@@ -51,8 +51,8 @@
     - ['git submodule update --init --recursive', Initialize Git submodules]
     - |
       for script in ~/git/repos/dotfiles/config/scripts/*; do
-          if [ -f "$script" ]; then
-              script_name=$(basename "$script" .sh)
+          if [[ -f "$script" ]]; then
+              script_name="$(basename "$script" .sh)"
               ln -sf "$script" "$HOME/.local/bin/$script_name"
           fi
       done
