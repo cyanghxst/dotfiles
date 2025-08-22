@@ -2,18 +2,18 @@
 
 mkdir -p converted_pdfs
 
-[[ -x soffice ]] || echo "soffice is missing." && return 1
+command -v soffice >/dev/null 2>&1 || { echo "soffice is missing."; exit 1; }
 
 for file in *.ppt *.pptx; do
     if [[ -f "$file" ]]; then
-        echo "Converting "$file" to pdf ..."
+        echo "Converting "$file" to pdf..."
 
-        soffice --headless --convert-to pdf "$file" --outdir ./converted_pdfs
+        soffice --headless --convert-to pdf "$file" --outdir ./converted_pdfs >/dev/null
 
         if [[ "$?" ]]; then
-            echo "Sucessfully converted "$file"."
+            printf "Sucessfully converted %s.\n\n" "$file"
         else
-            echo "Failed to convert "$file"."
+            printf "Failed to convert %s.\n\n" "$file"
         fi
     fi
 done
