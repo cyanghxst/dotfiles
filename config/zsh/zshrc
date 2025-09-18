@@ -110,6 +110,21 @@ precmd() {
 clear
 
 # ----------------------------------------
+# Git config hook
+# ----------------------------------------
+
+chpwd() {
+  case "$PWD" in
+    ~/code/ubc/cpsc-210(|/*))
+      export GIT_CONFIG_GLOBAL=~/.gitconfig-ubc
+      ;;
+    *)
+      export GIT_CONFIG_GLOBAL=~/.gitconfig
+      ;;
+  esac
+}
+
+# ----------------------------------------
 # Manual Page Settings
 # ----------------------------------------
 
