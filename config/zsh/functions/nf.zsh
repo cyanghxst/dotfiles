@@ -9,6 +9,5 @@ nf() {
 
     [[ "$dir" == "$base" ]] && dir="."
 
-    cd -- "$dir" || return 1
     nvim -- "$base"
 }
