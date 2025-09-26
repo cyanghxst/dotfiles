@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -n "$TMUX" ]; then
+if [[ -n "$TMUX" ]]; then
     exit 0
 fi
 
@@ -19,7 +19,7 @@ for i in "${!sessions[@]}"; do
 
     tmux has-session -t "$session" 2>/dev/null
 
-    if [ $? != 0 ]; then
+    if [[ $? != 0 ]]; then
         tmux new-session -d -s "$session" "cd ~; exec zsh"
         tmux new-window -t "$session:1" "cd $dir; exec zsh"
         tmux send-keys -t "$session:1" "ls" C-m
