@@ -7,6 +7,19 @@ if [[ -z PROFILE_SOURCED ]]; then
 fi
 
 # ----------------------------------------
+# SSH Agent
+# ----------------------------------------
+
+for key in "$HOME"/.ssh/id_ed*; do
+    [[ -f $key && $key != *.pub ]] || continue
+
+    # Skip if already added
+    ssh-add -l 2>/dev/null | grep -q " $(ssh-keygen -lf "$key" | awk '{print $2}') " && continue
+
+    ssh-add --apple-use-keychain "$key" >/dev/null 2>&1
+done
+
+# ----------------------------------------
 # General
 # ----------------------------------------
 
