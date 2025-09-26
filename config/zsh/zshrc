@@ -2,7 +2,7 @@
 # Check for .zprofile
 # ----------------------------------------
 
-if [[ -z PROFILE_SOURCED ]]; then
+if [[ -z $PROFILE_SOURCED ]]; then
     source ~/.zprofile
 fi
 
