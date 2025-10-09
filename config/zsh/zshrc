@@ -4,6 +4,13 @@
 
 if [[ -z $PROFILE_SOURCED ]]; then
     source ~/.zprofile
+# ====================================================================
+# Zsh Interactive Config
+# ====================================================================
+
+# Only run the rest for interactive shells
+[[ $- != *i* ]] && return
+
 fi
 
 # ----------------------------------------
