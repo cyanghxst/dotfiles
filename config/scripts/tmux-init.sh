@@ -4,12 +4,13 @@ if [[ -n "$TMUX" ]]; then
     exit 0
 fi
 
-sessions=("main" "cpsc-210-lectures" "cpsc-210-labs" "practice")
+sessions=("main" "cpsc-210-lectures" "cpsc-210-labs" "cpsc-210-project" "practice")
 
 directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/code/ubc/cpsc-210/lectures"
     "$HOME/code/ubc/cpsc-210/labs/"
+    "$HOME/code/ubc/cpsc-210/project/"
     "$HOME/Exercism/"
 )
 
