@@ -107,31 +107,22 @@ export FZF_DEFAULT_OPTS='
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;30:cd=43;30:su=37;41:sg=30;43:tw=30;42:ow=34;42:"
 
-# ----------------------------------------
-# Tab Completion Settings
-# ----------------------------------------
-
+# ------------------------------------------------------------
+# 8) Completion system (must precede any compdef usage)
+# ------------------------------------------------------------
+# Styles
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-autoload -Uz compinit && compinit -C
 
-# ----------------------------------------
-# Prompt Settings
-# ----------------------------------------
+# Load & cache completion safely
+autoload -Uz compinit
+# Optional: versioned cache so upgrades don’t break comps
+compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
-precmd() {
-    if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
-        NEW_LINE_BEFORE_PROMPT=1
-    elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
-        echo ""
-    fi
-}
-
-clear
-
-# ----------------------------------------
-# Manual Page Settings
-# ----------------------------------------
+# Program completions that emit compdef go AFTER compinit:
+if command -v gh >/dev/null 2>&1; then
+  eval "$(gh completion -s zsh)"
+fi
 
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
