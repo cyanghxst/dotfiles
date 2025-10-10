@@ -24,12 +24,12 @@ for i in "${!sessions[@]}"; do
 
     if [[ $? != 0 ]]; then
         tmux new-session -d -s "$session" "cd ~; exec zsh"
-        tmux new-window -t "$session1" "cd $dir; exec zsh"
-        tmux send-keys -t "$session:1" "ls" C-m
+        tmux new-window -t "$session" "cd $dir; exec zsh"
+        tmux send-keys -t "$session" "ls" C-m
 
         if [[ $i -eq 0 && -d $obsidian_directory ]]; then
-            tmux new-window -t "$session:2" "cd $obsidian_directory; exec zsh"
-            tmux send-keys -t "$session:2" "ls" C-m
+            tmux new-window -t "$session" "cd $obsidian_directory; exec zsh"
+            tmux send-keys -t "$session" "ls" C-m
         fi
     fi
 done
