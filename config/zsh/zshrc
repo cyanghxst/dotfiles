@@ -167,11 +167,9 @@ export LESS_TERMCAP_me=$(tput sgr0)
 [[ -r ~/.zsh/prompt.zsh ]] && source ~/.zsh/prompt.zsh
 
 # Custom functions
-if compgen -G ~/.zsh/functions/*.zsh >/dev/null 2>&1; then
-  for func in ~/.zsh/functions/*.zsh; do
+for func in ~/.zsh/functions/*.zsh; do
     source "$func"
-  done
-fi
+done
 
 # Plugins: keep autosuggestions before syntax-highlighting
 [[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
