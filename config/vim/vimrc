@@ -1,10 +1,10 @@
-" ---------------------------------------- 
+" ----------------------------------------
 " Vim VI improved 9.0 Config
-" ---------------------------------------- 
+" ----------------------------------------
 
-" ---------------------------------------- 
+" ----------------------------------------
 " Plugins
-" ---------------------------------------- 
+" ----------------------------------------
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -18,9 +18,9 @@ Plug 'tribela/vim-transparent'
 
 call plug#end()
 
-" ---------------------------------------- 
+" ----------------------------------------
 " Color Settings
-" ---------------------------------------- 
+" ----------------------------------------
 
 " Enable true colors support
 set termguicolors
@@ -44,9 +44,9 @@ hi normal ctermbg=NONE guibg=NONE
 " Disable background
 hi NonText ctermbg=NONE guibg=NONE
 
-" ---------------------------------------- 
+" ----------------------------------------
 " Status Line
-" ---------------------------------------- 
+" ----------------------------------------
 
 " Enable status line
 " set laststatus=2
@@ -64,9 +64,9 @@ hi NonText ctermbg=NONE guibg=NONE
 " Set colors
 hi user1 ctermbg=NONE guifg=#414868
 
-" ---------------------------------------- 
+" ----------------------------------------
 " Status Line 2
-" ---------------------------------------- 
+" ----------------------------------------
 
 " Enable status line
 set laststatus=2
@@ -75,7 +75,7 @@ set laststatus=2
 " set statusline+=%1*
 " set statusline+=\ %{toupper(g:currentmode[mode()])}
 " set statusline+=%2*
-" set statusline+=\ %f\ 
+" set statusline+=\ %f\
 " set statusline+=%{&modified?'[+]':''}
 
 " Left side
@@ -83,7 +83,7 @@ set statusline=
 set statusline+=%1*
 set statusline+=\ %{g:currentmode[mode()]}
 set statusline+=%2*
-set statusline+=\ %f 
+set statusline+=\ %f
 set statusline+=\ %{&modified?'[+]':''}
 
 " Right side
@@ -91,9 +91,9 @@ set statusline+=%=
 set statusline+=%{&ff}
 set statusline+=\ \ %{strlen(&fenc)?&fenc:'none'}
 set statusline+=\ \ %P
-" set statusline+=\ \ ☰\ 
-set statusline+=\ \ ✦\ 
-set statusline+=\ %l:%L\ 
+" set statusline+=\ \ ☰\
+set statusline+=\ \ ✦\
+set statusline+=\ %l:%L\
 
 " Set colors
 hi User1 ctermbg=red ctermfg=black guibg=#F7768E guifg=black
@@ -111,9 +111,9 @@ let g:currentmode={
       \ 'c'  : 'COMMAND ',
       \}
 
-" ---------------------------------------- 
+" ----------------------------------------
 " Basic Settings
-" ---------------------------------------- 
+" ----------------------------------------
 
 " Use a line cursor within insert mode and a block cursor everywhere else
 
@@ -171,9 +171,9 @@ set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 
-" ---------------------------------------- 
+" ----------------------------------------
 " Basic Mappings
-" ---------------------------------------- 
+" ----------------------------------------
 
 " Better up/down
 nnoremap j gj
@@ -186,9 +186,9 @@ nnoremap Q <NOP>
 nnoremap <CR> :nohl<CR>
 nnoremap <esc> :nohl<CR>
 
-" ---------------------------------------- 
+" ----------------------------------------
 " Basic Autocommands
-" ---------------------------------------- 
+" ----------------------------------------
 
 " Disable auto-commenting
 autocmd FileType * set formatoptions-=cro
