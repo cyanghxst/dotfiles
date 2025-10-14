@@ -41,4 +41,5 @@ for i in "${!sessions[@]}"; do
     fi
 done
 
+tmux select-window -t main:1
 tmux attach -t main
