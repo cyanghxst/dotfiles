@@ -10,7 +10,7 @@
 # ------------------------------------------------------------
 
 if [[ -z ${PROFILE_SOURCED:-} && -r ~/.zprofile ]]; then
-  source ~/.zprofile
+    source ~/.zprofile
 fi
 
 # ------------------------------------------------------------
@@ -18,12 +18,12 @@ fi
 # ------------------------------------------------------------
 
 for key in "$HOME"/.ssh/id_ed*; do
-  [[ -f $key && $key != *.pub ]] || continue
-  # Skip if already added
-  if ssh-add -l 2>/dev/null | grep -q " $(ssh-keygen -lf "$key" | awk '{print $2}') "; then
-    continue
-  fi
-  ssh-add --apple-use-keychain "$key" >/dev/null 2>&1
+    [[ -f $key && $key != *.pub ]] || continue
+    # Skip if already added
+    if ssh-add -l 2>/dev/null | grep -q " $(ssh-keygen -lf "$key" | awk '{print $2}') "; then
+        continue
+    fi
+    ssh-add --apple-use-keychain "$key" >/dev/null 2>&1
 done
 
 # ------------------------------------------------------------
@@ -36,11 +36,11 @@ bindkey '^n' history-search-forward
 
 # Fast prompt newline between commands (nice for readability)
 precmd() {
-  if [[ -z "$NEW_LINE_BEFORE_PROMPT" ]]; then
-    NEW_LINE_BEFORE_PROMPT=1
-  elif [[ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]]; then
-    echo ""
-  fi
+    if [[ -z "$NEW_LINE_BEFORE_PROMPT" ]]; then
+        NEW_LINE_BEFORE_PROMPT=1
+    elif [[ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]]; then
+        echo ""
+    fi
 }
 
 # Optional clear screen at shell start (kept from your config)
@@ -52,12 +52,12 @@ clear
 
 # mise (activate toolchains)
 if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
+    eval "$(mise activate zsh)"
 fi
 
 # SDKMAN (Java toolchains)
 if [[ -r /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh ]]; then
-  sdk() { unfunction sdk 2>/dev/null; source /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh; sdk "$@"; }
+    sdk() { unfunction sdk 2>/dev/null; source /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh; sdk "$@"; }
 fi
 
 # ------------------------------------------------------------
@@ -145,7 +145,7 @@ compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
 # GitHub CLI completion
 if command -v gh >/dev/null 2>&1; then
-  eval "$(gh completion -s zsh)"
+    eval "$(gh completion -s zsh)"
 fi
 
 # ------------------------------------------------------------
@@ -173,8 +173,8 @@ done
 
 # Plugins: keep autosuggestions before syntax-highlighting
 [[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
-  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Syntax highlighting should be last
 [[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
