@@ -126,21 +126,24 @@ export FZF_DEFAULT_OPTS='
 # ------------------------------------------------------------
 # 7) ls/dir colors
 # ------------------------------------------------------------
+
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;30:cd=43;30:su=37;41:sg=30;43:tw=30;42:ow=34;42:"
 
 # ------------------------------------------------------------
 # 8) Completion system (must precede any compdef usage)
 # ------------------------------------------------------------
-# Styles
+
+# Completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Load & cache completion safely
 autoload -Uz compinit
+
 # Optional: versioned cache so upgrades don’t break comps
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
-# Program completions that emit compdef go AFTER compinit:
+# GitHub CLI completion
 if command -v gh >/dev/null 2>&1; then
   eval "$(gh completion -s zsh)"
 fi
