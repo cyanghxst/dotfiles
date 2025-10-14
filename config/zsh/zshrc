@@ -1,6 +1,6 @@
-# ====================================================================
+# ------------------------------------------------------------
 # Zsh Interactive Config
-# ====================================================================
+# ------------------------------------------------------------
 
 # Only run the rest for interactive shells
 [[ $- != *i* ]] && return
@@ -8,6 +8,7 @@
 # ------------------------------------------------------------
 # 0) Source login profile once (guarded)
 # ------------------------------------------------------------
+
 if [[ -z ${PROFILE_SOURCED:-} && -r ~/.zprofile ]]; then
   source ~/.zprofile
 fi
@@ -15,6 +16,7 @@ fi
 # ------------------------------------------------------------
 # 1) SSH Agent (Apple keychain; add id_ed* keys if not loaded)
 # ------------------------------------------------------------
+
 for key in "$HOME"/.ssh/id_ed*; do
   [[ -f $key && $key != *.pub ]] || continue
   # Skip if already added
@@ -27,6 +29,7 @@ done
 # ------------------------------------------------------------
 # 2) Keybindings & basics
 # ------------------------------------------------------------
+
 bindkey -e                           # Emacs bindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
@@ -77,6 +80,7 @@ setopt hist_find_no_dups
 # ------------------------------------------------------------
 # 5) Aliases
 # ------------------------------------------------------------
+
 # Better ls (GNU-style flags; you already use them—keeping as-is)
 LS_COMMON="--color=auto --literal"
 alias ls="command ls $LS_COMMON -lh"
@@ -107,6 +111,7 @@ alias zsh='source ~/.zshrc'
 # ------------------------------------------------------------
 # 6) FZF appearance
 # ------------------------------------------------------------
+
 export FZF_DEFAULT_OPTS='
 --height=40% --layout=reverse --info=inline --border --margin=1 --padding=1
 --color=fg:#c0caf5,fg+:#16161e
@@ -143,6 +148,7 @@ fi
 # ------------------------------------------------------------
 # 9) Man page styling
 # ------------------------------------------------------------
+
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)   # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 2)   # green
 export LESS_TERMCAP_so=$(tput bold; tput rev; tput setaf 3) # yellow
@@ -153,6 +159,7 @@ export LESS_TERMCAP_me=$(tput sgr0)
 # ------------------------------------------------------------
 # 10) Sources: prompt, functions, plugins
 # ------------------------------------------------------------
+
 # Prompt
 [[ -r ~/.zsh/prompt.zsh ]] && source ~/.zsh/prompt.zsh
 
