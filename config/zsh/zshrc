@@ -46,18 +46,21 @@ clear
 # ------------------------------------------------------------
 # 3) Tooling env hooks (mise, sdkman, etc.)
 # ------------------------------------------------------------
+
 # mise (activate toolchains)
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
 # SDKMAN (Java toolchains)
-[[ -r /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh ]] && \
-  source /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh
+if [[ -r /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh ]]; then
+  sdk() { unfunction sdk 2>/dev/null; source /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh; sdk "$@"; }
+fi
 
 # ------------------------------------------------------------
 # 4) History settings
 # ------------------------------------------------------------
+
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
