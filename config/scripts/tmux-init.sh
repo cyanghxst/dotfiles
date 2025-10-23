@@ -38,6 +38,12 @@ for i in "${!sessions[@]}"; do
             tmux new-window -t "$session" "cd $obsidian_directory; exec zsh"
             tmux send-keys -t "$session" "ls" C-m
         fi
+
+        if [[ $i -eq 3 ]]; then
+            tmux new-window -t "$session" "cd $dir; exec zsh"
+            tmux send-keys -t "$session" "ls" C-m
+            tmux send-keys -t "$session" "nf" C-m
+        fi
     fi
 done
 
