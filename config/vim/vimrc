@@ -90,10 +90,10 @@ set statusline+=\ %{&modified?'[+]':''}
 set statusline+=%=
 set statusline+=%{&ff}
 set statusline+=\ \ %{strlen(&fenc)?&fenc:'none'}
-set statusline+=\ \ %P
+set statusline+=\ \ ✦
+set statusline+=\ %l:%L
 " set statusline+=\ \ ☰\
-set statusline+=\ \ ✦\
-set statusline+=\ %l:%L\
+set statusline+=\ \ %P
 
 " Set colors
 hi User1 ctermbg=red ctermfg=black guibg=#F7768E guifg=black
