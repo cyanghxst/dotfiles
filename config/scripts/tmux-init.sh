@@ -4,17 +4,18 @@ if [[ -n "$TMUX" ]]; then
     exit 0
 fi
 
-sessions=("main" "cpsc-210-lectures" "cpsc-210-labs" "cpsc-210-project")
+sessions=("main" "obsidian" "cpsc-210-lectures" "cpsc-210-labs" "cpsc-210-project")
 
 directories=(
-    "$HOME/git/repos/dotfiles"
-    "$HOME/code/ubc/cpsc-210/lectures"
-    "$HOME/code/ubc/cpsc-210/labs"
+    "$HOME/git/repos/dotfiles/"
+    "$HOME/git/repos/obsidian/"
+    "$HOME/code/ubc/cpsc-210/lectures/"
+    "$HOME/code/ubc/cpsc-210/labs/"
     "$HOME/code/ubc/cpsc-210/project/project-j3d7s/"
 )
 
-obsidian_directory="$HOME/git/repos/obsidian"
-nvim_directory="$HOME/git/repos/nvim"
+vault_directory="$HOME/git/repos/vault/"
+nvim_directory="$HOME/git/repos/nvim/"
 
 for i in "${!sessions[@]}"; do
     session="${sessions[$i]}"
@@ -34,8 +35,8 @@ for i in "${!sessions[@]}"; do
             tmux send-keys -t "$session" "ls" C-m
         fi
 
-        if [[ $i -eq 0 && -d "$obsidian_directory" ]]; then
-            tmux new-window -t "$session" "cd $obsidian_directory; exec zsh"
+        if [[ $i -eq 1 && -d "$vault_directory" ]]; then
+            tmux new-window -t "$session" "cd $vault_directory; exec zsh"
             tmux send-keys -t "$session" "ls" C-m
         fi
 
