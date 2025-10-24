@@ -10,7 +10,7 @@ directories=(
     "$HOME/git/repos/dotfiles"
     "$HOME/code/ubc/cpsc-210/lectures"
     "$HOME/code/ubc/cpsc-210/labs"
-    "$HOME/code/ubc/cpsc-210/project-j3d7s"
+    "$HOME/code/ubc/cpsc-210/project/project-j3d7s/"
 )
 
 obsidian_directory="$HOME/git/repos/obsidian"
