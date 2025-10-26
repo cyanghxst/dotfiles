@@ -14,7 +14,17 @@ ssh_info() {
 git_info() {
     ! git rev-parse --is-inside-work-tree > /dev/null 2>&1 && return
 
-    local GIT_LOCATION=${$(git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD)#(refs/heads/|tags/)}
+    local GIT_LOCATION
+    local BRANCH
+
+    BRANCH=$(git symbolic-ref --quiet --short HEAD 2>/dev/null)
+
+    # display the branch if not detached, otherwise show commit hash
+    if [[ -n "$BRANCH" ]]; then
+        GIT_LOCATION="$BRANCH"
+    else
+        GIT_LOCATION=$(git rev-parse --short HEAD 2>/dev/null)
+    fi
 
     local AHEAD="%F{#456841}+NUM%{$reset_color%}"
     local BEHIND="%F{#684141}-NUM%{$reset_color%}"
