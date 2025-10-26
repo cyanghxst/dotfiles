@@ -40,7 +40,7 @@ for i in "${!sessions[@]}"; do
             tmux send-keys -t "$session" "ls" C-m
         fi
 
-        if [[ $i -eq 3 ]]; then
+        if [[ $i -eq 3 || $i -eq 4 ]]; then
             tmux new-window -t "$session" "cd $dir; exec zsh"
             tmux send-keys -t "$session" "ls" C-m
             tmux send-keys -t "$session" "nf" C-m
