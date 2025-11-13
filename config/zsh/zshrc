@@ -1,40 +1,36 @@
-# ------------------------------------------------------------
-# Zsh Interactive Config
-# ------------------------------------------------------------
+# ------
+# Zshrc
+# ------
 
-# Only run the rest for interactive shells
+# only run the rest for interactive shells
 [[ $- != *i* ]] && return
 
-# ------------------------------------------------------------
-# 0) Source login profile once (guarded)
-# ------------------------------------------------------------
-
+# source .zprofile once
 if [[ -z ${PROFILE_SOURCED:-} && -r ~/.zprofile ]]; then
     source ~/.zprofile
 fi
 
-# ------------------------------------------------------------
-# 1) SSH Agent (Apple keychain; add id_ed* keys if not loaded)
-# ------------------------------------------------------------
-
+# SSH agent
 for key in "$HOME"/.ssh/id_ed*; do
     [[ -f $key && $key != *.pub ]] || continue
-    # Skip if already added
+
+    # skip if already added
     if ssh-add -l 2>/dev/null | grep -q " $(ssh-keygen -lf "$key" | awk '{print $2}') "; then
         continue
     fi
+
     ssh-add --apple-use-keychain "$key" >/dev/null 2>&1
 done
 
-# ------------------------------------------------------------
-# 2) Keybindings & basics
-# ------------------------------------------------------------
+# ------------
+# Keybindings
+# ------------
 
-bindkey -e                           # Emacs bindings
+bindkey -e # Emacs bindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-# Fast prompt newline between commands (nice for readability)
+# newline between commands
 precmd() {
     if [[ -z "$NEW_LINE_BEFORE_PROMPT" ]]; then
         NEW_LINE_BEFORE_PROMPT=1
@@ -43,26 +39,25 @@ precmd() {
     fi
 }
 
-# Optional clear screen at shell start (kept from your config)
 clear
 
-# ------------------------------------------------------------
-# 3) Tooling env hooks (mise, sdkman, etc.)
-# ------------------------------------------------------------
+# ----------
+# env hooks
+# ----------
 
-# mise (activate toolchains)
+# mise
 if command -v mise >/dev/null 2>&1; then
     eval "$(mise activate zsh)"
 fi
 
-# SDKMAN (Java toolchains)
+# SDKMAN
 if [[ -r /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh ]]; then
     sdk() { unfunction sdk 2>/dev/null; source /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh; sdk "$@"; }
 fi
 
-# ------------------------------------------------------------
-# 4) History settings
-# ------------------------------------------------------------
+# --------
+# history
+# --------
 
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -77,11 +72,11 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# ------------------------------------------------------------
-# 5) Aliases
-# ------------------------------------------------------------
+# --------
+# Aliases
+# --------
 
-# Better ls (GNU-style flags; you already use them—keeping as-is)
+# better ls (gnu)
 LS_COMMON="--color=auto --literal"
 alias ls="command ls $LS_COMMON -lh"
 alias lst="command ls $LS_COMMON -lth"
@@ -93,11 +88,11 @@ alias of='fzf --print0 | xargs -0 -o open'
 alias cf='cd "$(find . -type d -not -path "*/.git*" -not -path "./.*" | sed "s|^\./||" | sort | fzf || pwd)"'
 alias cf1='cd "$(find . -maxdepth 1 -type d -not -path "*/.git*" -not -path "./.*" | sed "s|^\./||" | sort | fzf || pwd)"'
 
-# Compilers
+# compilers
 alias gcc='gcc-14'
 alias g++='g++-14'
 
-# Misc
+# misc
 alias grep='grep --color=auto'
 alias clear='unset NEW_LINE_BEFORE_PROMPT && clear'
 alias dirs='dirs -v'
@@ -108,9 +103,9 @@ alias fortune='fortune | cowsay'
 alias gg='git-graph --style round'
 alias zsh='source ~/.zshrc'
 
-# ------------------------------------------------------------
-# 6) FZF appearance
-# ------------------------------------------------------------
+# ----
+# FZF
+# ----
 
 export FZF_DEFAULT_OPTS='
 --height=40% --layout=reverse --info=inline --border --margin=1 --padding=1
@@ -123,58 +118,60 @@ export FZF_DEFAULT_OPTS='
 --color=info:#9ece6a,pointer:#16161e
 --color=border:#414868,spinner:#7aa2f7,header:#7E8E91,marker:#F92672,prompt:#9ece6a'
 
-# ------------------------------------------------------------
-# 7) ls/dir colors
-# ------------------------------------------------------------
+# --------------
+# ls/dir colors
+# --------------
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;30:cd=43;30:su=37;41:sg=30;43:tw=30;42:ow=34;42:"
 
-# ------------------------------------------------------------
-# 8) Completion system (must precede any compdef usage)
-# ------------------------------------------------------------
+# -----------
+# completion
+# -----------
 
-# Completion
+# completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-# Load & cache completion safely
+# laod and update cache
 autoload -Uz compinit
 
-# Optional: versioned cache so upgrades don’t break comps
+# versioned cache
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
-# GitHub CLI completion
+# gh
 if command -v gh >/dev/null 2>&1; then
     eval "$(gh completion -s zsh)"
 fi
 
-# ------------------------------------------------------------
-# 9) Man page styling
-# ------------------------------------------------------------
+# ---------
+# Man page
+# ---------
 
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)   # green
-export LESS_TERMCAP_md=$(tput bold; tput setaf 2)   # green
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_so=$(tput bold; tput rev; tput setaf 3) # yellow
 export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-export LESS_TERMCAP_us=$(tput smul; tput setaf 4)   # blue
+export LESS_TERMCAP_us=$(tput smul; tput setaf 4) # blue
 export LESS_TERMCAP_me=$(tput sgr0)
 
-# ------------------------------------------------------------
-# 10) Sources: prompt, functions, plugins
-# ------------------------------------------------------------
+# --------
+# Sources
+# --------
 
-# Prompt
-[[ -r ~/.zsh/prompt.zsh ]] && source ~/.zsh/prompt.zsh
+# prompt
+if [[ -r ~/.zsh/prompt.zsh ]]; then
+    source ~/.zsh/prompt.zsh
+fi
 
-# Custom functions
+# custom functions
 for func in ~/.zsh/functions/*.zsh; do
     source "$func"
 done
 
-# Plugins: keep autosuggestions before syntax-highlighting
-[[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+if [[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
-# Syntax highlighting should be last
-[[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+if [[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
