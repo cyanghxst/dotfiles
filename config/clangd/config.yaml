@@ -1,34 +1,47 @@
+# .clangd
+If:
+    PathMatch: .*\.c$
 CompileFlags:
-  Add:
-    - -std=c++23
-    - -O0
-    - -Wall
-    - -Werror
-    - -Wextra
-    - -Weffc++
-    - -Wconversion
-    - -Wsign-conversion
-    - -pedantic-errors
-
+    Add:
+        - -std=c17
+        - -O0
+        - -Wall
+        - -Wextra
+        - -Werror
+        - -Wconversion
+        - -Wsign-conversion
+        - -pedantic-errors
+---
+If:
+    PathMatch: .*\.((cc)|(cxx)|(cpp)|(CPP))$
+CompileFlags:
+    Add:
+        - -std=c++23
+        - -O0
+        - -Wall
+        - -Werror
+        - -Wextra
+        - -Weffc++
+        - -Wconversion
+        - -Wsign-conversion
+        - -pedantic-errors
 Index:
-  Background: true
-  FileLimit: 10000
-
+    Background: true
+    FileLimit: 10000
 Clangd:
-  Diagnostics: true
-  Hover: true
-  SignatureHelp: true
-
+    Diagnostics: true
+    Hover: true
+    SignatureHelp: true
 Completion:
-  Filters:
-    - keyword
-    - variable
-    - function
-  Snippets: true
-
+    Filters:
+        - keyword
+        - variable
+        - function
+    Snippets: true
 Formatting:
-  Style: "LLVM"
-  ColumnLimit: 100
-
+    Style: LLVM
+    ColumnLimit: 100
+# Fallback flags only used when no compilation database entry matches.
 FallbackFlags:
-  Add: [-std=c++23]
+    Add:
+        - -std=c17
