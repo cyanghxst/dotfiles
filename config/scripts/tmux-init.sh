@@ -4,17 +4,16 @@ if [[ -n "$TMUX" ]]; then
     exit 0
 fi
 
-sessions=("main" "obsidian" "cpsc-210-lectures" "cpsc-210-labs" "cpsc-210-project")
+sessions=("main" "obsidian" "homelab" "cpsc-213")
 
 directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/git/repos/obsidian/"
-    "$HOME/code/ubc/cpsc-210/lectures/"
-    "$HOME/code/ubc/cpsc-210/labs/"
-    "$HOME/code/ubc/cpsc-210/project/project-j3d7s/"
+    "$HOME/git/repos/homelab/"
+    "$HOME/code/ubc/cpsc-213/"
 )
 
-vault_directory="$HOME/git/repos/vault/"
+vault_directory="$HOME/git/repos/vault-2/"
 nvim_directory="$HOME/git/repos/nvim/"
 
 for i in "${!sessions[@]}"; do
@@ -40,11 +39,11 @@ for i in "${!sessions[@]}"; do
             tmux send-keys -t "$session" "ls" C-m
         fi
 
-        if [[ $i -eq 3 || $i -eq 4 ]]; then
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ls" C-m
-            tmux send-keys -t "$session" "nf" C-m
-        fi
+        # if [[ $i -eq 3 || $i -eq 4 ]]; then
+        #     tmux new-window -t "$session" "cd $dir; exec zsh"
+        #     tmux send-keys -t "$session" "ls" C-m
+        #     tmux send-keys -t "$session" "nf" C-m
+        # fi
     fi
 done
 
