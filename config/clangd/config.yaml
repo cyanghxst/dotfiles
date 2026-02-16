@@ -3,7 +3,7 @@ If:
     PathMatch: .*\.c$
 CompileFlags:
     Add:
-        - -std=c17
+        - -std=c11
         - -O0
         - -Wall
         - -Wextra
