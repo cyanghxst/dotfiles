@@ -10,7 +10,7 @@ directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/git/repos/obsidian/"
     "$HOME/git/repos/homelab/"
-    "$HOME/code/ubc/cpsc-213/"
+    "$HOME/code/ubc/cpsc-213-collab/"
 )
 
 vault_directory="$HOME/git/repos/vault-2/"
@@ -37,6 +37,13 @@ for i in "${!sessions[@]}"; do
         if [[ $i -eq 1 && -d "$vault_directory" ]]; then
             tmux new-window -t "$session" "cd $vault_directory; exec zsh"
             tmux send-keys -t "$session" "ls" C-m
+        fi
+
+        if [[ $i -eq 2 ]]; then
+            tmux new-window -t "$session" "cd $dir; exec zsh"
+            tmux send-keys -t "$session" "ssh root@proxmox" C-m
+            tmux new-window -t "$session" "cd $dir; exec zsh"
+            tmux send-keys -t "$session" "ssh admin@opnsense" C-m
         fi
 
         # if [[ $i -eq 3 || $i -eq 4 ]]; then
