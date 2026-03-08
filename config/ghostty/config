@@ -38,6 +38,10 @@ font-family = "JetBrainsMono Nerd Font Mono"
 adjust-underline-position = 4
 window-colorspace = "display-p3"
 
+# Cursor
+# custom-shader = shaders/cursor_warp.glsl
+# custom-shader = shaders/ripple_rectangle_cursor.glsl
+
 # ----------------------------------------
 # Window
 # ----------------------------------------
@@ -50,7 +54,7 @@ window-colorspace = "display-p3"
 # window-padding-balance = true
 
 # Laptop
-window-height = 38
+window-height = 39
 window-width = 149
 window-padding-x = 28
 window-padding-y = 17
@@ -70,7 +74,8 @@ macos-titlebar-style = "tabs"
 # Dock icon
 # ----------------------------------------
 
-# macos-icon = custom-style
+macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/ghostty.icns
 # macos-icon-frame = aluminum
 # macos-icon-ghost-color = grey
-# macos-icon-screen-color = dark grey,black
+# macos-icon-screen-color = dark grey,white
