@@ -4,12 +4,13 @@ if [[ -n "$TMUX" ]]; then
     exit 0
 fi
 
-sessions=("main" "obsidian" "homelab" "cpsc-213")
+sessions=("main" "obsidian" "homelab" "website" "cpsc-213" )
 
 directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/git/repos/obsidian/"
     "$HOME/git/repos/homelab/"
+    "$HOME/git/repos/website-erudite/"
     "$HOME/code/ubc/cpsc-213-collab/"
 )
 
@@ -44,6 +45,11 @@ for i in "${!sessions[@]}"; do
             tmux send-keys -t "$session" "ssh root@proxmox" C-m
             tmux new-window -t "$session" "cd $dir; exec zsh"
             tmux send-keys -t "$session" "ssh admin@opnsense" C-m
+        fi
+
+        if [[ $i -eq 3 ]]; then
+            tmux new-window -t "$session" "cd $dir; exec zsh"
+            tmux send-keys -t "$session" "npm run dev" C-m
         fi
 
         # if [[ $i -eq 3 || $i -eq 4 ]]; then
