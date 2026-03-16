@@ -54,10 +54,10 @@ window-colorspace = "display-p3"
 # window-padding-balance = true
 
 # Laptop
-window-height = 39
-window-width = 149
+window-height = 41
+window-width = 148
 window-padding-x = 28
-window-padding-y = 17
+window-padding-y = 14
 
 # Misc.
 window-save-state = never
@@ -74,8 +74,8 @@ macos-titlebar-style = "tabs"
 # Dock icon
 # ----------------------------------------
 
-macos-icon = custom
-macos-custom-icon = ~/.config/ghostty/ghostty.icns
+# macos-icon = custom
+# macos-custom-icon = ~/.config/ghostty/ghostty.icns
 # macos-icon-frame = aluminum
 # macos-icon-ghost-color = grey
 # macos-icon-screen-color = dark grey,white
