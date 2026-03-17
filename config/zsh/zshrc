@@ -11,16 +11,17 @@ if [[ -z ${PROFILE_SOURCED:-} && -r ~/.zprofile ]]; then
 fi
 
 # SSH agent
-for key in "$HOME"/.ssh/id_ed*; do
-    [[ -f $key && $key != *.pub ]] || continue
+keys=("$HOME"/.ssh/id_ed*(-N))
 
-    # skip if already added
-    if ssh-add -l 2>/dev/null | grep -q " $(ssh-keygen -lf "$key" | awk '{print $2}') "; then
-        continue
-    fi
-
-    ssh-add --apple-use-keychain "$key" >/dev/null 2>&1
-done
+if (( ${#keys} )); then
+    for key in "${keys[@]}"; do
+        [[ -f $key && $key != *.pub ]] || continue
+        if ssh-add -l 2>/dev/null | grep -q " $(ssh-keygen -lf "$key" | awk '{print $2}') "; then
+            continue
+        fi
+        ssh-add --apple-use-keychain "$key" >/dev/null 2>&1
+    done
+fi
 
 # ------------
 # Keybindings
@@ -179,4 +180,5 @@ fi
 if [[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
 export PATH="$HOME/bin:$PATH"
