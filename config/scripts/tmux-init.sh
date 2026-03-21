@@ -42,9 +42,7 @@ for i in "${!sessions[@]}"; do
 
         if [[ $i -eq 2 ]]; then
             tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ssh root@proxmox" C-m
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ssh admin@opnsense" C-m
+            tmux send-keys -t "$session" "ssh proxmox" C-m
         fi
 
         if [[ $i -eq 3 ]]; then
