@@ -10,8 +10,8 @@ for file in *.ppt *.pptx; do
 
         soffice --headless --convert-to pdf "$file" --outdir ./converted_pdfs >/dev/null
 
-        if [[ "$?" ]]; then
-            printf "Sucessfully converted %s.\n\n" "$file"
+        if [[ $? -eq 0 ]]; then
+            printf "Successfully converted %s.\n\n" "$file"
         else
             printf "Failed to convert %s.\n\n" "$file"
         fi
