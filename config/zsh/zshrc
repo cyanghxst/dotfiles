@@ -160,8 +160,12 @@ export LESS_TERMCAP_me=$(tput sgr0)
 # Sources
 # --------
 
-if [[ -f ~/.env ]]; then
-    source ~/.env
+if [[ -r "$HOME"/.config/op/plugins.sh ]]; then
+    source "$HOME"/.config/op/plugins.sh
+fi
+
+if [[ -f "$HOME"/.config/tokens/.env ]]; then
+    source "$HOME"/.config/tokens/.env
 fi
 
 # prompt
@@ -183,3 +187,4 @@ if [[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 export PATH="$HOME/bin:$PATH"
+
