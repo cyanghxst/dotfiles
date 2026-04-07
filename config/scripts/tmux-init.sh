@@ -5,7 +5,6 @@ if [[ -n "$TMUX" ]]; then
 fi
 
 sessions=("main" "obsidian" "homelab" "website" "hackathon")
-
 directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/git/repos/obsidian/"
@@ -18,62 +17,57 @@ vault_directory="$HOME/git/repos/vault/"
 nvim_directory="$HOME/git/repos/nvim/"
 homebrew_tap_directory="$HOME/git/repos/homebrew-cyanghxst/"
 
+new_window() {
+    local session="$1"
+    local dir="$2"
+    local cmd="$3"
+
+    if [[ -n "$cmd" ]]; then
+        tmux new-window -t "$session" "cd $dir; exec zsh -c '$cmd; exec zsh'"
+    else
+        tmux new-window -t "$session" "cd $dir; exec zsh"
+        tmux send-keys -t "$session" "ls" C-m
+    fi
+}
+
 for i in "${!sessions[@]}"; do
     session="${sessions[$i]}"
     dir="${directories[$i]}"
 
-    # skip the directory if it's missing
     [[ -d "$dir" ]] || continue
 
     if ! tmux has-session -t "$session" 2>/dev/null; then
-
         tmux new-session -d -s "$session" "cd ~; exec zsh"
-        tmux new-window -t "$session" "cd $dir; exec zsh"
-        tmux send-keys -t "$session" "ls" C-m
+        new_window "$session" "$dir"
 
-        # main: cd to nvim
-        if [[ $i -eq 0 && -d "$nvim_directory" ]]; then
-            tmux new-window -t "$session" "cd $nvim_directory; exec zsh"
-            tmux send-keys -t "$session" "ls" C-m
-
-            tmux new-window -t "$session" "cd $homebrew_tap_directory; exec zsh"
-            tmux send-keys -t "$session" "ls" C-m
+        # main
+        if [[ $i -eq 0 ]]; then
+            [[ -d "$nvim_directory" ]] && new_window "$session" "$nvim_directory"
+            [[ -d "$homebrew_tap_directory" ]] && new_window "$session" "$homebrew_tap_directory"
         fi
 
-        # obsidian: cd to vault
-        if [[ $i -eq 1 && -d "$vault_directory" ]]; then
-            tmux new-window -t "$session" "cd $vault_directory; exec zsh"
-            tmux send-keys -t "$session" "ls" C-m
+        # obsidian
+        if [[ $i -eq 1 ]]; then
+            [[ -d "$vault_directory" ]] && new_window "$session" "$vault_directory"
         fi
 
-        # homelab: ssh into remote
+        # homelab
         if [[ $i -eq 2 ]]; then
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ssh proxmox" C-m
-
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ssh opnsense" C-m
+            new_window "$session" "$dir" "ssh proxmox"
+            new_window "$session" "$dir" "ssh opnsense"
         fi
 
-        # website: open dev env
+        # website
         if [[ $i -eq 3 ]]; then
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "npm run dev" C-m
-
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "opencode web" C-m
+            new_window "$session" "$dir" "npm run dev"
+            new_window "$session" "$dir" "opencode web"
         fi
 
-        # hackathon: ssh into kube
+        # hackathon
         if [[ $i -eq 4 ]]; then
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ssh optiplex-node1" C-m
-
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ssh optiplex-node2" C-m
-
-            tmux new-window -t "$session" "cd $dir; exec zsh"
-            tmux send-keys -t "$session" "ssh optiplex-node3" C-m
+            new_window "$session" "$dir" "ssh optiplex-node1"
+            new_window "$session" "$dir" "ssh optiplex-node2"
+            new_window "$session" "$dir" "ssh optiplex-node3"
         fi
     fi
 done
