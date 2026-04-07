@@ -7,3 +7,8 @@ python = "latest"
 rust = "latest"
 usage = "latest"
 zig = "latest"
+
+[settings]
+
+[settings.github]
+credential_command = "op item get github-cli-1password --fields token --reveal"
