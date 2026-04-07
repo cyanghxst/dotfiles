@@ -24,3 +24,12 @@ item = "id_ed25519_caddy"
 
 [[ssh-keys]]
 item = "id_ed25519_ubc_remote"
+
+[[ssh-keys]]
+item = "id_ed25519_optiplex_node1"
+
+[[ssh-keys]]
+item = "id_ed25519_optiplex_node2"
+
+[[ssh-keys]]
+item = "id_ed25519_optiplex_node3"
