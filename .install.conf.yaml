@@ -22,6 +22,7 @@
           exclude:
               - config/clangd
               - config/gitconfig
+              - config/opencode
               - config/iterm2
               - config/lftp
               - config/scripts
@@ -42,6 +43,7 @@
       ~/.vimrc: config/vim/vimrc
       ~/.zprofile: config/zsh/zprofile
       ~/.zshrc: config/zsh/zshrc
+      ~/.config/opencode/opencode.jsonc: config/opencode/opencode.jsonc
 - shell:
       - ["git submodule update --init --recursive", Initialize Git submodules]
       - |
