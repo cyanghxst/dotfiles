@@ -1,0 +1,10 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "model": "opencode/minimax-m2.5-free",
+    "autoupdate": true,
+    "server": {
+        "mdns": true,
+        "mdnsDomain": "opnsene.home.lab",
+        "port": 4096,
+    },
+}
