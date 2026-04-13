@@ -10,7 +10,7 @@ directories=(
     "$HOME/git/repos/obsidian/"
     "$HOME/git/repos/homelab/"
     "$HOME/git/repos/website/"
-    "$HOME/git/repos/pe-hackathon/"
+    # "$HOME/git/repos/pe-hackathon/"
 )
 
 vault_directory="$HOME/git/repos/vault/"
@@ -43,7 +43,8 @@ for i in "${!sessions[@]}"; do
         # main
         if [[ $i -eq 0 ]]; then
             [[ -d "$nvim_directory" ]] && new_window "$session" "$nvim_directory"
-            [[ -d "$homebrew_tap_directory" ]] && new_window "$session" "$homebrew_tap_directory"
+            # [[ -d "$homebrew_tap_directory" ]] && new_window "$session" "$homebrew_tap_directory"
+            new_window "$session" "$dir" "opencode web"
         fi
 
         # obsidian
@@ -60,15 +61,14 @@ for i in "${!sessions[@]}"; do
         # website
         if [[ $i -eq 3 ]]; then
             new_window "$session" "$dir" "npm run dev"
-            new_window "$session" "$dir" "opencode web"
         fi
 
-        # hackathon
-        if [[ $i -eq 4 ]]; then
-            new_window "$session" "$dir" "ssh optiplex-node1"
-            new_window "$session" "$dir" "ssh optiplex-node2"
-            new_window "$session" "$dir" "ssh optiplex-node3"
-        fi
+        # # hackathon
+        # if [[ $i -eq 4 ]]; then
+        #     new_window "$session" "$dir" "ssh optiplex-node1"
+        #     new_window "$session" "$dir" "ssh optiplex-node2"
+        #     new_window "$session" "$dir" "ssh optiplex-node3"
+        # fi
     fi
 done
 
