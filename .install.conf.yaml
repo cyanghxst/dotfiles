@@ -1,58 +1,53 @@
 - defaults:
-    link:
-      relink: true
-
-- clean: ['~']
-
+      link:
+          relink: true
+- clean: ["~"]
 - create:
-    ~/.config:
-      mode: 0755
-    ~/.zsh:
-      mode: 0755
-    ~/.local/bin:
-      mode: 0755
-
+      ~/.config:
+          mode: 0755
+      ~/.zsh:
+          mode: 0755
+      ~/.local/bin:
+          mode: 0755
 - link:
-    ~/.zsh:
-      glob: true
-      path: config/zsh/*
-      exclude:
-        - config/zsh/zprofile
-        - config/zsh/zshrc
-    ~/.config/:
-      glob: true
-      path: config/*
-      exclude:
-        - config/clangd
-        - config/gitconfig
-        - config/iterm2
-        - config/lftp
-        - config/scripts
-        - config/hammerspoon
-        - config/tmux
-        - config/tldr
-        - config/vim
-        - config/zsh
-
-    # Non XDG configs
-    ~/.aider.conf.yml: config/aider/aider.conf.yml
-    ~/.hammerspoon/init.lua: config/hammerspoon/init.lua
-    ~/Library/Preferences/clangd: config/clangd
-    ~/.clang-format: config/clangd/clang-format
-    ~/.gitconfig: config/git/gitconfig
-    ~/.lftprc: config/lftp/lftprc
-    ~/.tmux.conf: config/tmux/tmux.conf
-    ~/Library/Application Support/tlrc/config.toml: config/tldr/config.toml
-    ~/.vimrc: config/vim/vimrc
-    ~/.zprofile: config/zsh/zprofile
-    ~/.zshrc: config/zsh/zshrc
-
+      ~/.zsh:
+          glob: true
+          path: config/zsh/*
+          exclude:
+              - config/zsh/zprofile
+              - config/zsh/zshrc
+      ~/.config/:
+          glob: true
+          path: config/*
+          exclude:
+              - config/clangd
+              - config/gitconfig
+              - config/iterm2
+              - config/lftp
+              - config/scripts
+              - config/hammerspoon
+              - config/tmux
+              - config/tldr
+              - config/vim
+              - config/zsh
+      # Non XDG configs
+      ~/.aider.conf.yml: config/aider/aider.conf.yml
+      ~/.hammerspoon/init.lua: config/hammerspoon/init.lua
+      ~/Library/Preferences/clangd: config/clangd
+      ~/.clang-format: config/clangd/clang-format
+      ~/.gitconfig: config/git/gitconfig
+      ~/.lftprc: config/lftp/lftprc
+      ~/.tmux.conf: config/tmux/tmux.conf
+      ~/Library/Application Support/tlrc/config.toml: config/tldr/config.toml
+      ~/.vimrc: config/vim/vimrc
+      ~/.zprofile: config/zsh/zprofile
+      ~/.zshrc: config/zsh/zshrc
 - shell:
-    - ['git submodule update --init --recursive', Initialize Git submodules]
-    - |
-      for script in ~/git/repos/dotfiles/config/scripts/*; do
-          if [[ -f "$script" ]]; then
-              script_name="$(basename "$script" .sh)"
-              ln -sf "$script" "$HOME/.local/bin/$script_name"
-          fi
-      done
+      - ["git submodule update --init --recursive", Initialize Git submodules]
+      - |
+          for script in ~/git/repos/dotfiles/config/scripts/*; do
+              if [[ -f "$script" ]]; then
+                  script_name="$(basename "$script" .sh)"
+                  ln -sf "$script" "$HOME/.local/bin/$script_name"
+              fi
+          done
