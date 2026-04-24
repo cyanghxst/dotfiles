@@ -30,7 +30,7 @@ fi
 
 op_session_file="$HOME/.op_session_my"
 if [[ -z "$OP_SESSION_my" && ! -s "$op_session_file" ]]; then
-  eval $(op signin) 2>/dev/null
+    eval $(op signin) 2>/dev/null
 fi
 
 # ----------------------------------------
@@ -44,19 +44,19 @@ export EDITOR="nvim"
 # Paths
 # ----------------------------------------
 
- for pkg in coreutils findutils gnu-sed grep gawk; do
-     gnu_bin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
-     [[ -d "$gnu_bin" ]] && PATH="$gnu_bin:$PATH"
- done
+for pkg in coreutils findutils gnu-sed grep gawk; do
+    gnu_bin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
+    [[ -d "$gnu_bin" ]] && PATH="$gnu_bin:$PATH"
+done
 
- PATH="$HOME/.local/bin:$PATH"
- PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
 
- [[ $(arch) != "arm64" ]] && PATH="/usr/local/bin:/usr/local/sbin:$PATH"
- PATH="/opt/local/bin:/opt/local/sbin:$PATH"
- PATH="$PATH:/Library/TeX/texbin"
+[[ $(arch) != "arm64" ]] && PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+PATH="$PATH:/Library/TeX/texbin"
 
- export PATH
+export PATH
 
 # DYLD Library
 # export DYLD_LIBRARY_PATH="$BREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
