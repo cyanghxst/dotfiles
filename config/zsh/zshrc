@@ -48,10 +48,11 @@ clear
 # env hooks
 # ----------
 
-# mise (lazy load only when needed)
-# if command -v mise >/dev/null 2>&1; then
-#     eval "$(mise activate zsh)"
-# fi
+# mise (lazy load)
+mise() {
+    eval "$(mise activate zsh)"
+    mise "$@"
+}
 
 # SDKMAN
 if [[ -r /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh ]]; then
