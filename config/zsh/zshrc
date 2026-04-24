@@ -194,7 +194,7 @@ export PATH="$HOME/bin:$PATH"
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 _op_session_file() {
-  local account="${OP_ACCOUNT:-default}"
+  local account="${OP_ACCOUNT:-my}"
   echo "${HOME}/.op_session_${account}"
 }
 
@@ -203,7 +203,7 @@ _op_load_session() {
   if [[ -f "$session_file" ]]; then
     local token=$(cat "$session_file")
     if [[ ${#token} -gt 20 ]]; then
-      export OP_SESSION="$token"
+      export OP_SESSION_my="$token"
     fi
   fi
 }
