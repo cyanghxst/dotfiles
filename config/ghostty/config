@@ -1,4 +1,5 @@
 # ----------------------------------------
+# test line
 # Ghostty Configuration
 # ----------------------------------------
 
@@ -58,6 +59,12 @@ window-height = 41
 window-width = 148
 window-padding-x = 28
 window-padding-y = 14
+
+# Laptop 2
+# window-height = 45
+# window-width = 163
+# window-padding-x = 28
+# window-padding-y = 14
 
 # Misc.
 window-save-state = never
