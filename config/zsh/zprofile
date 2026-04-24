@@ -28,7 +28,8 @@ fi
 # op login
 # ----------------------------------------
 
-if [[ -z "$OP_SESSION_my" ]]; then
+op_session_file="$HOME/.op_session_my"
+if [[ -z "$OP_SESSION_my" && ! -s "$op_session_file" ]]; then
   eval $(op signin) 2>/dev/null
 fi
 
