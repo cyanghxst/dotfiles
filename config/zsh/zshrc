@@ -2,6 +2,8 @@
 # Zshrc
 # ------
 
+setopt auto_cd
+
 # only run the rest for interactive shells
 [[ $- != *i* ]] && return
 
