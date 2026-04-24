@@ -21,6 +21,14 @@ git_info() {
     BRANCH=$(git symbolic-ref --quiet --short HEAD 2>/dev/null)
     GIT_LOCATION="${BRANCH:-$(git rev-parse --short HEAD 2>/dev/null)}"
 
+    local -a DIVERGENCES
+
+    local NUM_AHEAD=$(git rev-list --count @{u}..HEAD 2>/dev/null)
+    [[ -n "$NUM_AHEAD" && "$NUM_AHEAD" -gt 0 ]] && DIVERGENCES+=("%F{#456841}+${NUM_AHEAD}%{$reset_color%}")
+
+    local NUM_BEHIND=$(git rev-list --count HEAD..@{u} 2>/dev/null)
+    [[ -n "$NUM_BEHIND" && "$NUM_BEHIND" -gt 0 ]] && DIVERGENCES+=("%F{#684141}-${NUM_BEHIND}%{$reset_color%}")
+
     local -a FLAGS
 
     [[ -n $(git ls-files --other --exclude-standard 2>/dev/null) ]] && FLAGS+=("%F{#684141}%{$reset_color%}")
@@ -32,6 +40,7 @@ git_info() {
     GIT_INFO+=( "%F{#414868}on%{$reset_color%}" )
     [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
     GIT_INFO+=( "%F{#414868}$GIT_LOCATION%{$reset_color%}" )
+    [[ ${#DIVERGENCES[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)DIVERGENCES}" )
     echo "${(j: :)GIT_INFO}"
 }
 
