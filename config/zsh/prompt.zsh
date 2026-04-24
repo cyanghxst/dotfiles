@@ -13,7 +13,7 @@ typeset -g GIT_PROMPT_CACHE_TIME=0
 
 git_info() {
     local now=$EPOCHSECONDS
-    if (( now - GIT_PROMPT_CACHE_TIME < 2 && ${#GIT_PROMPT_CACHE} > 0 )); then
+    if (( now - GIT_PROMPT_CACHE_TIME < 60 && ${#GIT_PROMPT_CACHE} > 0 )); then
         print -r -- "$GIT_PROMPT_CACHE"
         return
     fi
