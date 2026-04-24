@@ -63,5 +63,13 @@ venv_info() {
     fi
 }
 
+ssh_info() {
+    if [[ -n "$SSH_CONNECTION" ]]; then
+        local ssh_client="${SSH_CLIENT%% *}"
+        local ssh_client_short="${ssh_client%.*}"
+        echo "%F{#414868}via ${ssh_client_short}%{$reset_color%} "
+    fi
+}
+
 PS1='$(venv_info)$(ssh_info)%F{#414868}%~%u $(git_info)
 %(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
