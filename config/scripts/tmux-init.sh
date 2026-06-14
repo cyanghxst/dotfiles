@@ -4,12 +4,13 @@ if [[ -n "$TMUX" ]]; then
     exit 0
 fi
 
-sessions=("main" "obsidian" "homelab" "website" "hackathon")
+sessions=("main" "obsidian" "homelab" "website" "arduino" "kimchi")
 directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/git/repos/obsidian/"
     "$HOME/git/repos/homelab/"
-    "$HOME/git/repos/website/"
+    "$HOME/git/repos/website-2/"
+    "$HOME/git/repos/arduino-tutorials/"
     # "$HOME/git/repos/pe-hackathon/"
 )
 
@@ -61,6 +62,11 @@ for i in "${!sessions[@]}"; do
         # website
         if [[ $i -eq 3 ]]; then
             new_window "$session" "$dir" "npm run dev"
+        fi
+
+        # arduino
+        if [[ $i -eq 4 ]]; then
+            new_window "$session" "$dir"
         fi
 
         # # hackathon
