@@ -48,11 +48,11 @@ window-colorspace = "display-p3"
 # ----------------------------------------
 
 # Desktop
-# window-height = 42
-# window-width = 173
-# window-padding-x = 27
-# window-padding-y = 15
-# window-padding-balance = true
+# window-height = 48
+# window-width = 209
+# window-padding-x = 28
+# window-padding-y = 18
+window-padding-balance = true
 
 # Laptop
 window-height = 41
