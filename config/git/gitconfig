@@ -17,7 +17,7 @@
 [alias]
 	lol = log -20 --all --decorate --graph --oneline --pretty=format:'%C(bold yellow)%h%Creset -%C(auto)%d%Creset %s'
 	lola = log --all --decorate --graph --oneline --pretty=format:'%C(bold yellow)%h%Creset -%C(auto)%d%Creset %s'
-    rebase-og = "!f() { git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE=\"%aD\" git commit --amend --no-edit --date=\"%aD\"' rebase -i \"$1\"; }; f"
+    rebase-og = "!f() { git -c rebase.instructionFormat='%s%nexec d=\"%aD\"; GIT_COMMITTER_DATE=\"$d\" git commit --amend --no-edit --date=\"$d\"' rebase -i \"$1\"; }; f"
 	ignore = "!gi() { IFS=\",\"; curl -L -s \"https://www.toptal.com/developers/gitignore/api/$*\" | tee .gitignore;}; gi"
 [color "status"]
 	changed = yellow
