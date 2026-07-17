@@ -4,14 +4,14 @@ if [[ -n "$TMUX" ]]; then
     exit 0
 fi
 
-sessions=("main" "obsidian" "homelab" "website" "arduino" "kimchi")
+sessions=("main" "obsidian" "homelab" "website" "cube-drill" "ubcthaiaiyara")
 directories=(
     "$HOME/git/repos/dotfiles/"
     "$HOME/git/repos/obsidian/"
     "$HOME/git/repos/homelab/"
-    "$HOME/git/repos/website-2/"
-    "$HOME/git/repos/arduino-tutorials/"
-    # "$HOME/git/repos/pe-hackathon/"
+    "$HOME/git/repos/website/"
+    "$HOME/git/repos/cube-drill/"
+    "$HOME/git/repos/ubcthaiaiyara/"
 )
 
 vault_directory="$HOME/git/repos/vault/"
@@ -45,7 +45,7 @@ for i in "${!sessions[@]}"; do
         if [[ $i -eq 0 ]]; then
             [[ -d "$nvim_directory" ]] && new_window "$session" "$nvim_directory"
             # [[ -d "$homebrew_tap_directory" ]] && new_window "$session" "$homebrew_tap_directory"
-            new_window "$session" "$dir" "opencode web"
+            # new_window "$session" "$dir" "opencode web"
         fi
 
         # obsidian
@@ -67,6 +67,12 @@ for i in "${!sessions[@]}"; do
         # arduino
         if [[ $i -eq 4 ]]; then
             new_window "$session" "$dir"
+        fi
+
+        # ubcthaiaiyara
+        if [[ $i -eq 5 ]]; then
+            new_window "$session" "$dir" "codex"
+            new_window "$session" "$dir" "pnpm run dev"
         fi
 
         # # hackathon
