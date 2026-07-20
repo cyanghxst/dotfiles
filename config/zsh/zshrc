@@ -50,7 +50,8 @@ clear
 
 # mise (lazy load)
 mise() {
-    eval "$(mise activate zsh)"
+    unfunction mise
+    eval "$(command mise activate zsh)"
     mise "$@"
 }
 
@@ -224,3 +225,10 @@ op() {
 
 alias _op=command op
 _op_load_session
+
+# pnpm
+export PNPM_HOME="/Users/cyanghxst/Library/pnpm"
+case ":$PATH:" in
+    *":$PNPM_HOME/bin:"*) ;;
+    *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
