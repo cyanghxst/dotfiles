@@ -51,4 +51,4 @@ venv_info() {
 }
 
 PS1='$(venv_info)$(ssh_info)%F{#414868}%~%u $(git_info)
-%(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%{$reset_color%} '
+%(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%f '
