@@ -11,5 +11,4 @@ AllowShortIfStatementsOnASingleLine: WithoutElse
 AlignTrailingComments:
     Kind: Always
 IndentCaseLabels: true
-IndentAccessModifiers: true
 BreakTemplateDeclarations: Yes
