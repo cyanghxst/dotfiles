@@ -142,7 +142,8 @@ compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
 # gh
 if command -v gh >/dev/null 2>&1; then
-    eval "$(gh completion -s zsh)"
+    # `command` bypasses the op plugin alias so startup never triggers a 1Password prompt
+    eval "$(command gh completion -s zsh)"
 fi
 
 # ---------
@@ -189,38 +190,6 @@ fi
 export PATH="$HOME/bin:$PATH"
 
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-
-_op_session_file() {
-  local account="${OP_ACCOUNT:-my}"
-  echo "${HOME}/.op_session_${account}"
-}
-
-_op_load_session() {
-  local session_file=$(_op_session_file)
-  if [[ -f "$session_file" ]]; then
-    local token=$(cat "$session_file")
-    if [[ ${#token} -gt 20 ]]; then
-      export OP_SESSION_my="$token"
-    fi
-  fi
-}
-
-_op_save_session() {
-  local session_file=$(_op_session_file)
-  grep -q '^[a-zA-Z0-9_-]\{20,\}$' <<< "$1" && echo "$1" > "$session_file"
-}
-
-op() {
-  local result
-  result=$(command op "$@")
-  local session_line=$(tail -1 <<< "$result")
-  _op_save_session "$session_line"
-  _op_load_session
-  print "$result"
-}
-
-alias _op=command op
-_op_load_session
 
 # pnpm
 export PNPM_HOME="/Users/cyanghxst/Library/pnpm"
