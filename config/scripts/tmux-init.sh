@@ -6,17 +6,17 @@ fi
 
 sessions=("main" "obsidian" "homelab" "website" "cube-drill" "ubcthaiaiyara")
 directories=(
-    "$HOME/git/repos/dotfiles/"
-    "$HOME/git/repos/obsidian/"
-    "$HOME/git/repos/homelab/"
-    "$HOME/git/repos/website/"
-    "$HOME/git/repos/cube-drill/"
-    "$HOME/git/repos/ubcthaiaiyara/"
+    "$HOME/code/config/dotfiles/"
+    "$HOME/code/config/obsidian/"
+    "$HOME/code/projects/homelab/"
+    "$HOME/code/projects/website/"
+    "$HOME/code/projects/cube-drill/"
+    "$HOME/code/projects/ubcthaiaiyara/"
 )
 
-vault_directory="$HOME/git/repos/vault/"
-nvim_directory="$HOME/git/repos/nvim/"
-homebrew_tap_directory="$HOME/git/repos/homebrew-cyanghxst/"
+vault_directory="$HOME/obsidian/vault/"
+nvim_directory="$HOME/code/config/nvim/"
+homebrew_tap_directory="$HOME/code/projects/homebrew-cyanghxst/"
 
 new_window() {
     local session="$1"

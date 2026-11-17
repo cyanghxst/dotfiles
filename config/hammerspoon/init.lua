@@ -73,7 +73,7 @@ local function set_kitty_config_value(file_path, key, active_value, inactive_val
 end
 
 local HOME = os.getenv("HOME")
-local dotfiles_path = HOME .. "/git/repos/dotfiles/config/"
+local dotfiles_path = HOME .. "/code/config/dotfiles/config/"
 
 local terminal_configs = {
 	ghostty = {

@@ -1,5 +1,5 @@
 _gitconfig_switch() {
-  local ubc_root="$HOME/code/ubc/cpsc-210"
+  local ubc_root="$HOME/code/school/ubc/cpsc-210"
   local ubc_config="$HOME/.gitconfig-ubc"
   local default_config="$HOME/.gitconfig"
 
