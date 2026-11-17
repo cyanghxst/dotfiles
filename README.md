@@ -4,7 +4,7 @@ Personal macOS configuration, managed with [Dotbot](https://github.com/anishatha
 
 ## Structure
 
-```
+```bash
 .
 ├── .dotbot/            # Dotbot (git submodule)
 ├── .install.conf.yaml  # Dotbot config: which file links where
@@ -15,7 +15,7 @@ Personal macOS configuration, managed with [Dotbot](https://github.com/anishatha
 
 ## Config
 
-```
+```bash
 config/
 ├── 1password/          # 1Password SSH agent config
 ├── aider/              # aider.conf.yml
@@ -50,23 +50,23 @@ If you still want to install it despite the warning, go ahead.
 
 1. Clone the repo with its submodules:
 
-   ```bash
-   git clone --recurse-submodules <repo-url> ~/code/config/dotfiles
-   ```
+```bash
+git clone --recurse-submodules <repo-url> ~/code/config/dotfiles
+```
 
 2. Move into the repo:
 
    
 ```bash
-   cd ~/code/config/dotfiles
-   ```
+cd ~/code/config/dotfiles
+```
 
 3. Run the installer:
 
    
 ```bash
-   ./install
-   ```
+./install
+```
 
 ## How linking works
 
