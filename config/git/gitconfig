@@ -21,3 +21,6 @@
 	ignore = "!gi() { IFS=\",\"; curl -L -s \"https://www.toptal.com/developers/gitignore/api/$*\" | tee .gitignore;}; gi"
 [color "status"]
 	changed = yellow
+
+[includeIf "gitdir:~/code/school/ubc/"]
+	path = ~/.gitconfig-ubc
