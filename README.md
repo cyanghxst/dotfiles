@@ -44,9 +44,7 @@ config/
 ## Install
 
 > [!WARNING]
-> These dotfiles are tailored to my own machine and workflow, so installing them as-is is discouraged. They may overwrite your existing configs. Treat this repo as a reference and borrow only what you need.
-
-If you still want to install it despite the warning, go ahead.
+> These dotfiles are tailored to my setup and may overwrite your existing configs. Use them as a reference and borrow what you need. Install at your own risk.
 
 1. Clone the repo with its submodules:
 
