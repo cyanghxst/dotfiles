@@ -23,7 +23,6 @@
               - config/clangd
               - config/gitconfig
               - config/opencode
-              - config/iterm2
               - config/lftp
               - config/scripts
               - config/hammerspoon
