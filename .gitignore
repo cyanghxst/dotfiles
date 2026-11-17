@@ -1,3 +1,4 @@
 .DS_Store
 lazy-lock.json
 .aider*
+config/gh/hosts.yml
