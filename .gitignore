@@ -2,3 +2,4 @@
 lazy-lock.json
 .aider*
 config/gh/hosts.yml
+config/brew/
