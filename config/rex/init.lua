@@ -15,20 +15,28 @@ rex.bind("shift+cmd+\\", "client.setting.developer.experimental.new_quick_switch
 rex.bind("shift+escape", "pane.send_key", { key = "escape" })
 
 -- ----------------------------------------
--- Copy a command's output
+-- Select a command's output
 -- ----------------------------------------
 --
--- The same walk as C-S-k / C-S-j in tmux.conf: copy the last command's output
--- and select it in copy mode, then step to older or newer outputs.
+-- The same walk as C-S-k / C-S-j in tmux.conf: select the last command's
+-- output in copy mode, then step to older or newer outputs. Yank with y.
 --
--- Rex's capture drops OSC 133 marks, so prompts are found by their text:
---   * the local zsh prompt, whose last line starts with PROMPT_GLYPH and has a
---     path line (and usually a blank line) above it (see zsh/prompt.zsh)
+-- Rex's capture drops OSC 133 marks, so prompts are found by their text, the
+-- same two kinds as in tmux.conf:
+--   * the local zsh prompt, whose last line has a no-break space as its second
+--     character and a path line (and usually a blank line) above it
+--     (see zsh/prompt.zsh)
 --   * a one-line "user@host:path$ " prompt, the bash default on remote hosts
--- Change these if a prompt changes.
+-- Change these, and their twins in tmux.conf, if a prompt changes.
+--
+-- When tmux is running in the pane, the key is passed on so tmux's own binding
+-- handles it.
 
 local TERMINAL = "com.superlogical.terminal"
-local PROMPT_GLYPH = "\243\177\144\139" -- U+F140B
+local LOCAL_PROMPT = "^[^\n\128-\191][\128-\191]*\194\160" -- one character, then U+00A0
+-- Shells started before the prompt gained its no-break space still end it in a
+-- plain space, so the prompt's own glyph (U+F140B) counts as well
+local OLD_LOCAL_PROMPT = "^\243\177\144\139 "
 local REMOTE_PROMPT = "^[%w_.%-]+@[%w_.%-]+:[^\n]-[%$#][ \n]"
 local VENV_PREFIX = "^%([^\n)]+%) " -- "(venv) " in front of a remote prompt
 local MAX_REPLY = 983040 -- the most one reply can carry
@@ -69,7 +77,7 @@ local BLANK = { [9] = true, [10] = true, [13] = true, [32] = true }
 -- Whether the line at pos is a prompt, and how many lines of that prompt sit
 -- above it.
 local function prompt_at(text, pos)
-    if text:sub(pos, pos + #PROMPT_GLYPH - 1) == PROMPT_GLYPH then
+    if text:find(LOCAL_PROMPT, pos) or text:find(OLD_LOCAL_PROMPT, pos) then
         return true, 1 -- the path line
     end
     local _, venv_end = text:find(VENV_PREFIX, pos)
@@ -185,8 +193,8 @@ local function perform(ctx, action, args)
     })
 end
 
--- Select rows of the scrollback in the app's copy mode. The caller has left
--- copy mode already, which cleared any earlier selection.
+-- Select rows of the scrollback in the app's copy mode. The app must not be
+-- in copy mode yet.
 local function select_rows(ctx, rows)
     local steps = {
         { "pane.copy_mode.enter" },
@@ -207,6 +215,37 @@ local function select_rows(ctx, rows)
     end
 end
 
+-- Programs that take over the screen and may be running tmux: tmux itself, or
+-- a remote shell with tmux inside it.
+local TMUX_HOSTS = { tmux = true, ssh = true, mosh = true, ["mosh-client"] = true }
+local ALT_SCREEN = { [47] = true, [1047] = true, [1049] = true }
+-- Ctrl+Shift+k and Ctrl+Shift+j as tmux reads them with extended-keys on
+local TMUX_KEYS = { older = "\27[107;6u", newer = "\27[106;6u" }
+
+-- Hand the key to tmux when the pane is on the alternate screen under one of
+-- TMUX_HOSTS. Returns whether it did.
+local function pass_to_tmux(ctx, walk)
+    local key = TMUX_KEYS[walk]
+    if key == nil then return false end
+
+    local process = rex.block.call(TERMINAL, "process", { block_id = ctx.block_id })
+    local name = process and process.foreground and process.foreground.name
+    if not TMUX_HOSTS[name] then return false end
+
+    local modes = rex.block.call(TERMINAL, "modes", { block_id = ctx.block_id })
+    for _, mode in ipairs(modes and modes.modes or {}) do
+        if ALT_SCREEN[mode.number] and mode.set then
+            local r, err = rex.block.call(TERMINAL, "write", {
+                block_id = ctx.block_id,
+                data = key,
+            })
+            if r == nil then error(err, 0) end
+            return true
+        end
+    end
+    return false
+end
+
 -- Which output each pane's walk is on. A walk ends when the pane prints
 -- something new.
 local walks = {}
@@ -216,26 +255,28 @@ local function signature(text)
 end
 
 rex.action{
-    name = "copy_output",
-    title = "Copy Command Output",
-    description = "Copies a shell command's output and selects it in copy mode. "
+    name = "select_output",
+    title = "Select Command Output",
+    description = "Selects a shell command's output in copy mode. "
         .. "walk=older or walk=newer steps from the output selected last.",
-    keywords = "yank clipboard pbcopy last previous",
+    keywords = "copy yank last previous",
     args = { walk = "string?" },
     run = function(ctx, args)
-        -- Only an app can show the selection; from the CLI the copy is enough
+        -- Only an app can show a selection; from the CLI the output is copied
         local from_app = ctx.client_id ~= nil
             and (ctx.origin == "key" or ctx.origin == "palette")
 
+        if from_app and pass_to_tmux(ctx, args.walk) then return end
+
         -- A walk continues only while the app is still in copy mode, as in
-        -- tmux. The app refuses to leave copy mode when it isn't in it, which
-        -- tells the two apart; leaving also clears the earlier selection.
-        local walking = true
-        if from_app then
-            walking = perform(ctx, "pane.copy_mode.exit") ~= nil
-            if not walking and args.walk == "newer" then
-                return -- nothing newer than the prompt
-            end
+        -- tmux. The app refuses copy mode's motions when it isn't in it, which
+        -- tells the two apart; moving to the start of the line leaves a line
+        -- selection as it is.
+        local in_copy_mode = from_app
+            and perform(ctx, "pane.copy_mode.move", { to = "line_start" }) ~= nil
+        local walking = in_copy_mode or not from_app
+        if from_app and not walking and args.walk == "newer" then
+            return -- nothing newer than the prompt
         end
 
         local text = scrollback(ctx, true)
@@ -249,35 +290,40 @@ rex.action{
         if step < 1 then
             -- Walked past the newest output: back to the prompt
             walks[ctx.block_id] = nil
+            if in_copy_mode then perform(ctx, "pane.copy_mode.exit") end
             return
         end
 
         local output = nth_output(text, step)
         if output == nil and step > 1 then
-            step = step - 1 -- already on the oldest output: stay there
-            output = nth_output(text, step)
+            return -- already on the oldest output: leave it selected
         end
         if output == nil then
+            if from_app then return end -- nothing to select, as in tmux
             error("no command output in this pane", 0)
         end
         walks[ctx.block_id] = { step = step, sig = sig }
 
-        local r, err = rex.exec({ "/usr/bin/pbcopy" }, {
-            stdin = output.text,
-            env = { LC_CTYPE = "UTF-8" },
-            timeout = 10,
-        })
-        if r == nil then error(err, 0) end
-        if not r.ok then error("pbcopy failed: " .. r.stderr, 0) end
-
         if from_app then
             local rows = output_rows(scrollback(ctx, false), output)
-            if rows ~= nil then select_rows(ctx, rows) end
+            if rows ~= nil then
+                -- Leaving copy mode clears the earlier selection
+                if in_copy_mode then perform(ctx, "pane.copy_mode.exit") end
+                select_rows(ctx, rows)
+            end
+        else
+            local r, err = rex.exec({ "/usr/bin/pbcopy" }, {
+                stdin = output.text,
+                env = { LC_CTYPE = "UTF-8" },
+                timeout = 10,
+            })
+            if r == nil then error(err, 0) end
+            if not r.ok then error("pbcopy failed: " .. r.stderr, 0) end
         end
         return { step = step, lines = output.lines, bytes = #output.text }
     end,
 }
 
 -- The same keys as tmux: the first press selects the last output
-rex.bind("ctrl+shift+k", "copy_output", { walk = "older" })
-rex.bind("ctrl+shift+j", "copy_output", { walk = "newer" })
+rex.bind("ctrl+shift+k", "select_output", { walk = "older" })
+rex.bind("ctrl+shift+j", "select_output", { walk = "newer" })
