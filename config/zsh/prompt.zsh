@@ -51,4 +51,6 @@ venv_info() {
 }
 
 PS1='$(venv_info)$(ssh_info)%F{#414868}%~%u $(git_info)
-%(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%f '
+%(?.%F{#c0caf5}.%F{#f7768e})%(!.#.󱐋)%f'$' '
+# The prompt ends in a literal no-break space (U+00A0) rather than a plain space so
+# tmux can tell prompt lines from output (see the C-S-k binding in tmux.conf)
