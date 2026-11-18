@@ -27,6 +27,7 @@ config/
 ├── git/                # gitconfig and global ignore
 ├── htop/               # htop
 ├── java/               # checkstyle and jdtls formatter settings
+├── karabiner/          # Karabiner-Elements karabiner.json and complex modifications
 ├── kitty/              # Kitty terminal and themes
 ├── lftp/               # lftp
 ├── mise/               # mise tool versions
