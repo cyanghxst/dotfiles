@@ -25,14 +25,11 @@
               - config/opencode
               - config/lftp
               - config/scripts
-              - config/hammerspoon
               - config/tmux
               - config/tldr
               - config/vim
               - config/zsh
       # Non XDG configs
-      ~/.aider.conf.yml: config/aider/aider.conf.yml
-      ~/.hammerspoon/init.lua: config/hammerspoon/init.lua
       ~/Library/Preferences/clangd: config/clangd
       ~/.clang-format: config/clangd/clang-format
       ~/.gitconfig: config/git/gitconfig

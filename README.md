@@ -18,7 +18,6 @@ Personal macOS configuration, managed with [Dotbot](https://github.com/anishatha
 ```bash
 config/
 ├── 1password/          # 1Password SSH agent config
-├── aider/              # aider.conf.yml
 ├── alacritty/          # Alacritty terminal
 ├── btop/               # btop
 ├── clangd/             # clangd config and clang-format
@@ -26,7 +25,6 @@ config/
 ├── gh/                 # GitHub CLI (hosts.yml is untracked)
 ├── ghostty/            # Ghostty terminal, plus cursor shaders submodule
 ├── git/                # gitconfig and global ignore
-├── hammerspoon/        # Hammerspoon init.lua
 ├── htop/               # htop
 ├── java/               # checkstyle and jdtls formatter settings
 ├── kitty/              # Kitty terminal and themes
@@ -70,7 +68,7 @@ cd ~/code/config/dotfiles
 ## How linking works
 
 - Most directories in `config/` follow the XDG convention and are linked into `~/.config/<name>` (`$XDG_CONFIG_HOME`).
-- Tools that expect a file elsewhere (`~/.zshrc`, `~/.gitconfig`, `~/.tmux.conf`, `~/.vimrc`, `~/.aider.conf.yml`, etc.) are linked individually; see `.install.conf.yaml`.
+- Tools that expect a file elsewhere (`~/.zshrc`, `~/.gitconfig`, `~/.tmux.conf`, `~/.vimrc`, etc.) are linked individually; see `.install.conf.yaml`.
 - `config/zsh/*` (except `zshrc` and `zprofile`) is linked into `~/.zsh/`.
 
 ## License
