@@ -94,40 +94,76 @@ local function prompts(text)
     return list, row
 end
 
--- The nth newest command output, skipping commands that printed nothing. An
--- output is the text between two prompts, without the command line above it
--- or the upper lines (and blank line) of the prompt below it.
+-- Where an output ends: the byte before the prompt below it, without that
+-- prompt's upper lines or the blank lines above them.
+local function output_end(text, first, below)
+    local last = below.pos - 2
+    for _ = 1, below.above do
+        while last >= first and text:byte(last) ~= NEWLINE do
+            last = last - 1 -- drop a line of the prompt below
+        end
+        last = last - 1
+    end
+    while last >= first and BLANK[text:byte(last)] do
+        last = last - 1 -- drop trailing blank lines
+    end
+    return last
+end
+
+-- The nth newest command output in unwrapped text, skipping commands that
+-- printed nothing. An output is the text between two prompts, without the
+-- command line above it. back says how many prompts from the end it is.
 local function nth_output(text, n)
-    local list, rows = prompts(text)
+    local list = prompts(text)
     local found = 0
     for i = #list, 2, -1 do
-        local first, last = list[i - 1].nl + 1, list[i].pos - 2
-        for _ = 1, list[i].above do
-            while last >= first and text:byte(last) ~= NEWLINE do
-                last = last - 1 -- drop a line of the prompt below
-            end
-            last = last - 1
-        end
-        while last >= first and BLANK[text:byte(last)] do
-            last = last - 1 -- drop trailing blank lines
-        end
+        local first = list[i - 1].nl + 1
+        local last = output_end(text, first, list[i])
         if last >= first then
             found = found + 1
             if found == n then
                 local output = text:sub(first, last)
                 local _, newlines = output:gsub("\n", "\n")
-                local first_row = list[i - 1].row + 1
                 return {
                     text = output,
                     lines = newlines + 1,
-                    first_row = first_row,
-                    last_row = first_row + newlines,
-                    rows = rows,
+                    command = text:sub(list[i - 1].pos, list[i - 1].nl - 1),
+                    back = #list - i,
                 }
             end
         end
     end
     return nil
+end
+
+local function solid_length(s)
+    local solid = s:gsub("%s", "")
+    return #solid
+end
+
+-- The terminal rows the same output covers in text that is not unwrapped. A
+-- long command line wraps over several rows; they are skipped by counting its
+-- characters, since copy mode's line selection takes a whole wrapped line.
+local function output_rows(text, output)
+    local list, rows = prompts(text)
+    local i = #list - output.back
+    if i < 2 then return nil end
+
+    local need = solid_length(output.command)
+    local have, pos, row = 0, list[i - 1].pos, list[i - 1].row
+    local nl
+    while true do
+        nl = text:find("\n", pos, true) or (#text + 1)
+        have = have + solid_length(text:sub(pos, nl - 1))
+        if have >= need or nl + 1 >= list[i].pos then break end
+        pos, row = nl + 1, row + 1
+    end
+
+    local first = nl + 1
+    local last = output_end(text, first, list[i])
+    if last < first then return nil end
+    local _, newlines = text:sub(first, last):gsub("\n", "\n")
+    return { first_row = row + 1, last_row = row + 1 + newlines, rows = rows }
 end
 
 -- Ask the app that ran the action to perform one of its own actions now.
@@ -221,7 +257,7 @@ rex.action{
         -- Only an app can show the selection; from the CLI the copy is enough
         local from_app = ctx.origin == "key" or ctx.origin == "palette"
         if ctx.client_id ~= nil and from_app then
-            local rows = nth_output(scrollback(ctx, false), step)
+            local rows = output_rows(scrollback(ctx, false), output)
             if rows ~= nil then select_rows(ctx, rows) end
         end
         return { step = step, lines = output.lines, bytes = #output.text }
