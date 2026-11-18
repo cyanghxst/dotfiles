@@ -47,6 +47,11 @@ PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
 PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 PATH="$PATH:/Library/TeX/texbin"
 
+# Rex CLI ships inside the app bundle
+rex_bin="/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS"
+[[ -d "$rex_bin" ]] && PATH="$PATH:$rex_bin"
+unset rex_bin
+
 export PATH
 
 # DYLD Library
