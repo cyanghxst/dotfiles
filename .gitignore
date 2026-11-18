@@ -2,3 +2,5 @@
 lazy-lock.json
 config/gh/hosts.yml
 config/brew/
+config/karabiner/automatic_backups/
+config/karabiner/*.bak*
