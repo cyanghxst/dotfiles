@@ -185,12 +185,9 @@ local function perform(ctx, action, args)
     })
 end
 
--- Select rows of the scrollback in the app's copy mode.
+-- Select rows of the scrollback in the app's copy mode. The caller has left
+-- copy mode already, which cleared any earlier selection.
 local function select_rows(ctx, rows)
-    -- Leaving and entering again clears an earlier selection. The app refuses
-    -- to leave when it isn't in copy mode, which is fine.
-    perform(ctx, "pane.copy_mode.exit")
-
     local steps = {
         { "pane.copy_mode.enter" },
         { "pane.copy_mode.move", { to = "history_bottom" } },
@@ -226,28 +223,41 @@ rex.action{
     keywords = "yank clipboard pbcopy last previous",
     args = { walk = "string?" },
     run = function(ctx, args)
+        -- Only an app can show the selection; from the CLI the copy is enough
+        local from_app = ctx.client_id ~= nil
+            and (ctx.origin == "key" or ctx.origin == "palette")
+
+        -- A walk continues only while the app is still in copy mode, as in
+        -- tmux. The app refuses to leave copy mode when it isn't in it, which
+        -- tells the two apart; leaving also clears the earlier selection.
+        local walking = true
+        if from_app then
+            walking = perform(ctx, "pane.copy_mode.exit") ~= nil
+            if not walking and args.walk == "newer" then
+                return -- nothing newer than the prompt
+            end
+        end
+
         local text = scrollback(ctx, true)
         local sig = signature(text)
         local walk = walks[ctx.block_id]
 
         local step = 1
-        if args.walk ~= nil and walk ~= nil and walk.sig == sig then
+        if walking and args.walk ~= nil and walk ~= nil and walk.sig == sig then
             step = walk.step + (args.walk == "newer" and -1 or 1)
         end
         if step < 1 then
             -- Walked past the newest output: back to the prompt
             walks[ctx.block_id] = nil
-            if ctx.client_id ~= nil then
-                perform(ctx, "pane.copy_mode.exit")
-            end
             return
         end
 
         local output = nth_output(text, step)
+        if output == nil and step > 1 then
+            step = step - 1 -- already on the oldest output: stay there
+            output = nth_output(text, step)
+        end
         if output == nil then
-            if step > 1 then
-                return -- already on the oldest output: stay there
-            end
             error("no command output in this pane", 0)
         end
         walks[ctx.block_id] = { step = step, sig = sig }
@@ -260,9 +270,7 @@ rex.action{
         if r == nil then error(err, 0) end
         if not r.ok then error("pbcopy failed: " .. r.stderr, 0) end
 
-        -- Only an app can show the selection; from the CLI the copy is enough
-        local from_app = ctx.origin == "key" or ctx.origin == "palette"
-        if ctx.client_id ~= nil and from_app then
+        if from_app then
             local rows = output_rows(scrollback(ctx, false), output)
             if rows ~= nil then select_rows(ctx, rows) end
         end
@@ -270,7 +278,6 @@ rex.action{
     end,
 }
 
--- Not shift+cmd+a: macOS reserves it for "Search man Page Index in Terminal"
-rex.bind("alt+cmd+c", "copy_output")
+-- The same keys as tmux: the first press selects the last output
 rex.bind("ctrl+shift+k", "copy_output", { walk = "older" })
 rex.bind("ctrl+shift+j", "copy_output", { walk = "newer" })
