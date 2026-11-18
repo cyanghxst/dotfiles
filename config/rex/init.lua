@@ -8,6 +8,12 @@ rex.bind("cmd+s", "client.sidebar.toggle")
 -- Quick switcher (experimental)
 rex.bind("shift+cmd+\\", "client.setting.developer.experimental.new_quick_switcher")
 
+-- Karabiner turns caps lock into control when held and escape when tapped, so
+-- shift + a caps lock tap (an abandoned ctrl+shift chord, say) is shift+escape.
+-- Rex encodes that as CSI 27;2;27~, which zsh prints as ";2;27~". Send a plain
+-- escape instead.
+rex.bind("shift+escape", "pane.send_key", { key = "escape" })
+
 -- ----------------------------------------
 -- Copy a command's output
 -- ----------------------------------------
