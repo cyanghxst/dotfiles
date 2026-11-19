@@ -20,6 +20,7 @@
           glob: true
           path: config/*
           exclude:
+              - config/1password
               - config/clangd
               - config/gitconfig
               - config/opencode
@@ -29,6 +30,10 @@
               - config/tldr
               - config/vim
               - config/zsh
+      # 1Password owns ~/.config/1Password, so link only the agent config into it
+      ~/.config/1Password/ssh/agent.toml:
+          path: config/1password/ssh/agent.toml
+          create: true
       # Non XDG configs
       ~/Library/Preferences/clangd: config/clangd
       ~/.clang-format: config/clangd/clang-format
