@@ -7,6 +7,7 @@ if [[ "$1" == "-y" ]]; then
     shift
 else
     rex ls
+    echo
     read -r -p "Destroy every session above and rebuild? [y/N] " answer
     [[ "$answer" == [yY]* ]] || exit 1
 fi
