@@ -332,6 +332,38 @@ rex.action{
 rex.bind("ctrl+shift+k", "select_output", { walk = "older" })
 rex.bind("ctrl+shift+j", "select_output", { walk = "newer" })
 
+-- Copy mode's own yank leaves the copied text highlighted until the next key,
+-- while leaving with exit clears it. So copy the selection the way Cmd+C does
+-- and then exit. Copying that way also plays the app's copy animation when
+-- "Play Animation on Copy" is on, which shows that the yank happened. Exit
+-- waits ANIMATION_SECONDS so the animation plays on the selection before the
+-- highlight goes.
+local ANIMATION_SECONDS = "0.7"
+
+rex.action{
+    name = "yank_and_clear",
+    title = "Yank and Clear Selection",
+    description = "Copies copy mode's selection and leaves copy mode without "
+        .. "leaving the text highlighted.",
+    run = function(ctx)
+        walks[ctx.block_id] = nil
+        if perform(ctx, "pane.copy") == nil then
+            -- Fall back to the built-in yank so y never stops copying
+            local r, err = perform(ctx, "pane.copy_mode.yank")
+            if r == nil then error(err, 0) end
+        else
+            -- An action may wait on a command without holding up keys or
+            -- other actions
+            rex.exec({ "/bin/sleep", ANIMATION_SECONDS })
+            perform(ctx, "pane.copy_mode.exit") -- refused if already left
+        end
+    end,
+}
+
+-- "copy" is the key mode the app is in during copy mode
+rex.bind("copy/y", "yank_and_clear")
+rex.bind("copy/enter", "yank_and_clear")
+
 -- ----------------------------------------
 -- SSH to a host
 -- ----------------------------------------
