@@ -1,18 +1,39 @@
-# ------
-# Zshrc
-# ------
-
-setopt auto_cd
+# ------------------------------------------------------------
+# Zshrc: interactive shells. Aliases, prompt, completion, etc.
+# PATH and environment live in zprofile.
+# ------------------------------------------------------------
 
 # only run the rest for interactive shells
 [[ $- != *i* ]] && return
 
-# source .zprofile once
+# non-login shells (e.g. tmux panes) skip zprofile, so source it once
 if [[ -z ${PROFILE_SOURCED:-} && -r ~/.zprofile ]]; then
     source ~/.zprofile
 fi
 
-# SSH agent
+# --------
+# Options
+# --------
+
+setopt auto_cd
+
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# ----------
+# SSH keys
+# ----------
+
 keys=("$HOME"/.ssh/id_ed*(-N))
 
 if (( ${#keys} )); then
@@ -33,6 +54,10 @@ bindkey -e # Emacs bindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+# --------------
+# Prompt hooks
+# --------------
+
 # newline between commands
 precmd() {
     if [[ -z "$NEW_LINE_BEFORE_PROMPT" ]]; then
@@ -42,40 +67,12 @@ precmd() {
     fi
 }
 
+# Emit OSC 133;A (prompt start) so terminals can jump between prompts
+_osc133_prompt_start() { print -n '\e]133;A\e\\' }
+precmd_functions+=(_osc133_prompt_start)
+
+# wipe the "Last login" banner
 clear
-
-# ----------
-# env hooks
-# ----------
-
-# mise (lazy load)
-mise() {
-    unfunction mise
-    eval "$(command mise activate zsh)"
-    mise "$@"
-}
-
-# SDKMAN
-if [[ -r /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh ]]; then
-    sdk() { unfunction sdk 2>/dev/null; source /opt/homebrew/opt/sdkman-cli/libexec/bin/sdkman-init.sh; sdk "$@"; }
-fi
-
-# --------
-# history
-# --------
-
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
 
 # --------
 # Aliases
@@ -104,9 +101,9 @@ alias fortune='fortune | cowsay'
 alias gg='git-graph --style round'
 alias zsh='source ~/.zshrc'
 
-# ----
-# FZF
-# ----
+# -------------------
+# Colors and viewers
+# -------------------
 
 export FZF_DEFAULT_OPTS='
 --height=40% --layout=reverse --info=inline --border --margin=1 --padding=1
@@ -119,37 +116,9 @@ export FZF_DEFAULT_OPTS='
 --color=info:#9ece6a,pointer:#16161e
 --color=border:#414868,spinner:#7aa2f7,header:#7E8E91,marker:#F92672,prompt:#9ece6a'
 
-# --------------
-# ls/dir colors
-# --------------
-
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;30:cd=43;30:su=37;41:sg=30;43:tw=30;42:ow=34;42:"
 
-# -----------
-# completion
-# -----------
-
-# completion
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-# laod and update cache
-autoload -Uz compinit
-
-# versioned cache
-compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
-
-# gh
-if command -v gh >/dev/null 2>&1; then
-    # `command` bypasses the op plugin alias so startup never triggers a 1Password prompt
-    eval "$(command gh completion -s zsh)"
-fi
-
-# ---------
-# Man page
-# ---------
-
+# man page colors
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_so=$(tput bold; tput rev; tput setaf 3) # yellow
@@ -157,9 +126,48 @@ export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
 export LESS_TERMCAP_us=$(tput smul; tput setaf 4) # blue
 export LESS_TERMCAP_me=$(tput sgr0)
 
-# --------
-# Sources
-# --------
+# -----------
+# Completion
+# -----------
+
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+
+# versioned cache
+mkdir -p ~/.cache/zsh
+autoload -Uz compinit
+compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+
+# gh (`command` bypasses the op plugin alias so startup never triggers a 1Password prompt)
+if command -v gh >/dev/null 2>&1; then
+    eval "$(command gh completion -s zsh)"
+fi
+
+# ---------------
+# Lazy-loaded env
+# ---------------
+
+# mise
+mise() {
+    unfunction mise
+    eval "$(command mise activate zsh)"
+    mise "$@"
+}
+
+# sdk: zprofile defines it in login shells, but functions aren't inherited,
+# so non-login shells load it on first use
+if (( ! $+functions[sdk] )) && [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+    sdk() {
+        unfunction sdk
+        source "$SDKMAN_DIR/bin/sdkman-init.sh"
+        sdk "$@"
+    }
+fi
+
+# ---------------------
+# Plugins and sourcing
+# ---------------------
 
 if [[ -r "$HOME"/.config/op/plugins.sh ]]; then
     source "$HOME"/.config/op/plugins.sh
@@ -169,13 +177,12 @@ if [[ -f "$HOME"/.config/tokens/.env ]]; then
     source "$HOME"/.config/tokens/.env
 fi
 
-# prompt
 if [[ -r ~/.zsh/prompt.zsh ]]; then
     source ~/.zsh/prompt.zsh
 fi
 
 # custom functions
-for func in ~/.zsh/functions/*.zsh; do
+for func in ~/.zsh/functions/*.zsh(N); do
     source "$func"
 done
 
@@ -183,21 +190,7 @@ if [[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; the
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+# must be sourced last
 if [[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
-
-export PATH="$HOME/bin:$PATH"
-
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-    *":$PNPM_HOME/bin:"*) ;;
-    *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-
-# Emit OSC 133;A (prompt start) so terminals can jump between prompts
-_osc133_prompt_start() { print -n '\e]133;A\e\\' }
-precmd_functions+=(_osc133_prompt_start)

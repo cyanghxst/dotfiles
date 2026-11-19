@@ -1,86 +1,91 @@
-# ----------------------------------------
-# SSH Agent
-# ----------------------------------------
+# --------------------------------------------------------------
+# Zprofile: login shells. Environment variables and PATH only.
+# Interactive config (aliases, prompt, completion) lives in zshrc.
+# --------------------------------------------------------------
 
-if [[ -z "$SSH_AUTH_SOCK" ]]; then
-    eval "$(ssh-agent -s)" > /dev/null
-fi
+# keep PATH free of duplicates (zshrc re-sources this file in non-login shells)
+typeset -U path PATH
 
-# ----------------------------------------
+# ---------
 # Homebrew
-# ----------------------------------------
+# ---------
 
 if [[ "$(arch)" == "arm64" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
     BREW_PREFIX="/opt/homebrew"
     INTEL_BREW_PREFIX="/usr/local"
-
-    if [[ -x "$INTEL_BREW_PREFIX/bin/brew" ]]; then
-        PATH="$PATH:$INTEL_BREW_PREFIX/bin:$INTEL_BREW_PREFIX/sbin"
-    fi
 else
-    eval "$(/usr/local/bin/brew shellenv)"
     BREW_PREFIX="/usr/local"
 fi
+eval "$("$BREW_PREFIX/bin/brew" shellenv)"
 
-# ----------------------------------------
-# Locale & Editor
-# ----------------------------------------
+# -----------------
+# Locale and editor
+# -----------------
 
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
 
-# ----------------------------------------
-# Paths
-# ----------------------------------------
+# ----------
+# SSH agent
+# ----------
 
+# prefer the 1Password agent, fall back to a plain ssh-agent
+op_sock="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+if [[ -S "$op_sock" ]]; then
+    export SSH_AUTH_SOCK="$op_sock"
+elif [[ -z "$SSH_AUTH_SOCK" ]]; then
+    eval "$(ssh-agent -s)" > /dev/null
+fi
+unset op_sock
+
+# --------------------
+# Language toolchains
+# --------------------
+
+# Java via SDKMAN
+export SDKMAN_DIR="$BREW_PREFIX/opt/sdkman-cli/libexec"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+export JAVA_HOME="$SDKMAN_DIR/candidates/java/current/"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+
+# Python: disable venv prompt in lieu of the custom one
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# -----
+# PATH
+# -----
+# Earlier entries win. Later entries are fallbacks.
+
+# GNU tools without the g- prefix
 for pkg in coreutils findutils gnu-sed grep gawk; do
-    gnu_bin="$BREW_PREFIX/opt/$pkg/libexec/gnubin"
-    [[ -d "$gnu_bin" ]] && PATH="$gnu_bin:$PATH"
+    [[ -d "$BREW_PREFIX/opt/$pkg/libexec/gnubin" ]] && path=("$BREW_PREFIX/opt/$pkg/libexec/gnubin" $path)
 done
 
-PATH="$HOME/.local/bin:$PATH"
-PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
+path=(
+    "$HOME/bin"
+    "$PNPM_HOME/bin"
+    /opt/local/bin /opt/local/sbin
+    "$BREW_PREFIX/bin" "$BREW_PREFIX/sbin"
+    "$HOME/.local/bin"
+    $path
+)
 
-[[ $(arch) != "arm64" ]] && PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-PATH="$PATH:/Library/TeX/texbin"
+# Intel brew alongside the arm64 one
+[[ -n "$INTEL_BREW_PREFIX" && -x "$INTEL_BREW_PREFIX/bin/brew" ]] && path+=("$INTEL_BREW_PREFIX/bin" "$INTEL_BREW_PREFIX/sbin")
+
+path+=(
+    /Library/TeX/texbin
+    /opt/cisco/secureclient/bin
+)
 
 # Rex CLI ships inside the app bundle
 rex_bin="/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS"
-[[ -d "$rex_bin" ]] && PATH="$PATH:$rex_bin"
+[[ -d "$rex_bin" ]] && path+=("$rex_bin")
 unset rex_bin
 
 export PATH
 
-# DYLD Library
-# export DYLD_LIBRARY_PATH="$BREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
-# export DYLD_FALLBACK_LIBRARY_PATH="$BREW_PREFIX/lib:/usr/lib"
-
-# ----------------------------------------
-# SDKMAN Initialization
-# ----------------------------------------
-
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-export JAVA_HOME="/opt/homebrew/opt/sdkman-cli/libexec/candidates/java/current/"
-
-# ----------------------------------------
-# Python
-# ----------------------------------------
-
-export VIRTUAL_ENV_DISABLE_PROMPT=1 # disable venv prompt in lieu of custom one
-
-# ----------------------------------------
-# Misc.
-# ----------------------------------------
-
+# marker so zshrc doesn't source this twice
 export PROFILE_SOURCED=1
-
-# ----------------------------------------
-# Binaries
-# ----------------------------------------
-
-export PATH="$HOME/bin:$PATH"
