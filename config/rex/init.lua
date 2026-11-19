@@ -109,10 +109,11 @@ local function prompts(text)
 end
 
 -- Where an output ends: the byte before the prompt below it, without that
--- prompt's upper lines or the blank lines above them.
+-- prompt's upper lines or the blank lines above them. With no prompt below,
+-- the command is still running and its output runs to the end of the text.
 local function output_end(text, first, below)
-    local last = below.pos - 2
-    for _ = 1, below.above do
+    local last = below and below.pos - 2 or #text
+    for _ = 1, below and below.above or 0 do
         while last >= first and text:byte(last) ~= NEWLINE do
             last = last - 1 -- drop a line of the prompt below
         end
@@ -126,11 +127,13 @@ end
 
 -- The nth newest command output in unwrapped text, skipping commands that
 -- printed nothing. An output is the text between two prompts, without the
--- command line above it. back says how many prompts from the end it is.
+-- command line above it; the newest may belong to a command that is still
+-- running, with no prompt below it yet. back says how many prompts from the
+-- end the output's lower prompt is, or -1 when it has none.
 local function nth_output(text, n)
     local list = prompts(text)
     local found = 0
-    for i = #list, 2, -1 do
+    for i = #list + 1, 2, -1 do
         local first = list[i - 1].nl + 1
         local last = output_end(text, first, list[i])
         if last >= first then
@@ -164,12 +167,13 @@ local function output_rows(text, output)
     if i < 2 then return nil end
 
     local need = solid_length(output.command)
+    local limit = list[i] and list[i].pos or #text + 1
     local have, pos, row = 0, list[i - 1].pos, list[i - 1].row
     local nl
     while true do
         nl = text:find("\n", pos, true) or (#text + 1)
         have = have + solid_length(text:sub(pos, nl - 1))
-        if have >= need or nl + 1 >= list[i].pos then break end
+        if have >= need or nl + 1 >= limit then break end
         pos, row = nl + 1, row + 1
     end
 
