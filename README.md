@@ -8,7 +8,7 @@ Personal macOS configuration, managed with [Dotbot](https://github.com/anishatha
 .
 ├── .dotbot/            # Dotbot (git submodule)
 ├── .install.conf.yaml  # Dotbot config: which file links where
-├── install             # Entry point: syncs submodules, runs Dotbot
+├── install             # Syncs submodules, runs Dotbot
 ├── LICENSE
 ├── config/             # All tool configs, one directory per tool
 └── docs/               # Notes on custom keybindings
@@ -24,17 +24,17 @@ config/
 ├── clangd/             # clangd config and clang-format
 ├── fastfetch/          # fastfetch
 ├── gh/                 # GitHub CLI (hosts.yml is untracked)
-├── ghostty/            # Ghostty terminal, plus cursor shaders submodule
+├── ghostty/            # Ghostty terminal and cursor shaders
 ├── git/                # gitconfig and global ignore
 ├── htop/               # htop
 ├── java/               # checkstyle and jdtls formatter settings
-├── karabiner/          # Karabiner-Elements: caps lock as control/escape, app-specific remaps
+├── karabiner/          # Karabiner-Elements key remaps
 ├── kitty/              # Kitty terminal and themes
 ├── lftp/               # lftp
 ├── mise/               # mise tool versions
 ├── neofetch/           # neofetch
 ├── opencode/           # opencode
-├── rex/                # Rex init.lua: shortcuts and the select_output action
+├── rex/                # Rex init.lua
 ├── scripts/            # Helper scripts, linked into ~/.local/bin
 ├── tldr/               # tldr (tlrc) client
 ├── tmux/               # tmux.conf
