@@ -51,11 +51,11 @@ local sessions = {
         label = "homelab",
         windows = {
             { "repo", pane(homelab) },
-            -- The Slurm cluster at a glance: controller and nodes in four
-            -- equal rows. Zoom a pane to work in it.
-            { "slurm", rows(1 / 4, ssh("slurm-ctl"),
-                rows(1 / 3, ssh("optiplex-01"),
-                    rows(1 / 2, ssh("optiplex-02"), ssh("optiplex-03")))) },
+            -- The Slurm cluster at a glance: controller and nodes in a grid.
+            -- Zoom a pane to work in it.
+            { "slurm", columns(0.5,
+                rows(0.5, ssh("slurm-ctl"), ssh("optiplex-02")),
+                rows(0.5, ssh("optiplex-01"), ssh("optiplex-03"))) },
             { "proxmox", ssh("proxmox") },
         },
     },
