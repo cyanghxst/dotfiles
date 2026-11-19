@@ -8,6 +8,9 @@
 -- With reset=true (rex-reset), every session is replaced instead: the ones
 -- below are created fresh, then all the sessions that were there before are
 -- destroyed, along with everything running in them.
+--
+-- With tab=LABEL (rex-reset-slurm passes tab=slurm), only that tab is
+-- rebuilt, in place, and its session is otherwise left as it is.
 
 local SHELL = "com.superlogical.terminal.shell"
 
@@ -65,6 +68,59 @@ local function call(method, args)
     local r, err = rex.call(method, args)
     if r == nil then error(method .. ": " .. tostring(err), 0) end
     return r
+end
+
+-- Put a fresh copy of the tab called label where the old one is, then close
+-- the old one and everything running in it. The old tab closes last because
+-- this script may be running in it.
+local function rebuild_tab(label)
+    for _, s in ipairs(sessions) do
+        for _, w in ipairs(s.windows) do
+            if w[1] == label then
+                local session_id
+                for _, running in ipairs(call("session.list").sessions or {}) do
+                    if running.label == s.label then session_id = running.session_id end
+                end
+                if session_id == nil then
+                    error("the " .. s.label .. " session is not running; run rex-init", 0)
+                end
+
+                local old = {}
+                local view = call("session.attach", { session_id = session_id }).view
+                for _, window in ipairs(view.windows or {}) do
+                    if window.label == label then old[#old + 1] = window.window_id end
+                end
+
+                local created = call("session.new_window", {
+                    session_id = session_id,
+                    window_label = label,
+                    layout = w[2],
+                })
+                if old[1] then
+                    call("session.move_window", {
+                        session_id = session_id,
+                        window_id = created.window_id,
+                        before_window_id = old[1],
+                    })
+                end
+                call("session.focus_block", {
+                    session_id = session_id,
+                    block_id = created.block_ids[1],
+                })
+                print(s.label .. ": rebuilt the " .. label .. " tab")
+                for _, window_id in ipairs(old) do
+                    call("session.close_window", { session_id = session_id, window_id = window_id })
+                end
+                return
+            end
+        end
+    end
+    error("the startup layout has no tab called " .. label, 0)
+end
+
+if rex.args.tab ~= nil then
+    rebuild_tab(rex.args.tab)
+    return
 end
 
 local reset = rex.args.reset == true
