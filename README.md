@@ -50,7 +50,7 @@ config/
 1. Clone the repo with its submodules:
 
 ```bash
-git clone --recurse-submodules <repo-url> ~/code/config/dotfiles
+git clone --recurse-submodules https://github.com/cyanghxst/dotfiles.git ~/code/config/dotfiles
 ```
 
 2. Move into the repo:
