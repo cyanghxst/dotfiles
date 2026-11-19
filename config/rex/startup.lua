@@ -43,8 +43,8 @@ local sessions = {
     {
         label = "config",
         windows = {
-            { "dotfiles", pane(dotfiles) },
-            { "nvim", pane(nvim) },
+            { "dotfiles", pane(dotfiles, "git lol") },
+            { "nvim", pane(nvim, "git lol") },
         },
     },
     {
