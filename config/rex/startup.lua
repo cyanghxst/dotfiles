@@ -4,6 +4,10 @@
 -- Creates the sessions below. A session whose label already exists is left
 -- alone, so this is safe to run again: it only brings back what is missing.
 -- To rebuild one from scratch, kill it first: rex kill homelab
+--
+-- With reset=true (rex-reset), every session is replaced instead: the ones
+-- below are created fresh, then all the sessions that were there before are
+-- destroyed, along with everything running in them.
 
 local SHELL = "com.superlogical.terminal.shell"
 
@@ -63,9 +67,14 @@ local function call(method, args)
     return r
 end
 
-local existing = {}
+local reset = rex.args.reset == true
+local existing, old = {}, {}
 for _, s in ipairs(call("session.list").sessions or {}) do
-    existing[s.label] = s.session_id
+    if reset then
+        old[#old + 1] = s
+    else
+        existing[s.label] = s.session_id
+    end
 end
 
 local first_session
@@ -96,4 +105,15 @@ end
 -- turned on; without one, pick the session from the sidebar instead.
 if rex.args.select ~= false then
     pcall(rex.client.queue, "session.select", { session_id = first_session })
+end
+
+-- The old sessions go only now, so the server is never left without one, and
+-- the session this script runs in goes last: its terminal, and the script
+-- with it, ends there.
+table.sort(old, function(a, b)
+    return a.session_id ~= rex.session_id and b.session_id == rex.session_id
+end)
+for _, s in ipairs(old) do
+    print(s.label .. ": destroyed")
+    call("session.destroy", { session_id = s.session_id })
 end
