@@ -58,11 +58,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # -----
 # Earlier entries win. Later entries are fallbacks.
 
-# GNU tools without the g- prefix
-for pkg in coreutils findutils gnu-sed grep gawk; do
-    [[ -d "$BREW_PREFIX/opt/$pkg/libexec/gnubin" ]] && path=("$BREW_PREFIX/opt/$pkg/libexec/gnubin" $path)
-done
-
 path=(
     "$HOME/bin"
     "$PNPM_HOME/bin"
