@@ -34,7 +34,7 @@ config/
 ├── mise/               # mise tool versions
 ├── neofetch/           # neofetch
 ├── opencode/           # opencode
-├── rex/                # Rex init.lua
+├── rex/                # Rex init.lua and startup layout
 ├── scripts/            # Helper scripts, linked into ~/.local/bin
 ├── tldr/               # tldr (tlrc) client
 ├── tmux/               # tmux.conf

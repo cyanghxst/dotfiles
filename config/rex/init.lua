@@ -331,3 +331,95 @@ rex.action{
 -- The same keys as tmux: the first press selects the last output
 rex.bind("ctrl+shift+k", "select_output", { walk = "older" })
 rex.bind("ctrl+shift+j", "select_output", { walk = "newer" })
+
+-- ----------------------------------------
+-- SSH to a host
+-- ----------------------------------------
+--
+-- Pick a host from ~/.ssh/config in the command palette, or type any other
+-- destination, and open it in a new tab. As in startup.lua, ssh is typed at a
+-- shell's prompt, so a dropped connection leaves a prompt to reconnect from.
+
+-- The hosts worth a shell: every Host that is a name rather than a pattern,
+-- except the ones that log in as git.
+local function ssh_hosts()
+    local file = io.open(os.getenv("HOME") .. "/.ssh/config")
+    if file == nil then return {} end
+
+    local hosts, seen, current = {}, {}, {}
+    for line in file:lines() do
+        local key, value = line:match("^%s*(%a+)[%s=]+(.-)%s*$")
+        key = key and key:lower()
+        if key == "host" or key == "match" then
+            current = {}
+            for name in (key == "host" and value or ""):gmatch("%S+") do
+                if not name:find("[*?!]") and not seen[name] then
+                    seen[name] = true
+                    current[#current + 1] = { name = name }
+                    hosts[#hosts + 1] = current[#current]
+                end
+            end
+        elseif key == "user" or key == "hostname" then
+            for _, host in ipairs(current) do
+                host[key] = host[key] or value -- ssh keeps the first value
+            end
+        end
+    end
+    file:close()
+
+    local items = {}
+    for _, host in ipairs(hosts) do
+        if host.user ~= "git" then
+            local address = host.hostname or host.name
+            items[#items + 1] = {
+                id = host.name,
+                subtitle = host.user and (host.user .. "@" .. address) or address,
+                icon = "server",
+            }
+        end
+    end
+    return items
+end
+
+rex.action{
+    name = "ssh_host",
+    title = "SSH to Host…",
+    description = "Opens a tab connected to a host from ~/.ssh/config. "
+        .. "host=NAME skips the question.",
+    keywords = "ssh remote server homelab connect",
+    args = { host = "string?" },
+    run = function(ctx, args)
+        local host = args.host
+        if host == nil then
+            if rex.ui == nil then
+                error("this Rex server is too old to ask for a host; pass host=NAME", 0)
+            end
+            local why, detail
+            host, why, detail = rex.ui.pick{
+                title = "SSH to host",
+                placeholder = "Filter hosts, or type a destination",
+                items = ssh_hosts(),
+                allow_other = true,
+            }
+            if host == nil then
+                if why == "cancelled" then return end
+                error("could not ask for a host: " .. why
+                    .. (detail and (" (" .. detail .. ")") or ""), 0)
+            end
+            if type(host) == "table" then host = host.text end
+        end
+
+        local w, err = rex.session.new_window{
+            window_label = host,
+            layout = {
+                block = {
+                    flavor = TERMINAL .. ".shell",
+                    label = host,
+                    options = { initial_input = "ssh " .. host .. "\n" },
+                },
+            },
+        }
+        if w == nil then error(err, 0) end
+        return { host = host, window_id = w.window_id }
+    end,
+}
