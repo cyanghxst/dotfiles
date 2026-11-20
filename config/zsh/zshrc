@@ -54,6 +54,9 @@ bindkey -e # Emacs bindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+# don't highlight pasted text (bracketed paste defaults to standout)
+zle_highlight=('paste:none')
+
 # --------------
 # Prompt hooks
 # --------------
