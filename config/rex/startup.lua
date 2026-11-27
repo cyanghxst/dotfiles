@@ -81,8 +81,8 @@ local sessions = {
     {
         label = "projects",
         windows = {
-            -- git on the left, the Astro dev server on the right
-            { "website", columns(0.5, pane(website, "git --no-pager lol"), pane(website, "pnpm dev")) },
+            -- git on top, the Astro dev server in a short strip below
+            { "website", rows(0.75, pane(website, "git --no-pager lol"), pane(website, "pnpm dev")) },
             { "resume", pane(resume, "git --no-pager lol") },
         },
     },
