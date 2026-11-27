@@ -24,3 +24,12 @@
 
 [includeIf "gitdir:~/code/school/ubc/"]
 	path = ~/.gitconfig-ubc
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://github.students.cs.ubc.ca"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
