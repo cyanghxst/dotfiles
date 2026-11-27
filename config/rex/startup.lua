@@ -18,6 +18,8 @@ local home = os.getenv("HOME")
 local dotfiles = home .. "/code/config/dotfiles"
 local nvim = home .. "/code/config/nvim"
 local homelab = home .. "/code/projects/homelab"
+local website = home .. "/code/projects/website"
+local resume = home .. "/code/projects/resume"
 
 -- A shell in cwd. run is typed at its prompt rather than started in its
 -- place, so the shell is still there when the program ends: a dropped ssh
@@ -45,6 +47,14 @@ local columns, rows = rex.layout.horizontal, rex.layout.vertical
 -- Each window is { label, layout }. The first window of a session, and the
 -- first pane of that window, are the ones focused.
 local sessions = {
+    -- A plain shell in ~ for one-off commands (brew, gh, vpn), away from the
+    -- other sessions. It comes first, so it is the session shown on startup.
+    {
+        label = "home",
+        windows = {
+            { "home", pane(home) },
+        },
+    },
     {
         label = "config",
         windows = {
@@ -56,12 +66,21 @@ local sessions = {
         label = "homelab",
         windows = {
             { "repo", pane(homelab) },
+            { "proxmox", ssh("proxmox") },
             -- The Slurm cluster at a glance: controller and nodes in a grid.
             -- Zoom a pane to work in it.
             { "slurm", columns(0.5,
                 rows(0.5, ssh("slurm-ctl"), ssh("optiplex-02")),
                 rows(0.5, ssh("optiplex-01"), ssh("optiplex-03"))) },
-            { "proxmox", ssh("proxmox") },
+            { "services", columns(0.5, ssh("glance"), ssh("caddy")) },
+        },
+    },
+    {
+        label = "projects",
+        windows = {
+            -- git on the left, the Astro dev server on the right
+            { "website", columns(0.5, pane(website, "git lol"), pane(website, "pnpm dev")) },
+            { "resume", pane(resume, "git lol") },
         },
     },
 }
