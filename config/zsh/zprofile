@@ -80,6 +80,10 @@ rex_bin="/Applications/Rex.app/Contents/Helpers/Rex Server.rex/Contents/MacOS"
 [[ -d "$rex_bin" ]] && path+=("$rex_bin")
 unset rex_bin
 
+# mise shims, last, so node and pnpm work before zshrc's lazy `mise activate`
+# (new rex panes, scripts) without shadowing anything found earlier
+path+=("${XDG_DATA_HOME:-$HOME/.local/share}/mise/shims")
+
 export PATH
 
 # marker so zshrc doesn't source this twice
