@@ -34,8 +34,10 @@ end
 
 -- A shell connected to a host from ~/.ssh/config, labeled with the host so
 -- the CLI can target it: rex send -s homelab -b optiplex-01 'uptime'
+-- ssh-queue makes the panes take turns at the 1Password prompt, since
+-- prompts that pile up at once time out and the agent refuses them.
 local function ssh(host)
-    return pane(homelab, "ssh " .. host, host)
+    return pane(homelab, "ssh-queue " .. host, host)
 end
 
 local columns, rows = rex.layout.horizontal, rex.layout.vertical
