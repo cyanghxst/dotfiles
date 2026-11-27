@@ -46,6 +46,9 @@ local columns, rows = rex.layout.horizontal, rex.layout.vertical
 
 -- Each window is { label, layout }. The first window of a session, and the
 -- first pane of that window, are the ones focused.
+--
+-- git lol skips the pager: a new pane can still be small when git runs, so
+-- less sees more lines than fit, stays open at (END), and keeps the prompt.
 local sessions = {
     -- A plain shell in ~ for one-off commands (brew, gh, vpn), away from the
     -- other sessions. It comes first, so it is the session shown on startup.
@@ -58,8 +61,8 @@ local sessions = {
     {
         label = "config",
         windows = {
-            { "dotfiles", pane(dotfiles, "git lol") },
-            { "nvim", pane(nvim, "git lol") },
+            { "dotfiles", pane(dotfiles, "git --no-pager lol") },
+            { "nvim", pane(nvim, "git --no-pager lol") },
         },
     },
     {
@@ -79,8 +82,8 @@ local sessions = {
         label = "projects",
         windows = {
             -- git on the left, the Astro dev server on the right
-            { "website", columns(0.5, pane(website, "git lol"), pane(website, "pnpm dev")) },
-            { "resume", pane(resume, "git lol") },
+            { "website", columns(0.5, pane(website, "git --no-pager lol"), pane(website, "pnpm dev")) },
+            { "resume", pane(resume, "git --no-pager lol") },
         },
     },
 }
